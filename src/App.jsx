@@ -19,36 +19,7 @@ const D = {
 };
 
 // ─── PEAK SYSTEM PROMPT ───────────────────────────────────────────────────────
-const PEAK_SYSTEM_PROMPT = `... (tera pura long prompt yahan paste kar dena jo document mein tha) ...`;
-
-// Baaki ka pura code (generatePeakRating function, WORKS array, sab components — ScoreBar, ArcCard, etc. sab kuch)
-
- // ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←
- // Yahan tera pura original Peak (5).jsx wala code paste kar do 
-
-import { useState, useEffect, useRef } from "react";
-
-// ─── DESIGN SYSTEM ───────────────────────────────────────────────────────────
-const D = {
-  bg:         "#0a0a12",
-  bgCard:     "#0e0e18",
-  text:       "#e8e6e0",
-  textMid:    "rgba(232,230,224,0.6)",
-  textDim:    "rgba(232,230,224,0.38)",
-  textFaint:  "rgba(232,230,224,0.18)",
-  amber:      "#c9a84c",
-  amberDim:   "rgba(201,168,76,0.55)",
-  amberFaint: "rgba(201,168,76,0.1)",
-  border:     "rgba(255,255,255,0.07)",
-  borderMed:  "rgba(255,255,255,0.12)",
-  serif:      "'Georgia', 'Times New Roman', serif",
-  sans:       "'Helvetica Neue', Helvetica, Arial, sans-serif",
-  mono:       "'Courier New', Courier, monospace",
-};
-
-
-// ─── PEAK SYSTEM PROMPT ───────────────────────────────────────────────────────
-const PEAK_SYSTEM_PROMPT = `
+const PEAK_SYSTEM_PROMPT = 
 You are PEAK — an AI-powered objective rating system.
 You rate any anime, manga, TV show, or film based purely
 on the principles of great storytelling, not popularity.
