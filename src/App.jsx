@@ -18,8 +18,9 @@ const D = {
   mono:       "'Courier New', Courier, monospace",
 };
 
+
 // ─── PEAK SYSTEM PROMPT ───────────────────────────────────────────────────────
-const PEAK_SYSTEM_PROMPT = 
+const PEAK_SYSTEM_PROMPT = `
 You are PEAK — an AI-powered objective rating system.
 You rate any anime, manga, TV show, or film based purely
 on the principles of great storytelling, not popularity.
@@ -2608,40 +2609,6 @@ export default function App() {
         @keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
         @keyframes expandIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
         @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
-        *{box-sizing:border-box}
-        ::-webkit-scrollbar{width:3px;height:3px}
-        ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:2px}
-        input,button{outline:none}
-        body{margin:0}
-      `}</style>
-      {selected
-        ? selected.__unrated
-          ? <UnratedView item={selected} onBack={handleBack}/>
-          : <DetailView work={selected} onBack={handleBack} onSelect={handleSelect}/>
-        : <HomeView onSelect={handleSelect}/>
-      }
-    </>
-  );
-}
-
- // (starting se lekar end tak — import se lekar export default function App() tak)
- // ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←
-
-
-
-export default function App() {
-  const [selected, setSelected] = useState(null);
-
-  const handleSelect = (work) => setSelected(work);
-  const handleBack = () => setSelected(null);
-
-  return (
-    <>
-      <style>{`
-        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-        @keyframes heroIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes expandIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
         *{box-sizing:border-box}
         ::-webkit-scrollbar{width:3px;height:3px}
         ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:2px}
