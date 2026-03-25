@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 
 // ─── DESIGN SYSTEM ───────────────────────────────────────────────────────────
@@ -1878,9 +1879,160 @@ const ShareButton = ({ work }) => {
   );
 };
 
+// ─── PEAK SAYS DATA ───────────────────────────────────────────────────────────
+const PEAK_SAYS = {
+  "vs":           { verdict:"Watch / Read it", line:"If you want a story that actually earns its ending after 20 years — this is it. Not for action. For something that stays with you.", forWho:"Best for: people who want meaning, not just excitement." },
+  "berserk":      { verdict:"Read it", line:"The darkest, most ambitious manga ever made. If you can handle heavy content and don't mind it being unfinished — essential.", forWho:"Best for: people who want the deepest story, not the prettiest one." },
+  "vagabond":     { verdict:"Read it", line:"The most beautiful manga ever drawn. Slow, philosophical, about a swordsman discovering what strength actually means. Not for everyone — but unforgettable.", forWho:"Best for: people who appreciate art and patience over plot." },
+  "monster":      { verdict:"Read / Watch it", line:"A psychological thriller with the greatest villain in manga history. If you liked Death Note but wanted it smarter and darker — this is what you're looking for.", forWho:"Best for: fans of psychological thrillers who want substance." },
+  "reze":         { verdict:"Watch it", line:"The best anime film of 2025. Even if you haven't seen Chainsaw Man — the animation alone is worth it, and the story stands on its own.", forWho:"Best for: anyone who loves great animation and a bittersweet love story." },
+  "bb":           { verdict:"Watch it", line:"One of the greatest TV shows ever made. A chemistry teacher becomes a drug lord — but it's really about how a person convinces themselves they're still the good guy.", forWho:"Best for: everyone. No exceptions." },
+  "aot-manga":    { verdict:"Read it", line:"The manga that made you root for the wrong side without realizing it. Smarter and more ambitious than the anime. Best twist architecture in manga.", forWho:"Best for: AOT anime fans who want the real, complete version." },
+  "slam-dunk":    { verdict:"Read it", line:"The greatest sports manga ever made. You don't need to like basketball. You'll cry anyway.", forWho:"Best for: anyone who wants pure emotional satisfaction." },
+  "dn-manga":     { verdict:"Read it", line:"A genius tries to outsmart the world using a notebook that kills. The smartest battle of wills in manga — and a better ending than the anime.", forWho:"Best for: people who love psychological chess matches." },
+  "fmab":         { verdict:"Watch it", line:"The most complete anime ever made. Great action, deep story, satisfying ending. The rare show that delivers on every promise it makes.", forWho:"Best for: everyone, especially beginners to anime." },
+  "aot-anime":    { verdict:"Watch it", line:"One of the greatest anime ever made. Starts as a survival story, becomes something much more ambitious. Season 2 alone is worth the price.", forWho:"Best for: people who want story and spectacle in equal measure." },
+  "monster-anime":{ verdict:"Watch it", line:"A slow, intelligent psychological thriller. A surgeon hunts the boy he once saved, who grew up to be a monster. Patient and devastating.", forWho:"Best for: people who want a smart thriller with real depth." },
+  "vs-anime":     { verdict:"Watch it", line:"A Vikings story that becomes an anti-war meditation. Better than most people expect. Season 2 is the best anime season in recent years.", forWho:"Best for: people who want emotional depth over flashy action." },
+  "op":           { verdict:"Read / Watch it (selectively)", line:"The greatest emotional investment in manga. Start with Water 7. Pre-timeskip is near-perfect. Post-timeskip has pacing issues but the emotional peaks are worth it.", forWho:"Best for: people who want to love a cast of characters for years." },
+  "csm":          { verdict:"Read it", line:"The most formally radical manga ever made. Dark, weird, cinematic. If you want something that breaks every rule of the genre — this is it.", forWho:"Best for: people bored of standard shonen who want something different." },
+  "lotm":         { verdict:"Read it", line:"The best web novel ever written. A boy climbs from zero to god through sheer intelligence. The world-building and power system are unmatched.", forWho:"Best for: people who love cultivation stories done with actual craft." },
+  "20cb":         { verdict:"Read it", line:"A conspiracy thriller spanning 50 years, told across two manga. If you liked Monster — same author, warmer story, equally brilliant architecture.", forWho:"Best for: fans of Monster and long-game mystery storytelling." },
+  "oshi":         { verdict:"Read / Watch it", line:"An idol story that becomes a dark examination of whether performance can become genuine. More intelligent than the premise suggests.", forWho:"Best for: people who want something emotionally surprising." },
+  "dn-anime":     { verdict:"Watch it (first half)", line:"One of the best first halves in anime history. Watch through episode 25. The second half is weaker — the manga handles it better.", forWho:"Best for: anyone who wants a psychological thriller with great style." },
+  "ds-infinity":  { verdict:"Watch it for the animation", line:"The most technically impressive anime fight sequences ever made. But it's a fragment — go in knowing that. It's a spectacle, not a complete story.", forWho:"Best for: people who want jaw-dropping animation above all else." },
+  "st":           { verdict:"Watch seasons 1–4", line:"One of the best horror-nostalgia shows made. Stop at season 4. The later seasons don't maintain the quality.", forWho:"Best for: people who want fun, emotional, well-crafted horror-adventure." },
+  "got":          { verdict:"Watch seasons 1–4", line:"Some of the greatest television ever made — until it wasn't. Seasons 1–4 are essential. After that, manage your expectations.", forWho:"Best for: people who want prestige TV at its peak — while it lasted." },
+  "ds-anime":     { verdict:"Watch it if you want great fights", line:"Beautiful animation, intense fights, straightforward story. Perfect for when you want spectacle without complexity.", forWho:"Best for: people who want pure entertainment and don't need deep themes." },
+  "sl":           { verdict:"Watch it as a power fantasy", line:"A weak guy becomes the strongest in the world. That's the whole thing — and it's genuinely satisfying if that's what you want.", forWho:"Best for: people who enjoy power fantasy and don't need deeper meaning." },
+  "jjk":          { verdict:"Watch the first arc", line:"Some of the best action animation in shonen history. The Shibuya arc is essential. The ending didn't stick the landing — but what came before was incredible.", forWho:"Best for: people who want top-tier animation and don't mind an imperfect ending." },
+};
+
+// ─── PEAK SAYS SECTION ────────────────────────────────────────────────────────
+const PeakSaysSection = ({ work }) => {
+  const data = PEAK_SAYS[work.id];
+  if (!data) return null;
+  const tierCol = TIER_C[work.tier] || D.amber;
+  const isPositive = data.verdict.toLowerCase().includes("watch") || data.verdict.toLowerCase().includes("read");
+
+  return (
+    <div style={{marginBottom:"48px",animation:"fadeIn 0.4s ease"}}>
+      <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"4px",marginBottom:"16px"}}>▲ PEAK SAYS</div>
+      <div style={{background:`linear-gradient(135deg,${tierCol}0a 0%,rgba(255,255,255,0.02) 100%)`,border:`1px solid ${tierCol}30`,borderRadius:"16px",padding:"24px 26px"}}>
+        <div style={{display:"flex",alignItems:"center",gap:"12px",marginBottom:"16px"}}>
+          <div style={{padding:"6px 14px",background:`${tierCol}18`,border:`1px solid ${tierCol}50`,borderRadius:"20px"}}>
+            <span style={{fontSize:"12px",fontWeight:"900",color:tierCol,fontFamily:D.mono,letterSpacing:"1px"}}>{data.verdict.toUpperCase()}</span>
+          </div>
+          <div style={{fontSize:"24px",fontWeight:"300",color:D.amber,fontFamily:D.serif,lineHeight:1}}>{work.overall.toFixed(1)}</div>
+          <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.mono}}>{work.tier} TIER</div>
+        </div>
+        <p style={{margin:"0 0 14px",fontSize:"16px",color:D.text,lineHeight:1.75,fontFamily:D.serif}}>{data.line}</p>
+        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono,letterSpacing:"0.5px"}}>{data.forWho}</p>
+      </div>
+    </div>
+  );
+};
+
+// ─── SECTION DIVIDER ─────────────────────────────────────────────────────────
+const SectionDivider = ({ label, color }) => (
+  <div style={{display:"flex",alignItems:"center",gap:"14px",margin:"52px 0 28px",opacity:0.7}}>
+    <div style={{flex:1,height:"1px",background:"rgba(255,255,255,0.06)"}}/>
+    <span style={{fontSize:"9px",color:color||D.textFaint,fontFamily:D.mono,letterSpacing:"4px",whiteSpace:"nowrap"}}>{label}</span>
+    <div style={{flex:1,height:"1px",background:"rgba(255,255,255,0.06)"}}/>
+  </div>
+);
+
+// ─── CONVERSATIONAL GUIDED NEXT ───────────────────────────────────────────────
+const ConversationalGuidedNext = ({ work, onSelect }) => {
+  const [activeTransition, setActiveTransition] = useState(null);
+  const cards = GUIDED_NEXT_MAP[work.id];
+  if (!cards || !cards.length) return null;
+
+  const resolved = cards.map(c => {
+    const target = WORKS.find(w => w.id === c.targetId);
+    if (!target) return null;
+    return {...c, target};
+  }).filter(Boolean);
+
+  if (!resolved.length) return null;
+
+  const handleClick = (item) => {
+    setActiveTransition(item);
+    setTimeout(() => {
+      setActiveTransition(null);
+      onSelect(item.target);
+    }, 900);
+  };
+
+  // Build conversational intro based on the show's qualities
+  const buildIntro = () => {
+    const exp = resolved.find(r => r.type === "experience");
+    const craft = resolved.find(r => r.type === "craft");
+    const contrast = resolved.find(r => r.type === "contrast");
+    const lines = [];
+    if (exp) lines.push(`If what hooked you was the *feeling* — ${exp.target.title} gives you that same energy.`);
+    if (craft) lines.push(`If you appreciated the craft underneath — ${craft.target.title} is built with the same discipline.`);
+    if (contrast) lines.push(`And if you want to see a completely different answer to the same questions — ${contrast.target.title}.`);
+    return lines.join(" ");
+  };
+
+  const tierCol = TIER_C[work.tier] || D.amber;
+
+  return (
+    <div style={{marginTop:"52px",paddingTop:"36px",borderTop:"1px solid rgba(255,255,255,0.05)"}}>
+      {activeTransition && (
+        <div style={{position:"fixed",inset:0,zIndex:200,background:"rgba(10,10,18,0.92)",display:"flex",alignItems:"center",justifyContent:"center",animation:"fadeIn 0.3s ease",backdropFilter:"blur(8px)"}}>
+          <div style={{textAlign:"center",padding:"0 40px",animation:"heroIn 0.4s ease"}}>
+            <div style={{fontSize:"10px",color:GUIDED_COLORS[activeTransition.type],fontFamily:D.mono,letterSpacing:"4px",marginBottom:"16px"}}>{GUIDED_LABELS[activeTransition.type].toUpperCase()}</div>
+            <div style={{fontSize:"28px",fontWeight:"900",color:D.text,fontFamily:D.serif,marginBottom:"8px"}}>{activeTransition.target.title}</div>
+            <div style={{fontSize:"13px",color:D.textDim,fontFamily:D.serif,fontStyle:"italic"}}>"{activeTransition.line}"</div>
+          </div>
+        </div>
+      )}
+
+      <div style={{fontSize:"9px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"4px",marginBottom:"18px"}}>WHERE TO GO NEXT</div>
+
+      {/* Conversational intro */}
+      <div style={{padding:"18px 20px",background:"rgba(255,255,255,0.02)",border:`1px solid ${tierCol}20`,borderRadius:"12px",marginBottom:"20px"}}>
+        <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.8,fontFamily:D.serif}}>
+          You just read <strong style={{color:D.text}}>{work.title}</strong>. {buildIntro()}
+        </p>
+      </div>
+
+      <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
+        {resolved.map((item, i) => {
+          const col = GUIDED_COLORS[item.type];
+          const targetTierCol = TIER_C[item.target.tier] || D.amber;
+          return (
+            <div key={item.targetId}
+              onClick={() => handleClick(item)}
+              style={{display:"flex",alignItems:"center",gap:"14px",padding:"14px 16px",borderRadius:"4px",background:"rgba(255,255,255,0.02)",border:`1px solid rgba(255,255,255,0.06)`,cursor:"pointer",transition:"all 0.2s",animation:`slideIn 0.4s ease ${i*0.1}s both`}}
+              onMouseEnter={e=>{e.currentTarget.style.background="rgba(255,255,255,0.04)";e.currentTarget.style.borderColor=`${col}40`;e.currentTarget.style.transform="translateX(3px)";}}
+              onMouseLeave={e=>{e.currentTarget.style.background="rgba(255,255,255,0.02)";e.currentTarget.style.borderColor="rgba(255,255,255,0.06)";e.currentTarget.style.transform="translateX(0)";}}
+            >
+              <div style={{flexShrink:0,width:"90px"}}>
+                <div style={{fontSize:"8px",color:col,fontFamily:D.mono,letterSpacing:"2px",fontWeight:"700",marginBottom:"3px"}}>{GUIDED_LABELS[item.type].toUpperCase()}</div>
+                <div style={{height:"1px",background:col,opacity:0.3,width:"100%"}}/>
+              </div>
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{fontSize:"13px",fontWeight:"700",color:D.text,fontFamily:D.serif,marginBottom:"3px"}}>{item.target.title}</div>
+                <div style={{fontSize:"12px",color:D.textDim,fontFamily:D.serif,fontStyle:"italic",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{item.line}"</div>
+              </div>
+              <div style={{flexShrink:0,textAlign:"right"}}>
+                <div style={{fontSize:"18px",fontWeight:"300",color:targetTierCol,fontFamily:D.serif,lineHeight:1}}>{item.target.overall.toFixed(1)}</div>
+                <div style={{fontSize:"8px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"1px"}}>{item.target.tier} TIER</div>
+              </div>
+              <div style={{color:D.textFaint,fontSize:"14px",flexShrink:0}}>›</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
 // ─── DETAIL VIEW ─────────────────────────────────────────────────────────────
 const DetailView=({work,onBack,onSelect})=>{
-  const[tab,setTab]=useState("overview");
   const[scoreDetail,setScoreDetail]=useState(null);
   const[deep,setDeep]=useState(false);
   const[spoilerOk,setSpoilerOk]=useState(false);
@@ -1888,18 +2040,11 @@ const DetailView=({work,onBack,onSelect})=>{
   const[vExp,setVExp]=useState(false);
 
   const hasArcs=work.arcs&&work.arcs.length>0;
-  const tabs=["overview",hasArcs?"arcs":null,"breakdown","compare","final"].filter(Boolean);
-  const tabLabels={overview:"Overview",arcs:"Arc Breakdown",breakdown:"Scores",compare:"Compare",final:"Final"};
   const tierCol=TIER_C[work.tier]||D.amber;
 
   useEffect(()=>{window.scrollTo(0,0);},[]);
-  useEffect(()=>{
-    if(tab==="breakdown")setTimeout(()=>setBarsAnim(true),120);
-    else setBarsAnim(false);
-  },[tab]);
+  useEffect(()=>{setTimeout(()=>setBarsAnim(true),400);},[]);
 
-
-  // Show score detail page if selected
   if (scoreDetail) {
     return (
       <ScoreDetailPage
@@ -1916,7 +2061,7 @@ const DetailView=({work,onBack,onSelect})=>{
   return(
     <div style={{minHeight:"100vh",background:D.bg,color:D.text,fontFamily:D.serif}}>
       {/* Hero */}
-      <div style={{position:"relative",height:"380px",overflow:"hidden"}}>
+      <div style={{position:"relative",height:"340px",overflow:"hidden"}}>
         <div style={{position:"absolute",inset:0,background:D.bg}}/>
         <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 25%,#080810 100%)"}}/>
         <button onClick={onBack} style={{position:"absolute",top:"20px",left:"20px",zIndex:10,background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"10px",padding:"8px 16px",color:D.textMid,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",backdropFilter:"blur(8px)"}}>← BACK</button>
@@ -1961,156 +2106,118 @@ const DetailView=({work,onBack,onSelect})=>{
                 window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(txt)}`,"_blank");
               }}
               style={{padding:"8px 14px",background:D.amberFaint,border:`1px solid ${D.amberDim}`,borderRadius:"8px",color:D.amber,fontSize:"11px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",whiteSpace:"nowrap"}}
-            >
-              Share ↗
-            </button>
+            >Share ↗</button>
           </div>
         </div>
       </div>
 
-      {/* Tabs */}
-      <div style={{position:"sticky",top:0,zIndex:50,background:"rgba(10,10,18,0.98)",backdropFilter:"blur(20px)",borderBottom:"1px solid rgba(255,255,255,0.06)"}}>
-        <div style={{maxWidth:"900px",margin:"0 auto",padding:"0 20px",display:"flex",overflowX:"auto",scrollbarWidth:"none"}}>
-          {tabs.map(t=>(
-            <button key={t} onClick={()=>setTab(t)} style={{padding:"14px 16px",background:"transparent",border:"none",borderBottom:tab===t?`1px solid ${D.amber}`:"1px solid rgba(255,255,255,0)",color:tab===t?"#fff":"rgba(255,255,255,0.33)",fontSize:"12px",fontWeight:tab===t?"400":"300",cursor:"pointer",fontFamily:D.mono,letterSpacing:"0.5px",whiteSpace:"nowrap",transition:"all 0.18s"}}>
-              {tabLabels[t]}
-            </button>
-          ))}
+      {/* ── SINGLE SCROLL CONTENT ── */}
+      <div style={{maxWidth:"900px",margin:"0 auto",padding:"40px 20px 120px"}}>
+
+        {/* 1. PEAK SAYS */}
+        <PeakSaysSection work={work}/>
+
+        {/* 2. OVERVIEW */}
+        <SectionDivider label="OVERVIEW" color={work.color}/>
+        <div style={{marginBottom:"28px"}}>
+          <div style={{fontSize:"10px",color:`${work.color}80`,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"8px"}}>SURFACE READING</div>
+          <p style={{margin:0,fontSize:"15px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif}}>{work.overview.surface}</p>
         </div>
-      </div>
-
-      {/* Content */}
-      <div style={{maxWidth:"900px",margin:"0 auto",padding:"32px 20px 100px"}}>
-
-        {/* OVERVIEW */}
-        {tab==="overview"&&(
-          <div style={{animation:"fadeIn 0.3s ease"}}>
-            <div style={{marginBottom:"28px"}}>
-              <div style={{fontSize:"10px",color:`${work.color}80`,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"8px"}}>SURFACE READING</div>
-              <p style={{margin:0,fontSize:"15px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif}}>{work.overview.surface}</p>
+        <NarrativeViz work={work}/>
+        <div style={{borderLeft:`3px solid ${work.color}`,paddingLeft:"20px",marginBottom:"28px"}}>
+          <div style={{fontSize:"10px",color:work.color,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"10px"}}>ACTUAL READING</div>
+          <p style={{margin:0,fontSize:"18px",color:D.text,lineHeight:1.7,fontFamily:D.serif,fontWeight:"600"}}>{work.overview.real}</p>
+        </div>
+        <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",overflow:"hidden",marginBottom:"20px"}}>
+          <div style={{padding:"20px 22px"}}>
+            <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"12px"}}>
+              <span style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans,letterSpacing:"3px"}}>🧠 DEEP ANALYSIS</span>
+              <span style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,border:"1px solid rgba(255,107,107,0.4)",borderRadius:"4px",padding:"1px 6px",letterSpacing:"1px"}}>⚠ SPOILERS</span>
             </div>
-            <NarrativeViz work={work}/>
-            <div style={{borderLeft:`3px solid ${work.color}`,paddingLeft:"20px",marginBottom:"28px"}}>
-              <div style={{fontSize:"10px",color:work.color,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"10px"}}>ACTUAL READING</div>
-              <p style={{margin:0,fontSize:"18px",color:D.text,lineHeight:1.7,fontFamily:D.serif,fontWeight:"600"}}>{work.overview.real}</p>
-            </div>
-            <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",overflow:"hidden",marginBottom:"32px"}}>
-              <div style={{padding:"20px 22px"}}>
-                <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"12px"}}>
-                  <span style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans,letterSpacing:"3px"}}>🧠 DEEP ANALYSIS</span>
-                  <span style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,border:"1px solid rgba(255,107,107,0.4)",borderRadius:"4px",padding:"1px 6px",letterSpacing:"1px"}}>⚠ SPOILERS</span>
-                </div>
-                {!spoilerOk ? (
-                  <div style={{padding:"20px",background:"rgba(255,107,107,0.05)",border:"1px solid rgba(255,107,107,0.15)",borderRadius:"12px",textAlign:"center"}}>
-                    <div style={{fontSize:"24px",marginBottom:"10px"}}>⚠️</div>
-                    <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif,marginBottom:"6px"}}>This section contains major plot spoilers.</div>
-                    <div style={{fontSize:"11px",color:D.textDim,fontFamily:D.mono,marginBottom:"16px"}}>Character deaths, twists, ending details revealed.</div>
-                    <button onClick={()=>setSpoilerOk(true)} style={{background:"rgba(255,107,107,0.12)",border:"1px solid rgba(255,107,107,0.4)",borderRadius:"8px",padding:"9px 20px",color:D.amber,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
-                      I've seen / read it — show analysis
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,maxHeight:deep?"none":"90px",overflow:"hidden",maskImage:deep?"none":"linear-gradient(180deg,black 45%,transparent 100%)",WebkitMaskImage:deep?"none":"linear-gradient(180deg,black 45%,transparent 100%)"}}>{work.overview.deep}</p>
-                    <div style={{marginTop:"14px"}}>
-                      <button onClick={()=>setDeep(d=>!d)} style={{background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"2px",padding:"8px 16px",color:D.textDim,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
-                        {deep?"Collapse ↑":"Read Full Analysis ↓"}
-                      </button>
-                    </div>
-                  </>
-                )}
+            {!spoilerOk ? (
+              <div style={{padding:"20px",background:"rgba(255,107,107,0.05)",border:"1px solid rgba(255,107,107,0.15)",borderRadius:"12px",textAlign:"center"}}>
+                <div style={{fontSize:"24px",marginBottom:"10px"}}>⚠️</div>
+                <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif,marginBottom:"6px"}}>This section contains major plot spoilers.</div>
+                <div style={{fontSize:"11px",color:D.textDim,fontFamily:D.mono,marginBottom:"16px"}}>Character deaths, twists, ending details revealed.</div>
+                <button onClick={()=>setSpoilerOk(true)} style={{background:"rgba(255,107,107,0.12)",border:"1px solid rgba(255,107,107,0.4)",borderRadius:"8px",padding:"9px 20px",color:D.amber,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
+                  I've seen / read it — show analysis
+                </button>
               </div>
-            </div>
-            <div style={{textAlign:"center",padding:"28px 20px",borderTop:"1px solid rgba(255,255,255,0.05)"}}>
-              <p style={{margin:0,fontSize:"17px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,lineHeight:1.6}}>"{work.tagline}"</p>
-            </div>
-          </div>
-        )}
-
-        {/* ARC BREAKDOWN */}
-        {tab==="arcs"&&hasArcs&&(
-          <div style={{animation:"fadeIn 0.3s ease"}}>
-            <div style={{marginBottom:"20px"}}>
-              <h2 style={{margin:"0 0 6px",fontSize:"20px",fontWeight:"900",color:D.text}}>Arc Breakdown</h2>
-              <p style={{margin:"0 0 14px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Ratings and hooks are always visible. Full analysis is spoiler-gated.</p>
-              <div style={{display:"flex",alignItems:"flex-start",gap:"10px",padding:"13px 16px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"12px"}}>
-                <span style={{fontSize:"16px",flexShrink:0}}>⚠️</span>
-                <div>
-                  <div style={{fontSize:"10px",color:D.amber,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"4px"}}>SPOILER WARNING</div>
-                  <p style={{margin:0,fontSize:"12px",color:D.textDim,lineHeight:1.6,fontFamily:D.serif}}>
-                    Each arc has a spoiler gate before the full analysis. You control what you read. Arc names, ratings and hook lines are always shown.
-                  </p>
+            ) : (
+              <>
+                <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,maxHeight:deep?"none":"90px",overflow:"hidden",maskImage:deep?"none":"linear-gradient(180deg,black 45%,transparent 100%)",WebkitMaskImage:deep?"none":"linear-gradient(180deg,black 45%,transparent 100%)"}}>{work.overview.deep}</p>
+                <div style={{marginTop:"14px"}}>
+                  <button onClick={()=>setDeep(d=>!d)} style={{background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"2px",padding:"8px 16px",color:D.textDim,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
+                    {deep?"Collapse ↑":"Read Full Analysis ↓"}
+                  </button>
                 </div>
-              </div>
-            </div>
-            {work.arcs.map((arc,i)=><ArcCard key={arc.name} arc={arc} color={work.color} index={i}/>)}
-          </div>
-        )}
-
-        {/* SCORES */}
-        {tab==="breakdown"&&(
-          <div style={{animation:"fadeIn 0.3s ease"}}>
-            <div style={{marginBottom:"22px"}}>
-              <h2 style={{margin:"0 0 6px",fontSize:"20px",fontWeight:"900",color:D.text}}>Craft Breakdown</h2>
-              <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap any category to see why it got that score.</p>
-            </div>
-
-            <RadarChart work={work} onOpenDetail={(label,val,explanation)=>setScoreDetail({label,val,explanation})}/>
-
-            <div style={{display:"flex",justifyContent:"flex-end",marginBottom:"16px"}}>
-              <DownloadButton targetId="radar-chart-container" filename={`peak-${work.title.replace(/\s+/g,"-").toLowerCase()}-scores`} label="Save Chart"/>
-            </div>
-
-            {work.part1Score&&(
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px",marginTop:"8px"}}>
-                <div style={{padding:"18px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px",textAlign:"center"}}>
-                  <div style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"5px"}}>PART 1</div>
-                  <div style={{fontSize:"42px",fontWeight:"900",color:D.amber,fontFamily:D.mono,lineHeight:1}}>{work.part1Score}</div>
-                </div>
-                <div style={{padding:"18px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px",textAlign:"center"}}>
-                  <div style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"5px"}}>PART 2</div>
-                  <div style={{fontSize:"42px",fontWeight:"900",color:D.amber,fontFamily:D.mono,lineHeight:1}}>{work.part2Score}</div>
-                </div>
-              </div>
+              </>
             )}
           </div>
+        </div>
+        <div style={{textAlign:"center",padding:"24px 20px"}}>
+          <p style={{margin:0,fontSize:"17px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,lineHeight:1.6}}>"{work.tagline}"</p>
+        </div>
+
+        {/* 3. ARC BREAKDOWN */}
+        {hasArcs&&(
+          <>
+            <SectionDivider label="ARC BREAKDOWN" color={work.color}/>
+            <p style={{margin:"0 0 20px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Ratings and hooks are always visible. Full analysis is spoiler-gated.</p>
+            {work.arcs.map((arc,i)=><ArcCard key={arc.name} arc={arc} color={work.color} index={i}/>)}
+          </>
         )}
 
-        {/* COMPARE */}
-        {tab==="compare"&&(
-          <div style={{animation:"fadeIn 0.3s ease"}}>
-            <div style={{marginBottom:"22px"}}>
-              <h2 style={{margin:"0 0 6px",fontSize:"20px",fontWeight:"900",color:D.text}}>{work.title} vs Others</h2>
-              <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap to expand · Tap again to open that rating.</p>
+        {/* 4. SCORES */}
+        <SectionDivider label="CRAFT SCORES" color={work.color}/>
+        <p style={{margin:"0 0 22px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap any category to see why it got that score.</p>
+        <RadarChart work={work} onOpenDetail={(label,val,explanation)=>setScoreDetail({label,val,explanation})}/>
+        <div style={{display:"flex",justifyContent:"flex-end",marginBottom:"16px"}}>
+          <DownloadButton targetId="radar-chart-container" filename={`peak-${work.title.replace(/\s+/g,"-").toLowerCase()}-scores`} label="Save Chart"/>
+        </div>
+        {work.part1Score&&(
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px",marginTop:"8px"}}>
+            <div style={{padding:"18px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px",textAlign:"center"}}>
+              <div style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"5px"}}>PART 1</div>
+              <div style={{fontSize:"42px",fontWeight:"900",color:D.amber,fontFamily:D.mono,lineHeight:1}}>{work.part1Score}</div>
             </div>
+            <div style={{padding:"18px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px",textAlign:"center"}}>
+              <div style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"5px"}}>PART 2</div>
+              <div style={{fontSize:"42px",fontWeight:"900",color:D.amber,fontFamily:D.mono,lineHeight:1}}>{work.part2Score}</div>
+            </div>
+          </div>
+        )}
+
+        {/* 5. COMPARE */}
+        {work.comparisons&&work.comparisons.length>0&&(
+          <>
+            <SectionDivider label="COMPARE" color={work.color}/>
+            <p style={{margin:"0 0 16px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap to expand · Tap again to open that rating.</p>
             <div style={{display:"flex",gap:"12px",overflowX:"auto",paddingBottom:"16px",scrollbarWidth:"none"}}>
               {work.comparisons.map((c,i)=><CmpCard key={c.title} comp={c} index={i} onSelect={(w)=>{onBack();setTimeout(()=>onSelect(w),80);}}/>)}
             </div>
-          </div>
+          </>
         )}
 
-        {/* FINAL */}
-        {tab==="final"&&(
-          <div style={{animation:"fadeIn 0.3s ease"}}>
-            <TierReveal work={work}/>
-            <div style={{marginTop:"28px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",overflow:"hidden"}}>
-              <div style={{padding:"22px 24px"}}>
-                <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"14px"}}>FULL VERDICT</div>
-                <p style={{margin:0,fontSize:"15px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,maxHeight:vExp?"none":"100px",overflow:"hidden",maskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)",WebkitMaskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)"}}>{work.verdict.full}</p>
-              </div>
-              <div style={{padding:"0 24px 20px"}}>
-                <button onClick={()=>setVExp(v=>!v)} style={{background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"2px",padding:"8px 16px",color:D.textDim,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
-                  {vExp?"Collapse ↑":"Read Full Verdict ↓"}
-                </button>
-              </div>
-            </div>
-            <GuidedNext work={work} onSelect={(w)=>{onBack();setTimeout(()=>onSelect(w),80);}}/>
+        {/* 6. FINAL */}
+        <SectionDivider label="FINAL VERDICT" color={work.color}/>
+        <TierReveal work={work}/>
+        <div style={{marginTop:"28px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",overflow:"hidden"}}>
+          <div style={{padding:"22px 24px"}}>
+            <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"14px"}}>FULL VERDICT</div>
+            <p style={{margin:0,fontSize:"15px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,maxHeight:vExp?"none":"100px",overflow:"hidden",maskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)",WebkitMaskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)"}}>{work.verdict.full}</p>
           </div>
-        )}
-        {/* EPISODES */}
+          <div style={{padding:"0 24px 20px"}}>
+            <button onClick={()=>setVExp(v=>!v)} style={{background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"2px",padding:"8px 16px",color:D.textDim,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
+              {vExp?"Collapse ↑":"Read Full Verdict ↓"}
+            </button>
+          </div>
+        </div>
+
+        {/* 7. WHERE TO GO NEXT */}
+        <ConversationalGuidedNext work={work} onSelect={(w)=>{onBack();setTimeout(()=>onSelect(w),80);}}/>
 
       </div>
-
     </div>
   );
 };
