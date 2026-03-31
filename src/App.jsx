@@ -1920,28 +1920,158 @@ const PEAK_SAYS = {
 };
 
 // ─── PEAK SAYS SECTION ────────────────────────────────────────────────────────
-const PeakSaysSection = ({ work }) => {
-  const data = PEAK_SAYS[work.id];
-  if (!data) return null;
-  const tierCol = TIER_C[work.tier] || D.amber;
-  const isPositive = data.verdict.toLowerCase().includes("watch") || data.verdict.toLowerCase().includes("read");
-
-  return (
-    <div style={{marginBottom:"48px",animation:"fadeIn 0.4s ease"}}>
-      <div style={{fontSize:"10px",color:"rgba(59,130,246,0.5)",fontFamily:D.mono,letterSpacing:"4px",marginBottom:"16px"}}>▲ PEAK SAYS</div>
-      <div style={{background:`linear-gradient(135deg,${tierCol}0a 0%,rgba(255,255,255,0.02) 100%)`,border:`1px solid ${tierCol}30`,borderRadius:"16px",padding:"24px 26px"}}>
-        <div style={{display:"flex",alignItems:"center",gap:"12px",marginBottom:"16px"}}>
-          <div style={{padding:"6px 14px",background:`${tierCol}18`,border:`1px solid ${tierCol}50`,borderRadius:"20px"}}>
-            <span style={{fontSize:"12px",fontWeight:"900",color:tierCol,fontFamily:D.mono,letterSpacing:"1px"}}>{data.verdict.toUpperCase()}</span>
-          </div>
-          <div style={{fontSize:"24px",fontWeight:"300",color:D.blue,fontFamily:D.serif,lineHeight:1}}>{work.overall.toFixed(1)}</div>
-          <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.mono}}>{work.tier} TIER</div>
-        </div>
-        <p style={{margin:"0 0 14px",fontSize:"16px",color:D.text,lineHeight:1.75,fontFamily:D.serif}}>{data.line}</p>
-        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono,letterSpacing:"0.5px"}}>{data.forWho}</p>
-      </div>
-    </div>
-  );
+// ─── PEAK SAYS DATA ───────────────────────────────────────────────────────────
+const PEAK_SAYS = {
+  "vs":           { 
+    verdict:"Read it", 
+    line:"If you want a slow, meaningful story about violence and growing as a person — read this.", 
+    opposite:"If you want fast action and nonstop fights, this isn’t it.", 
+    bestFor:"Best for you if you like thoughtful stories that stay with you." 
+  },
+  "berserk":      { 
+    verdict:"Read it", 
+    line:"If you want the darkest and most serious story in manga — read this.", 
+    opposite:"If you want something light or easy, this isn’t it.", 
+    bestFor:"Best for you if you like heavy, ambitious stories." 
+  },
+  "vagabond":     { 
+    verdict:"Read it", 
+    line:"If you want beautiful, slow, and philosophical manga — read this.", 
+    opposite:"If you want fast plot and lots of action, this isn’t it.", 
+    bestFor:"Best for you if you like calm, artistic stories." 
+  },
+  "monster":      { 
+    verdict:"Read / Watch it", 
+    line:"If you want a smart psychological thriller with a scary villain — read or watch this.", 
+    opposite:"If you want light entertainment or happy stories, this isn’t it.", 
+    bestFor:"Best for you if you like tense, thinking stories." 
+  },
+  "reze":         { 
+    verdict:"Watch it", 
+    line:"If you want emotional and beautiful animation with a bittersweet love story — watch this.", 
+    opposite:"If you want pure nonstop action, this isn’t it.", 
+    bestFor:"Best for you if you like emotional anime films." 
+  },
+  "bb":           { 
+    verdict:"Watch it", 
+    line:"If you want a smart, intense story about a man slowly turning bad — watch this.", 
+    opposite:"If you want light comedy or feel-good shows, this isn’t it.", 
+    bestFor:"Best for you if you like serious character dramas." 
+  },
+  "aot-manga":    { 
+    verdict:"Read it", 
+    line:"If you want huge twists and a story that messes with your head — read this.", 
+    opposite:"If you want simple good-vs-evil, this isn’t it.", 
+    bestFor:"Best for you if you like mind-bending plots." 
+  },
+  "slam-dunk":    { 
+    verdict:"Read it", 
+    line:"If you want an emotional sports story that makes you feel everything — read this.", 
+    opposite:"If you don’t like sports manga, this isn’t it.", 
+    bestFor:"Best for you if you like heartfelt character growth." 
+  },
+  "dn-manga":     { 
+    verdict:"Read it", 
+    line:"If you want the smartest battle of minds in manga — read this.", 
+    opposite:"If you want big action or simple fights, this isn’t it.", 
+    bestFor:"Best for you if you like clever psychological stories." 
+  },
+  "fmab":         { 
+    verdict:"Watch it", 
+    line:"If you want a complete story with great action and a satisfying ending — watch this.", 
+    opposite:"If you want something dark and unfinished, this isn’t it.", 
+    bestFor:"Best for you if you like well-made, complete anime." 
+  },
+  "aot-anime":    { 
+    verdict:"Watch it", 
+    line:"If you want epic animation, huge twists, and emotional moments — watch this.", 
+    opposite:"If you want calm or slow storytelling, this isn’t it.", 
+    bestFor:"Best for you if you like intense, exciting anime." 
+  },
+  "monster-anime":{ 
+    verdict:"Watch it", 
+    line:"If you want a slow, smart psychological thriller — watch this.", 
+    opposite:"If you want fast action and quick entertainment, this isn’t it.", 
+    bestFor:"Best for you if you like patient, deep stories." 
+  },
+  "vs-anime":     { 
+    verdict:"Watch it", 
+    line:"If you want emotional depth and beautiful quiet moments — watch this.", 
+    opposite:"If you want constant action and hype, this isn’t it.", 
+    bestFor:"Best for you if you like thoughtful anime." 
+  },
+  "op":           { 
+    verdict:"Read / Watch it (selectively)", 
+    line:"If you want a long emotional adventure with characters you’ll love — try this.", 
+    opposite:"If you want short and fast stories, this isn’t it.", 
+    bestFor:"Best for you if you like big emotional journeys." 
+  },
+  "csm":          { 
+    verdict:"Read it", 
+    line:"If you want weird, dark, and unpredictable storytelling — read this.", 
+    opposite:"If you want standard shonen action, this isn’t it.", 
+    bestFor:"Best for you if you like strange and bold manga." 
+  },
+  "lotm":         { 
+    verdict:"Read it", 
+    line:"If you want a smart power fantasy with amazing world-building — read this.", 
+    opposite:"If you want simple fights without strategy, this isn’t it.", 
+    bestFor:"Best for you if you like clever progression stories." 
+  },
+  "20cb":         { 
+    verdict:"Read it", 
+    line:"If you want a long mystery full of great twists — read this.", 
+    opposite:"If you want fast action, this isn’t it.", 
+    bestFor:"Best for you if you like conspiracy thrillers." 
+  },
+  "oshi":         { 
+    verdict:"Read / Watch it", 
+    line:"If you want emotional drama mixed with dark twists — try this.", 
+    opposite:"If you want pure idol fun, this isn’t it.", 
+    bestFor:"Best for you if you like surprising stories." 
+  },
+  "dn-anime":     { 
+    verdict:"Watch it (first half)", 
+    line:"If you want the smartest mind games in anime — watch the first half.", 
+    opposite:"If you want consistent quality all the way, this isn’t it.", 
+    bestFor:"Best for you if you like clever thrillers." 
+  },
+  "ds-infinity":  { 
+    verdict:"Watch it for the animation", 
+    line:"If you want the most beautiful fight animation ever — watch this.", 
+    opposite:"If you want a complete story, this isn’t it.", 
+    bestFor:"Best for you if you like pure spectacle." 
+  },
+  "st":           { 
+    verdict:"Watch seasons 1–4", 
+    line:"If you want fun horror with heart and nostalgia — watch seasons 1-4.", 
+    opposite:"If you want dark serious drama, this isn’t it.", 
+    bestFor:"Best for you if you like exciting adventure shows." 
+  },
+  "got":          { 
+    verdict:"Watch seasons 1–4", 
+    line:"If you want the best political fantasy drama at its peak — watch seasons 1-4.", 
+    opposite:"If you want a perfect ending, this isn’t it.", 
+    bestFor:"Best for you if you like epic TV at its highest." 
+  },
+  "ds-anime":     { 
+    verdict:"Watch it if you want great fights", 
+    line:"If you want beautiful fights and simple fun — watch this.", 
+    opposite:"If you want deep themes, this isn’t it.", 
+    bestFor:"Best for you if you like flashy action." 
+  },
+  "sl":           { 
+    verdict:"Watch it as a power fantasy", 
+    line:"If you want a weak guy becoming super strong — watch this.", 
+    opposite:"If you want complex characters, this isn’t it.", 
+    bestFor:"Best for you if you like satisfying power fantasies." 
+  },
+  "jjk":          { 
+    verdict:"Watch the first arc", 
+    line:"If you want top-tier action animation — watch the early arcs.", 
+    opposite:"If you want a perfect ending, this isn’t it.", 
+    bestFor:"Best for you if you like hype fights." 
+  },
 };
 
 // ─── SECTION DIVIDER ─────────────────────────────────────────────────────────
