@@ -1920,6 +1920,51 @@ const PEAK_SAYS = {
 };
 
 // ─── PEAK SAYS SECTION ────────────────────────────────────────────────────────
+// ─── PEAK SAYS SECTION ────────────────────────────────────────────────────────
+const PeakSaysSection = ({ work }) => {
+  const data = PEAK_SAYS[work.id];
+  if (!data) return null;
+
+  const tierCol = TIER_C[work.tier] || D.amber;
+  const isPositive = data.verdict.toLowerCase().includes("watch") || data.verdict.toLowerCase().includes("read");
+
+  return (
+    <div style={{marginBottom:"48px", animation:"fadeIn 0.4s ease"}}>
+      <div style={{fontSize:"10px", color:"rgba(59,130,246,0.5)", fontFamily:D.mono, letterSpacing:"4px", marginBottom:"16px"}}>
+        ▲ PEAK SAYS
+      </div>
+      
+      <div style={{background:`linear-gradient(135deg,${tierCol}0a 0%,rgba(255,255,255,0.02) 100%)`, border:`1px solid ${tierCol}30`, borderRadius:"16px", padding:"24px 26px"}}>
+        
+        {/* Verdict + Score */}
+        <div style={{display:"flex", alignItems:"center", gap:"12px", marginBottom:"20px"}}>
+          <div style={{padding:"6px 14px", background:`${tierCol}18`, border:`1px solid ${tierCol}50`, borderRadius:"20px"}}>
+            <span style={{fontSize:"12px", fontWeight:"900", color:tierCol, fontFamily:D.mono, letterSpacing:"1px"}}>
+              {data.verdict.toUpperCase()}
+            </span>
+          </div>
+          <div style={{fontSize:"24px", fontWeight:"300", color:D.blue, fontFamily:D.serif, lineHeight:1}}>
+            {work.overall.toFixed(1)}
+          </div>
+          <div style={{fontSize:"10px", color:D.textFaint, fontFamily:D.mono}}>
+            {work.tier} TIER
+          </div>
+        </div>
+
+        {/* The 3 clear lines */}
+        <p style={{margin:"0 0 14px", fontSize:"16px", color:D.text, lineHeight:1.75, fontFamily:D.serif}}>
+          {data.line}
+        </p>
+        <p style={{margin:"0 0 14px", fontSize:"15px", color:D.textMid, lineHeight:1.7, fontFamily:D.serif}}>
+          {data.opposite}
+        </p>
+        <p style={{margin:0, fontSize:"14px", color:D.textDim, fontFamily:D.mono, letterSpacing:"0.5px"}}>
+          {data.bestFor}
+        </p>
+      </div>
+    </div>
+  );
+};
 // ─── PEAK SAYS DATA ───────────────────────────────────────────────────────────
 const PEAK_SAYS = {
   "vs":           { 
