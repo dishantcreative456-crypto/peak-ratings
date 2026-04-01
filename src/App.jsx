@@ -1076,21 +1076,84 @@ const sc = v => {
   if(v >= 7.0) return "rgba(232,230,224,0.35)";
   return "rgba(232,230,224,0.2)";
 };
+const getVisualContentType = (content) => {
+  const type = (content?.type || "").toLowerCase();
+  const text = [
+    content?.type,
+    content?.title,
+    content?.hook,
+    content?.tagline,
+    content?.overview?.surface
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  if (type === "manga" || type === "manhwa") return "manga";
+  if (type === "anime") return "animated";
+  if (type === "tv") return "live-action";
+  if (type === "film") {
+    if (text.includes("anime") || text.includes("animated")) return "animated";
+    return "live-action";
+  }
+  return "live-action";
+};
+const getVisualCategory = (content, key) => {
+  const defaults = {
+    "Writing": {
+      label: "Writing",
+      description: "How well the story is constructed — plot architecture, dialogue, foreshadowing, narrative discipline and whether the ending earns everything that came before it."
+    },
+    "Themes": {
+      label: "Themes",
+      description: "The depth and discipline of the ideas the work is exploring — whether it asks serious questions, pursues them consistently, and answers them honestly rather than conveniently."
+    },
+    "Twists": {
+      label: "Twists",
+      description: "How well major revelations are planted and paid off — whether they recontextualize what came before, are consistent with established character logic, and deepen the story rather than merely shocking."
+    },
+    "Characters": {
+      label: "Characters",
+      description: "The psychological complexity, consistency and depth of the cast — whether characters grow believably, make decisions rooted in their established psychology, and leave a genuine impression."
+    },
+    "Pacing": {
+      label: "Pacing",
+      description: "How well the story controls time — whether it earns its slow moments, maintains tension across long stretches, and arrives at its destination without overstaying its welcome."
+    },
+    "Emotional Impact": {
+      label: "Emotional Impact",
+      description: "How effectively the work makes you feel — whether emotional peaks are earned through patient investment, and whether the feelings it generates are genuine rather than manufactured."
+    },
+    "Consistency": {
+      label: "Consistency",
+      description: "How evenly the quality is distributed across the full work — whether the ending matches the beginning, whether later arcs honor earlier ones, and whether the work maintains its identity throughout."
+    }
+  };
+
+  if (key !== "Art") return defaults[key] || { label: key, description: "How this category is evaluated in Peak's framework." };
+
+  const visualType = getVisualContentType(content);
+  if (visualType === "manga") {
+    return {
+      label: "Art",
+      description: "The quality and expressiveness of the visual craft — panel composition, character design, visual clarity, and how effectively the artwork carries the story."
+    };
+  }
+  if (visualType === "animated") {
+    return {
+      label: "Animation",
+      description: "The quality of animation — movement, fluidity, choreography, visual direction, and how effectively the animation enhances storytelling rather than just spectacle."
+    };
+  }
+  return {
+    label: "Cinematography",
+    description: "The quality of visual direction — camera work, lighting, shot composition, framing, and how effectively the visuals support the story’s tone and emotion."
+  };
+};
 
 
 // ─── SCORE DETAIL PAGE ───────────────────────────────────────────────────────
-const ScoreDetailPage = ({ label, val, explanation, color, work, onBack }) => {
+const ScoreDetailPage = ({ categoryKey, val, explanation, color, work, onBack }) => {
   const col = sc(val);
-  const catDescriptions = {
-    "Writing": "How well the story is constructed — plot architecture, dialogue, foreshadowing, narrative discipline and whether the ending earns everything that came before it.",
-    "Art": "The quality and expressiveness of the visual craft — panel composition, character design, action choreography, use of negative space and whether the artwork serves the story or merely decorates it.",
-    "Themes": "The depth and discipline of the ideas the work is exploring — whether it asks serious questions, pursues them consistently, and answers them honestly rather than conveniently.",
-    "Twists": "How well major revelations are planted and paid off — whether they recontextualize what came before, are consistent with established character logic, and deepen the story rather than merely shocking.",
-    "Characters": "The psychological complexity, consistency and depth of the cast — whether characters grow believably, make decisions rooted in their established psychology, and leave a genuine impression.",
-    "Pacing": "How well the story controls time — whether it earns its slow moments, maintains tension across long stretches, and arrives at its destination without overstaying its welcome.",
-    "Emotional Impact": "How effectively the work makes you feel — whether emotional peaks are earned through patient investment, and whether the feelings it generates are genuine rather than manufactured.",
-    "Consistency": "How evenly the quality is distributed across the full work — whether the ending matches the beginning, whether later arcs honor earlier ones, and whether the work maintains its identity throughout."
-  };
+  const category = getVisualCategory(work, categoryKey);
+  const label = category.label;
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -1109,7 +1172,7 @@ const ScoreDetailPage = ({ label, val, explanation, color, work, onBack }) => {
         <div style={{ marginBottom:"32px" }}>
           <div style={{ fontSize:"10px", color:`${color}80`, fontFamily:D.mono, letterSpacing:"4px", marginBottom:"10px" }}>CRAFT CATEGORY</div>
           <h1 style={{ margin:"0 0 6px", fontSize:"clamp(28px,6vw,44px)", fontWeight:"900", color:D.text, letterSpacing:"-0.5px" }}>{label}</h1>
-          <p style={{ margin:0, fontSize:"14px", color:D.textDim, lineHeight:1.6, fontFamily:D.serif }}>{catDescriptions[label] || "How this category is evaluated in Peak's framework."}</p>
+          <p style={{ margin:0, fontSize:"14px", color:D.textDim, lineHeight:1.6, fontFamily:D.serif }}>{category.description}</p>
         </div>
 
         {/* Score display */}
@@ -1153,10 +1216,12 @@ const ScoreDetailPage = ({ label, val, explanation, color, work, onBack }) => {
 
 // ─── SCORE BAR — tappable, opens full detail page ─────────────────────────────
 const ScoreBar = ({ label, val, animate, explanation, color, work, onOpenDetail }) => {
+  const display = getVisualCategory(work, label);
+  const displayLabel = display.label;
   if (!val && val !== 0) return (
     <div style={{ marginBottom:"10px" }}>
       <div style={{ display:"flex", justifyContent:"space-between", marginBottom:"5px" }}>
-        <span style={{ fontSize:"11px", color:D.textDim, fontFamily:D.mono, textTransform:"uppercase", letterSpacing:"0.8px" }}>{label}</span>
+        <span style={{ fontSize:"11px", color:D.textDim, fontFamily:D.mono, textTransform:"uppercase", letterSpacing:"0.8px" }}>{displayLabel}</span>
         <span style={{ fontSize:"11px", color:D.textFaint, fontFamily:D.mono }}>N/A</span>
       </div>
       <div style={{ height:"4px", background:"rgba(255,255,255,0.04)", borderRadius:"2px" }}/>
@@ -1171,7 +1236,7 @@ const ScoreBar = ({ label, val, animate, explanation, color, work, onOpenDetail 
     >
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:"5px" }}>
         <div style={{ display:"flex", alignItems:"center", gap:"6px" }}>
-          <span style={{ fontSize:"11px", color:D.textMid, fontFamily:D.mono, textTransform:"uppercase", letterSpacing:"0.8px" }}>{label}</span>
+          <span style={{ fontSize:"11px", color:D.textMid, fontFamily:D.mono, textTransform:"uppercase", letterSpacing:"0.8px" }}>{displayLabel}</span>
           {hasDetail && <span style={{ fontSize:"9px", color:`${col}80`, fontFamily:D.mono, border:`1px solid ${col}30`, borderRadius:"3px", padding:"0px 4px" }}>TAP ↗</span>}
         </div>
         <span style={{ fontSize:"14px", color:col, fontFamily:D.mono, fontWeight:"900" }}>{val.toFixed(1)}</span>
@@ -1697,6 +1762,7 @@ const RadarChart = ({ work, onOpenDetail }) => {
   const keys = Object.keys(scores).filter(k => scores[k] != null);
   const n = keys.length;
   if(!n) return null;
+  const getDisplay = (k) => getVisualCategory(work, k);
 
   // Per-category colors like DAWG
   const CAT_COLORS = {
@@ -1728,7 +1794,12 @@ const RadarChart = ({ work, onOpenDetail }) => {
   const polyPoints = dataPoints.map(p => p.join(",")).join(" ");
 
   const shortLabel = (k) => {
-    const map = {"Writing":"WRITING","Art":"ART","Themes":"THEMES","Twists":"TWISTS","Characters":"CHARS","Pacing":"PACING","Emotional Impact":"EMOTION","Consistency":"CONSIST"};
+    if (k === "Art") {
+      const label = getDisplay(k).label.toUpperCase();
+      const visualMap = {"ART":"ART","ANIMATION":"ANIM","CINEMATOGRAPHY":"CINEMA"};
+      return visualMap[label] || label.slice(0,7);
+    }
+    const map = {"Writing":"WRITING","Themes":"THEMES","Twists":"TWISTS","Characters":"CHARS","Pacing":"PACING","Emotional Impact":"EMOTION","Consistency":"CONSIST"};
     return map[k] || k.toUpperCase().slice(0,7);
   };
 
@@ -1768,6 +1839,7 @@ const RadarChart = ({ work, onOpenDetail }) => {
           const val = scores[k];
           const col = getColor(k);
           const explanation = work.scoreReasons && work.scoreReasons[k];
+          const display = getDisplay(k);
           return (
             <div key={k}
               onClick={() => explanation && onOpenDetail(k, val, explanation)}
@@ -1777,6 +1849,7 @@ const RadarChart = ({ work, onOpenDetail }) => {
             >
               <div style={{fontSize:"8px",color:col,fontFamily:D.mono,letterSpacing:"1px",marginBottom:"6px",fontWeight:"700"}}>{shortLabel(k)}</div>
               <div style={{fontSize:"24px",fontWeight:"300",color:col,fontFamily:D.serif,lineHeight:1,marginBottom:"2px"}}>{val?.toFixed(1)}</div>
+              <div style={{fontSize:"9px",color:D.textDim,fontFamily:D.sans,lineHeight:1.2,marginBottom:explanation?"4px":"0"}}>{display.label}</div>
               {explanation && <div style={{fontSize:"8px",color:`${col}70`,fontFamily:D.mono,letterSpacing:"0.5px"}}>TAP ↗</div>}
             </div>
           );
@@ -2234,7 +2307,7 @@ const DetailView=({work,onBack,onSelect})=>{
   if (scoreDetail) {
     return (
       <ScoreDetailPage
-        label={scoreDetail.label}
+        categoryKey={scoreDetail.categoryKey}
         val={scoreDetail.val}
         explanation={scoreDetail.explanation}
         color={work.color}
@@ -2357,7 +2430,7 @@ const DetailView=({work,onBack,onSelect})=>{
         {/* 4. SCORES */}
         <SectionDivider label="CRAFT SCORES" color={work.color}/>
         <p style={{margin:"0 0 22px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap any category to see why it got that score.</p>
-        <RadarChart work={work} onOpenDetail={(label,val,explanation)=>setScoreDetail({label,val,explanation})}/>
+        <RadarChart work={work} onOpenDetail={(categoryKey,val,explanation)=>setScoreDetail({categoryKey,val,explanation})}/>
         <div style={{display:"flex",justifyContent:"flex-end",marginBottom:"16px"}}>
           <DownloadButton targetId="radar-chart-container" filename={`peak-${work.title.replace(/\s+/g,"-").toLowerCase()}-scores`} label="Save Chart"/>
         </div>
