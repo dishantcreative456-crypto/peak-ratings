@@ -1891,7 +1891,7 @@ const ShareButton = ({ work }) => {
 };
 
 // ─── PEAK SAYS DATA ───────────────────────────────────────────────────────────
-const PEAK_SAYS = {
+const PEAK_SAYS_OLD = {
   "vs":           { verdict:"Watch / Read it", line:"If you want a story that actually earns its ending after 20 years — this is it. Not for action. For something that stays with you.", forWho:"Best for: people who want meaning, not just excitement." },
   "berserk":      { verdict:"Read it", line:"The darkest, most ambitious manga ever made. If you can handle heavy content and don't mind it being unfinished — essential.", forWho:"Best for: people who want the deepest story, not the prettiest one." },
   "vagabond":     { verdict:"Read it", line:"The most beautiful manga ever drawn. Slow, philosophical, about a swordsman discovering what strength actually means. Not for everyone — but unforgettable.", forWho:"Best for: people who appreciate art and patience over plot." },
