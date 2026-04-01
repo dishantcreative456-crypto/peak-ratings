@@ -1990,6 +1990,7 @@ const PEAK_SAYS_OLD = {
   "ds-anime":     { verdict:"Watch it if you want great fights", line:"Beautiful animation, intense fights, straightforward story. Perfect for when you want spectacle without complexity.", forWho:"Best for: people who want pure entertainment and don't need deep themes." },
   "sl":           { verdict:"Watch it as a power fantasy", line:"A weak guy becomes the strongest in the world. That's the whole thing — and it's genuinely satisfying if that's what you want.", forWho:"Best for: people who enjoy power fantasy and don't need deeper meaning." },
   "jjk":          { verdict:"Watch the first arc", line:"Some of the best action animation in shonen history. The Shibuya arc is essential. The ending didn't stick the landing — but what came before was incredible.", forWho:"Best for: people who want top-tier animation and don't mind an imperfect ending." },
+};
 const PEAK_SAYS = {
   "vs":           { verdict:"Watch / Read it", line:"If you want something deep and emotional, watch or read this. If you want fast action all the way through, this isn't it.", forWho:"Best for you if you like slow, meaningful stories." },
   "berserk":      { verdict:"Read it", line:"If you want something dark, deep, and intense, read this. If you want something light or easy, this isn't it.", forWho:"Best for you if you like brutal stories with big ideas." },
