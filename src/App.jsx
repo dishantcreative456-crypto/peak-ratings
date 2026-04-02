@@ -220,7 +220,11 @@ For full series/film use this exact structure:
     "originality": "",
     "intentFulfillment": ""
   },
-  "verdict": "",
+  "hookLines": ["", "", ""],
+  "finalThoughts": {
+    "line": "",
+    "full": ""
+  },
   "comparisons": ["", "", ""],
   "incompletenessNote": ""
 }
@@ -253,7 +257,7 @@ const WORKS = [
   // ── S TIER ──
   {
     id:"vs", title:"Vinland Saga", type:"Manga", year:"2005", status:"Complete ✓",
-    overall:9.7, hook:"The greatest finished manga ever made.", tier:"S", color:D.blue,
+    overall:9.7, hook:"The greatest finished manga ever made.", hookLines:["The greatest finished manga ever made."], tier:"S", color:D.blue,
     tagline:"A man who chose to stop — and changed everything by doing so.",
     overview:{
       surface:"A Viking warrior seeks revenge for his father's murder.",
@@ -281,11 +285,11 @@ const WORKS = [
       {title:"Berserk",verdict:"Greatest conceived vs greatest delivered",detail:"Berserk is the greater conceived work. Vinland Saga is the greater delivered work. Berserk's Eclipse has no equal as a single event. But Vinland Saga finished — and completion is itself an artistic achievement.",color:D.amber},
       {title:"AOT",verdict:"Better ending",detail:"Both deal with cycles of violence. AOT's chapter 139 partially contradicts its own thesis. Vinland Saga's ending deepens everything that came before it. That gap is why Vinland Saga is #1.",color:D.purple},
     ],
-    verdict:{score:9.7,line:"The wheat growing at the end of chapter 220 is the most important final image in manga history.",full:"Not the most spectacular. The most true. Yukimura spent 20 years asking whether goodness is possible in a brutal world and answered it with wheat growing from the hands of a native boy taught by a Viking who failed and left. Vinland Saga is number one because it is the only work simultaneously philosophically ambitious, thematically consistent across its full length, complete on its own terms, and concluded with an ending that deepens rather than diminishes everything before it.",canReachS:false}
+    finalThoughts:{line:"The wheat growing at the end of chapter 220 is the most important final image in manga history.",full:"Not the most spectacular. The most true. Yukimura spent 20 years asking whether goodness is possible in a brutal world and answered it with wheat growing from the hands of a native boy taught by a Viking who failed and left. Vinland Saga is number one because it is the only work simultaneously philosophically ambitious, thematically consistent across its full length, complete on its own terms, and concluded with an ending that deepens rather than diminishes everything before it."}
   },
   {
     id:"berserk", title:"Berserk", type:"Manga", year:"1989", status:"Incomplete",
-    overall:9.6, hook:"The greatest conceived work in manga history.", tier:"S", color:D.blue,
+    overall:9.6, hook:"The greatest conceived work in manga history.", hookLines:["The greatest conceived work in manga history."], tier:"S", color:D.blue,
     tagline:"Can a human being retain their humanity when the universe itself is designed to destroy it?",
     overview:{
       surface:"A dark warrior fights demons in a medieval world.",
@@ -314,11 +318,11 @@ const WORKS = [
       {title:"Vagabond",verdict:"Different mastery",detail:"Vagabond has the greatest artwork at 10.0. Berserk has the greatest technical achievement at 9.9. Inoue paints meditation. Miura draws cosmic horror at maximum detail. Different excellence entirely.",color:D.amber},
       {title:"Monster",verdict:"Violence vs conversation",detail:"Monster uses conversation as its weapon. Berserk uses spectacle. Monster's Johan is more human than any Berserk villain. Griffith is more tragic. Both are the greatest in their category — incomparable.",color:D.text},
     ],
-    verdict:{score:9.6,line:"Not the most fun. Not the most accessible. Not the most complete. The most serious.",full:"Berserk is not the most fun work on this list. Not the most accessible. Not the most complete. It is the most serious. The most ambitious. The most fully realized vision of what manga can achieve when operated by a once-in-a-generation talent across a lifetime of work. The incompleteness due to Miura's death in 2021 is the only thing separating it from being the undisputed greatest manga ever made. What exists is still the greatest. What will exist cannot be fully his vision.",canReachS:false}
+    finalThoughts:{line:"Not the most fun. Not the most accessible. Not the most complete. The most serious.",full:"Berserk is not the most fun work on this list. Not the most accessible. Not the most complete. It is the most serious. The most ambitious. The most fully realized vision of what manga can achieve when operated by a once-in-a-generation talent across a lifetime of work. The incompleteness due to Miura's death in 2021 is the only thing separating it from being the undisputed greatest manga ever made. What exists is still the greatest. What will exist cannot be fully his vision."}
   },
   {
     id:"vagabond", title:"Vagabond", type:"Manga", year:"1998", status:"Hiatus",
-    overall:9.5, hook:"The greatest artwork ever produced in manga.", tier:"S", color:D.blue,
+    overall:9.5, hook:"The greatest artwork ever produced in manga.", hookLines:["The greatest artwork ever produced in manga."], tier:"S", color:D.blue,
     tagline:"The sword is not the point. The sword is what has to be surrendered for the point to emerge.",
     overview:{
       surface:"The fictionalized journey of Miyamoto Musashi becoming the greatest swordsman.",
@@ -347,11 +351,11 @@ const WORKS = [
       {title:"Berserk",verdict:"Art vs conception",detail:"Vagabond wins on pure artistic craft — 10.0 vs 9.9. Berserk wins on narrative scope and thematic breadth. Berserk is the greatest conceived work. Vagabond is the greatest artistic achievement. 9.6 vs 9.5.",color:D.amber},
       {title:"Monster",verdict:"Silence vs dialogue",detail:"Monster uses conversation to devastate. Vagabond uses silence and image. Urasawa tells you what Johan means. Inoue shows you what Kojiro is. Both are operating at the ceiling of their chosen method.",color:D.text},
     ],
-    verdict:{score:9.5,line:"Inoue doesn't just draw a story. He paints a meditation.",full:"Vagabond is the second greatest work on this list and the greatest artistic achievement across everything we rated. It is the only work here where the visual medium is not a vehicle for the story — it is the story. The hiatus is the only thing separating it from Berserk at the very top. If Inoue returns and concludes with the same philosophical integrity that defines its best chapters — the ranking may need to be revisited one final time.",canReachS:false}
+    finalThoughts:{line:"Inoue doesn't just draw a story. He paints a meditation.",full:"Vagabond is the second greatest work on this list and the greatest artistic achievement across everything we rated. It is the only work here where the visual medium is not a vehicle for the story — it is the story. The hiatus is the only thing separating it from Berserk at the very top. If Inoue returns and concludes with the same philosophical integrity that defines its best chapters — the ranking may need to be revisited one final time."}
   },
   {
     id:"monster", title:"Monster", type:"Manga", year:"1994", status:"Complete ✓",
-    overall:9.4, hook:"The only complete work in S tier — and completion matters.", tier:"S", color:D.text,
+    overall:9.4, hook:"The only complete work in S tier — and completion matters.", hookLines:["The only complete work in S tier — and completion matters."], tier:"S", color:D.text,
     tagline:"Is human life inherently valuable — or does it require meaning to have worth?",
     overview:{
       surface:"A surgeon who saves a boy who grows up to become a serial killer.",
@@ -380,11 +384,11 @@ const WORKS = [
       {title:"Death Note",verdict:"Philosophy vs psychology",detail:"Both psychological thrillers with extraordinary antagonists. Death Note's L vs Light is the greatest intellectual battle in manga. Monster's Johan vs the world is the greatest philosophical battle. Monster is deeper.",color:D.amber},
       {title:"20th Century Boys",verdict:"Same author, different warmth",detail:"20CB is Urasawa's more humanly warm work. Monster is his more precisely crafted. Monster wins on almost every critical dimension. Read Monster first. Then 20CB.",color:D.amber},
     ],
-    verdict:{score:9.4,line:"Johan Liebert alone makes it essential. There is no close second for greatest antagonist on this list.",full:"Monster has one advantage none of the other top tier works have — it is complete. It told its full story, asked its hardest question, and answered it honestly from beginning to end. Johan Liebert is not a villain. He is a proof — a man who set out to demonstrate that existence is meaningless, and almost succeeded.",canReachS:false}
+    finalThoughts:{line:"Johan Liebert alone makes it essential. There is no close second for greatest antagonist on this list.",full:"Monster has one advantage none of the other top tier works have — it is complete. It told its full story, asked its hardest question, and answered it honestly from beginning to end. Johan Liebert is not a villain. He is a proof — a man who set out to demonstrate that existence is meaningless, and almost succeeded."}
   },
   {
     id:"reze", title:"CSM: Reze Arc", type:"Film", year:"2025", status:"Complete ✓",
-    overall:9.4, hook:"The greatest anime film of 2025.", tier:"S", color:D.blue,
+    overall:9.4, hook:"The greatest anime film of 2025.", hookLines:["The greatest anime film of 2025."], tier:"S", color:D.blue,
     tagline:"Two weapons pretending to be human — and briefly succeeding.",
     overview:{
       surface:"Chainsaw Man's theatrical debut covering the Bomb Girl arc.",
@@ -410,13 +414,13 @@ const WORKS = [
     comparisons:[
       {title:"DS: Infinity Castle P1",verdict:"Art vs substance",detail:"Infinity Castle scores 9.9 for animation — higher than Reze Arc's 9.8. But Reze Arc scores 9.5 for emotional impact, 9.3 for themes. Infinity Castle scores 8.3 and 6.5 respectively. Reze Arc is a film. Infinity Castle is a spectacular fragment.",color:D.amber},
     ],
-    verdict:{score:9.4,line:"Reze deserved the big screen. MAPPA gave it to her.",full:"The Reze arc was always the greatest argument for Chainsaw Man's place among the greatest works in its medium. MAPPA took that argument and put it on the largest possible screen with the finest animation their studio has produced, framed by Yonezu and Utada, and delivered it with the emotional restraint the story always deserved. One of the greatest anime films ever made.",canReachS:false}
+    finalThoughts:{line:"Reze deserved the big screen. MAPPA gave it to her.",full:"The Reze arc was always the greatest argument for Chainsaw Man's place among the greatest works in its medium. MAPPA took that argument and put it on the largest possible screen with the finest animation their studio has produced, framed by Yonezu and Utada, and delivered it with the emotional restraint the story always deserved. One of the greatest anime films ever made."}
   },
 
   // ── A TIER ──
   {
     id:"bb", title:"Breaking Bad", type:"TV", year:"2008", status:"Complete ✓",
-    overall:9.2, hook:"Zero significant quality drop across five seasons.", tier:"S", color:D.blue,
+    overall:9.2, hook:"Zero significant quality drop across five seasons.", hookLines:["Zero significant quality drop across five seasons."], tier:"S", color:D.blue,
     tagline:"I did it for me. I liked it. I was good at it. And I was really alive.",
     overview:{
       surface:"A chemistry teacher becomes a drug kingpin.",
@@ -445,11 +449,11 @@ const WORKS = [
       {title:"Death Note",verdict:"Same story, different medium",detail:"Both document a man convincing himself his destructive actions are justified and gradually becoming the monster he claimed to fight. Breaking Bad wins on supporting cast depth and pacing consistency.",color:D.amber},
       {title:"Game of Thrones",verdict:"Consistency is everything",detail:"Both start at similar peak quality. GOT collapses. Breaking Bad never does. That single difference explains the gap between 9.2 and 7.0.",color:D.purple},
     ],
-    verdict:{score:9.2,line:"The most consistent long-form work in western television.",full:"Breaking Bad is doing something no other work in western television fully achieves — maintaining complete character consistency across five seasons of escalating darkness while never losing the audience's engagement. Walter White's complete psychological portrait is the most precisely documented moral deterioration in television. The ending earns every moment of its conclusion.",canReachS:false}
+    finalThoughts:{line:"The most consistent long-form work in western television.",full:"Breaking Bad is doing something no other work in western television fully achieves — maintaining complete character consistency across five seasons of escalating darkness while never losing the audience's engagement. Walter White's complete psychological portrait is the most precisely documented moral deterioration in television. The ending earns every moment of its conclusion."}
   },
   {
     id:"aot-manga", title:"AOT", type:"Manga", year:"2009", status:"Complete ✓",
-    overall:9.2, hook:"The show that made you root for a genocide without realizing it.", tier:"S", color:D.text,
+    overall:9.2, hook:"The show that made you root for a genocide without realizing it.", hookLines:["The show that made you root for a genocide without realizing it."], tier:"S", color:D.text,
     tagline:"Season 1 asked: can humanity survive? Season 4 revealed: humanity was never the victim.",
     overview:{
       surface:"Humanity fights titans behind massive walls.",
@@ -478,11 +482,11 @@ const WORKS = [
       {title:"Vinland Saga",verdict:"Ending makes the difference",detail:"Both deal with cycles of violence. Vinland Saga's ending deepens its thesis. AOT's chapter 139 partially contradicts its. That single chapter is most of the distance between 9.7 and 9.2.",color:D.amber},
       {title:"Breaking Bad",verdict:"TV vs manga corruption",detail:"Both document how idealists become perpetrators. Breaking Bad's Walt is more precisely documented. AOT's Eren is more structurally ambitious. Both are essential studies of the same human failure.",color:D.amber},
     ],
-    verdict:{score:9.2,line:"The greatest twist architecture on this list — attached to a chapter 139 that partially contradicts its own thesis.",full:"AOT is a manga that deserved a 9.5 ending and received a 6.5 ending — and the distance between those two numbers is the entire story of why it sits at 9.2 instead of competing with Berserk and Monster at the very top. The ambition was there. The architecture was there. The final execution was not.",canReachS:false}
+    finalThoughts:{line:"The greatest twist architecture on this list — attached to a chapter 139 that partially contradicts its own thesis.",full:"AOT is a manga that deserved a 9.5 ending and received a 6.5 ending — and the distance between those two numbers is the entire story of why it sits at 9.2 instead of competing with Berserk and Monster at the very top. The ambition was there. The architecture was there. The final execution was not."}
   },
   {
     id:"slam-dunk", title:"Slam Dunk", type:"Manga", year:"1990", status:"Complete ✓",
-    overall:9.1, hook:"A sports manga that transcends its genre so completely the label becomes irrelevant.", tier:"S", color:D.blue,
+    overall:9.1, hook:"A sports manga that transcends its genre so completely the label becomes irrelevant.", hookLines:["A sports manga that transcends its genre so completely the label becomes irrelevant."], tier:"S", color:D.blue,
     tagline:"Hanamichi Sakuragi's growth arc is one of the most emotionally satisfying journeys in manga.",
     overview:{
       surface:"A delinquent discovers basketball and falls for a girl who likes the sport.",
@@ -508,11 +512,11 @@ const WORKS = [
     comparisons:[
       {title:"Vagabond",verdict:"Same artist, different medium",detail:"Slam Dunk shows Inoue's emotional craft before Vagabond showed his philosophical depth. Both are extraordinary. Vagabond is the greater work. Slam Dunk is the more immediately joyful one.",color:D.amber},
     ],
-    verdict:{score:9.1,line:"The Nationals arc alone places it in conversations about the greatest sequences in manga history.",full:"Slam Dunk is the greatest sports manga ever made and one of the most emotionally complete manga in any genre. Inoue's control of character growth, the pacing of the Nationals arc, and the devastating honesty of Sakuragi's final game constitute a creative achievement that most manga never approach.",canReachS:false}
+    finalThoughts:{line:"The Nationals arc alone places it in conversations about the greatest sequences in manga history.",full:"Slam Dunk is the greatest sports manga ever made and one of the most emotionally complete manga in any genre. Inoue's control of character growth, the pacing of the Nationals arc, and the devastating honesty of Sakuragi's final game constitute a creative achievement that most manga never approach."}
   },
   {
     id:"dn-manga", title:"Death Note", type:"Manga", year:"2003", status:"Complete ✓",
-    overall:9.0, hook:"The greatest intellectual battle ever written in manga.", tier:"S", color:D.blue,
+    overall:9.0, hook:"The greatest intellectual battle ever written in manga.", hookLines:["The greatest intellectual battle ever written in manga."], tier:"S", color:D.blue,
     tagline:"Light Yagami: a man who started with a defensible position and never noticed himself becoming the monster.",
     overview:{
       surface:"A genius student finds a supernatural notebook that kills anyone whose name is written in it.",
@@ -539,11 +543,11 @@ const WORKS = [
       {title:"Monster",verdict:"Psychological vs philosophical",detail:"Both psychological thrillers. Death Note's L arc is the greatest intellectual battle in manga. Monster's Johan is the greater villain philosophically. Monster is deeper. Death Note is more immediately thrilling.",color:D.text},
       {title:"Breaking Bad",verdict:"Same corruption arc",detail:"Walter White and Light Yagami are essentially the same character in different settings. Breaking Bad wins on supporting cast and pacing. Death Note wins on visual craft and the L dynamic.",color:D.amber},
     ],
-    verdict:{score:9.0,line:"Death Note is not quite Monster. And knowing the difference between a 9.0 and a 9.4 requires being honest about what each work achieves.",full:"Death Note at 9.0 is a genuine masterwork that falls just short of the absolute top tier — primarily because of its second half inconsistency and the thematic ceiling being slightly lower. But within its specific goals it executes at near maximum possible quality for the first half. The L vs Light arc specifically is as good as anything on this entire list.",canReachS:false}
+    finalThoughts:{line:"Death Note is not quite Monster. And knowing the difference between a 9.0 and a 9.4 requires being honest about what each work achieves.",full:"Death Note at 9.0 is a genuine masterwork that falls just short of the absolute top tier — primarily because of its second half inconsistency and the thematic ceiling being slightly lower. But within its specific goals it executes at near maximum possible quality for the first half. The L vs Light arc specifically is as good as anything on this entire list."}
   },
   {
     id:"fmab", title:"FMAB", type:"Anime", year:"2009", status:"Complete ✓",
-    overall:9.0, hook:"The gold standard for narrative completion in anime.", tier:"S", color:D.blue,
+    overall:9.0, hook:"The gold standard for narrative completion in anime.", hookLines:["The gold standard for narrative completion in anime."], tier:"S", color:D.blue,
     tagline:"The most narratively complete and satisfying anime ever concluded — nothing is wasted.",
     overview:{
       surface:"Two brothers seek the Philosopher's Stone to restore their bodies after a failed ritual.",
@@ -569,11 +573,11 @@ const WORKS = [
     comparisons:[
       {title:"AOT Anime",verdict:"Completion vs ambition",detail:"FMAB is the most narratively complete anime on this list. AOT is the most thematically ambitious. FMAB's ending is excellent. AOT's ending is divisive. Completion wins for overall satisfaction.",color:D.text},
     ],
-    verdict:{score:9.0,line:"A story that knew where it was going and got there without losing anything essential.",full:"FMAB represents a standard of narrative craft that most anime never reaches — complete thematic consistency, no wasted arcs, no character betrayals, and an ending that honors everything that preceded it. It is the most complete anime on this list and the best argument that completion is itself a form of artistic excellence.",canReachS:false}
+    finalThoughts:{line:"A story that knew where it was going and got there without losing anything essential.",full:"FMAB represents a standard of narrative craft that most anime never reaches — complete thematic consistency, no wasted arcs, no character betrayals, and an ending that honors everything that preceded it. It is the most complete anime on this list and the best argument that completion is itself a form of artistic excellence."}
   },
   {
     id:"aot-anime", title:"AOT Anime", type:"Anime", year:"2013", status:"Complete ✓",
-    overall:9.0, hook:"Wit Studio's seasons represent animation at its absolute ceiling.", tier:"S", color:D.text,
+    overall:9.0, hook:"Wit Studio's seasons represent animation at its absolute ceiling.", hookLines:["Wit Studio's seasons represent animation at its absolute ceiling."], tier:"S", color:D.text,
     tagline:"Season 3 Part 2 has no equal in animated television.",
     overview:{
       surface:"The manga adaptation across four seasons and two studios.",
@@ -641,11 +645,11 @@ const WORKS = [
       {ep:"S2E11",title:"Charge",type:"ACTION/SET PIECE",score:9.5,exp:9.4,verdict:"The Survey Corps counterattack. Mikasa's rage-driven assault on the Armored Titan. Hannes's death — which hits precisely because of how small and ordinary it is after everything that's come before. Eren's screaming grief is the emotional peak of Season 2."},
       {ep:"S2E12",title:"Scream",type:"FINALE",score:9.6,exp:9.5,verdict:"The Coordinate ability awakened. The titans consume Reiss. Season 2's finale answers some questions while opening existential new ones — Eren's power, the nature of titans, the conspiracy running deeper than anyone knew. The perfect close to 12 episodes of escalating revelation."},
     ],
-    verdict:{score:9.0,line:"Wit Studio's seasons are animation as a serious art form operating at its absolute ceiling.",full:"The AOT anime is one of the greatest adaptations ever produced. Its visual achievements — particularly Season 3 Part 2 — constitute animation history. The emotional impact of the anime at its peaks arguably exceeds even the manga's equivalent moments through the addition of Sawano's music.",canReachS:false}
+    finalThoughts:{line:"Wit Studio's seasons are animation as a serious art form operating at its absolute ceiling.",full:"The AOT anime is one of the greatest adaptations ever produced. Its visual achievements — particularly Season 3 Part 2 — constitute animation history. The emotional impact of the anime at its peaks arguably exceeds even the manga's equivalent moments through the addition of Sawano's music."}
   },
   {
     id:"monster-anime", title:"Monster Anime", type:"Anime", year:"2004", status:"Complete ✓",
-    overall:9.0, hook:"The most faithful manga adaptation on this list.", tier:"S", color:D.text,
+    overall:9.0, hook:"The most faithful manga adaptation on this list.", hookLines:["The most faithful manga adaptation on this list."], tier:"S", color:D.text,
     tagline:"Madhouse treated Urasawa's work with complete reverence.",
     overview:{
       surface:"Madhouse's 74-episode adaptation of Urasawa's manga.",
@@ -667,11 +671,11 @@ const WORKS = [
     comparisons:[
       {title:"Monster Manga",verdict:"Source vs adaptation",detail:"The manga's artwork is more detailed and expressively nuanced. The anime's voice performances add psychological complexity the manga cannot convey. Both are essential — read the manga, watch the anime.",color:D.text},
     ],
-    verdict:{score:9.0,line:"A 74-episode commitment that justifies every episode.",full:"Monster Anime is the rare adaptation that treats its source material as sacred without becoming slavish. The voice performances — particularly Johan — constitute genuine artistic achievement. The slow pacing is not a flaw. It is the correct choice for a story about dread.",canReachS:false}
+    finalThoughts:{line:"A 74-episode commitment that justifies every episode.",full:"Monster Anime is the rare adaptation that treats its source material as sacred without becoming slavish. The voice performances — particularly Johan — constitute genuine artistic achievement. The slow pacing is not a flaw. It is the correct choice for a story about dread."}
   },
   {
     id:"vs-anime", title:"Vinland Saga Anime", type:"Anime", year:"2019", status:"Complete ✓",
-    overall:9.0, hook:"One of the finest manga adaptations ever produced.", tier:"S", color:D.blue,
+    overall:9.0, hook:"One of the finest manga adaptations ever produced.", hookLines:["One of the finest manga adaptations ever produced."], tier:"S", color:D.blue,
     tagline:"The anime is excellent. The manga is significantly greater — but excellent is still excellent.",
     overview:{
       surface:"Wit Studio and MAPPA's adaptation across four seasons.",
@@ -693,13 +697,13 @@ const WORKS = [
     comparisons:[
       {title:"AOT Anime",verdict:"Different peaks",detail:"AOT Anime has higher visual peaks — Season 3 Part 2 is unmatched. Vinland Saga Anime is more consistently excellent across its full run. Both are among the finest anime adaptations ever made.",color:D.text},
     ],
-    verdict:{score:9.0,line:"For those who cannot read the manga — this is the complete Yukimura experience. It honors every word.",full:"The Vinland Saga anime tells Yukimura's complete story with genuine fidelity and emotional intelligence. The completed anime is now an exceptional standalone work that can be recommended without reservation.",canReachS:false}
+    finalThoughts:{line:"For those who cannot read the manga — this is the complete Yukimura experience. It honors every word.",full:"The Vinland Saga anime tells Yukimura's complete story with genuine fidelity and emotional intelligence. The completed anime is now an exceptional standalone work that can be recommended without reservation."}
   },
 
   // ── B TIER ──
   {
     id:"op", title:"One Piece", type:"Manga", year:"1997", status:"Ongoing",
-    overall:8.9, hook:"27 years of maintained sincerity — the highest emotional impact score on this list.", tier:"A", color:D.purple,
+    overall:8.9, hook:"27 years of maintained sincerity — the highest emotional impact score on this list.", hookLines:["27 years of maintained sincerity — the highest emotional impact score on this list."], tier:"A", color:D.purple,
     tagline:"The greatest ongoing work on this list — and the work with the highest potential ceiling.",
     overview:{
       surface:"A boy with rubber powers seeks the legendary treasure to become King of the Pirates.",
@@ -725,11 +729,11 @@ const WORKS = [
     comparisons:[
       {title:"Berserk",verdict:"Joy vs darkness",detail:"Berserk asks its questions through suffering. One Piece asks through laughter. Both are valid philosophical positions. Berserk is the greater work. One Piece has more emotional impact. Both are essential for different reasons.",color:D.amber},
     ],
-    verdict:{score:8.9,line:"The pacing is the weakness. The heart is the strength. And no work on this list has more heart.",full:"One Piece at 8.9 is provisional — it cannot be finalized until Oda lands the ending. But what already exists is one of the greatest emotional achievements in manga history. When Oda answers the One Piece, the Void Century, and the Will of D with the same emotional intelligence that defined Water 7 — we come back and potentially move this into A or S tier.",canReachS:true}
+    finalThoughts:{line:"The pacing is the weakness. The heart is the strength. And no work on this list has more heart.",full:"One Piece at 8.9 is provisional — it cannot be finalized until Oda lands the ending. But what already exists is one of the greatest emotional achievements in manga history. When Oda answers the One Piece, the Void Century, and the Will of D with the same emotional intelligence that defined Water 7 — we come back and potentially move this into A or S tier."}
   },
   {
     id:"csm", title:"Chainsaw Man", type:"Manga", year:"2018", status:"Ongoing",
-    overall:8.9, hook:"The most formally radical manga ever made.", tier:"A", color:D.purple,
+    overall:8.9, hook:"The most formally radical manga ever made.", hookLines:["The most formally radical manga ever made."], tier:"A", color:D.purple,
     tagline:"A boy whose dreams never evolved beyond survival.",
     overview:{
       surface:"A boy fused with a chainsaw devil hunts demons for the government.",
@@ -758,11 +762,11 @@ const WORKS = [
       {title:"Berserk",verdict:"Cinema vs philosophy",detail:"Berserk is the greater philosophical work. Chainsaw Man is the greater cinematic work. No other mangaka composes pages the way Fujimoto does. Different excellence entirely.",color:D.amber},
       {title:"Oshi No Ko",verdict:"Performance vs warmth",detail:"Both examine whether performance can become genuine feeling. Chainsaw Man executes with more economy and devastation. Oshi No Ko executes with more warmth. Chainsaw Man wins objectively.",color:D.amber},
     ],
-    verdict:{score:8.9,line:"Part 1 proved it. Part 2 is still in flight.",full:"Part 1 is a 9.4 work — complete, disciplined, devastating and formally revolutionary. When Part 2 concludes — if Fujimoto lands it — we come back. Chainsaw Man has the potential to be the greatest manga of its generation. Part 1 already proved it. Part 2 just needs to prove it can finish.",canReachS:true}
+    finalThoughts:{line:"Part 1 proved it. Part 2 is still in flight.",full:"Part 1 is a 9.4 work — complete, disciplined, devastating and formally revolutionary. When Part 2 concludes — if Fujimoto lands it — we come back. Chainsaw Man has the potential to be the greatest manga of its generation. Part 1 already proved it. Part 2 just needs to prove it can finish."}
   },
   {
     id:"lotm", title:"LOTM", type:"Novel", year:"2018", status:"Complete ✓",
-    overall:8.8, hook:"The greatest world-building achievement on this list.", tier:"A", color:D.purple,
+    overall:8.8, hook:"The greatest world-building achievement on this list.", hookLines:["The greatest world-building achievement on this list."], tier:"A", color:D.purple,
     tagline:"22 cosmological Beyonder Pathways of staggering depth — and a man pretending to be a god.",
     overview:{
       surface:"A man transmigrates into a Victorian steampunk world of Lovecraftian horror.",
@@ -788,11 +792,11 @@ const WORKS = [
     comparisons:[
       {title:"One Piece",verdict:"World-building comparison",detail:"LOTM's world-building score is 10.0 — the highest on this list. One Piece's world-building is vast and emotionally rich. LOTM's is deeper and more philosophically systematic. Different excellence.",color:D.amber},
     ],
-    verdict:{score:8.8,line:"A compressed version of 900-1000 chapters would be a masterwork. What exists at 1430 is very good.",full:"LOTM at 8.8 is extraordinary world-building, sophisticated thematic construction, and an ending that chooses quiet humanity over cosmic spectacle. The pacing issues are a structural consequence of the web novel format. The world-building is unmatched on this list. Klein waving at a child is the correct final image.",canReachS:false}
+    finalThoughts:{line:"A compressed version of 900-1000 chapters would be a masterwork. What exists at 1430 is very good.",full:"LOTM at 8.8 is extraordinary world-building, sophisticated thematic construction, and an ending that chooses quiet humanity over cosmic spectacle. The pacing issues are a structural consequence of the web novel format. The world-building is unmatched on this list. Klein waving at a child is the correct final image."}
   },
   {
     id:"20cb", title:"20th Century Boys", type:"Manga", year:"1999", status:"Complete ✓",
-    overall:8.8, hook:"The most politically urgent work on this list.", tier:"A", color:D.purple,
+    overall:8.8, hook:"The most politically urgent work on this list.", hookLines:["The most politically urgent work on this list."], tier:"A", color:D.purple,
     tagline:"Eerily prophetic about the 21st century — written before it began.",
     overview:{
       surface:"Childhood friends must stop a cult leader from destroying the world.",
@@ -819,11 +823,11 @@ const WORKS = [
     comparisons:[
       {title:"Monster",verdict:"Same author, warmer work",detail:"Monster is Urasawa's more precisely crafted work. 20CB is his more humanly warm one. Monster wins on almost every technical dimension. But 20CB reaches more people more quickly. Read Monster first. Then this.",color:D.text},
     ],
-    verdict:{score:8.8,line:"The most humanly warm Urasawa work — and the most politically urgent thing on this list.",full:"20th Century Boys argues that childhood loneliness is a civilizational threat — and renders that argument through giant robots, a secret base and a failed rock musician with a guitar. The tonal range required to hold those elements together is itself a creative achievement. A slightly compromised ending prevents it from reaching Monster's level. The first half is as good as anything Urasawa wrote.",canReachS:false}
+    finalThoughts:{line:"The most humanly warm Urasawa work — and the most politically urgent thing on this list.",full:"20th Century Boys argues that childhood loneliness is a civilizational threat — and renders that argument through giant robots, a secret base and a failed rock musician with a guitar. The tonal range required to hold those elements together is itself a creative achievement. A slightly compromised ending prevents it from reaching Monster's level. The first half is as good as anything Urasawa wrote."}
   },
   {
     id:"oshi", title:"Oshi No Ko", type:"Manga", year:"2020", status:"Complete ✓",
-    overall:8.3, hook:"Chapter 1 is the greatest single opening chapter in manga history.", tier:"B", color:D.amber,
+    overall:8.3, hook:"Chapter 1 is the greatest single opening chapter in manga history.", hookLines:["Chapter 1 is the greatest single opening chapter in manga history."], tier:"B", color:D.amber,
     tagline:"A properly concluded Oshi No Ko would be a 9.0 work. What we have is 8.3.",
     overview:{
       surface:"Reincarnated twins navigate the Japanese entertainment industry seeking their mother's murderer.",
@@ -850,11 +854,11 @@ const WORKS = [
     comparisons:[
       {title:"Chainsaw Man",verdict:"Same theme, different execution",detail:"Both examine whether performance can become genuine feeling. Chainsaw Man executes with more economy. Oshi No Ko executes with more warmth. The Reze arc is more devastating than anything in Oshi No Ko. But Chapter 1 of Oshi No Ko is better than any single chapter in Chainsaw Man.",color:D.amber},
     ],
-    verdict:{score:8.3,line:"The gap between chapter 1 and chapter 166 is the most heartbreaking distance in any manga on this list.",full:"Oshi No Ko at 8.3 is a genuinely great manga that ended as a good manga. Chapter 1 alone is a 10/10 achievement. Yokoyari's artwork is among the finest currently being produced. The entertainment industry critique is the sharpest on this list. Four chapters destroyed what 162 built. Aqua deserved more. Kana deserved more. Yokoyari's artwork deserved more.",canReachS:false}
+    finalThoughts:{line:"The gap between chapter 1 and chapter 166 is the most heartbreaking distance in any manga on this list.",full:"Oshi No Ko at 8.3 is a genuinely great manga that ended as a good manga. Chapter 1 alone is a 10/10 achievement. Yokoyari's artwork is among the finest currently being produced. The entertainment industry critique is the sharpest on this list. Four chapters destroyed what 162 built. Aqua deserved more. Kana deserved more. Yokoyari's artwork deserved more."}
   },
   {
     id:"dn-anime", title:"Death Note Anime", type:"Anime", year:"2006", status:"Complete ✓",
-    overall:8.6, hook:"Episodes 1-25 are among the finest anime ever made.", tier:"A", color:D.purple,
+    overall:8.6, hook:"Episodes 1-25 are among the finest anime ever made.", hookLines:["Episodes 1-25 are among the finest anime ever made."], tier:"A", color:D.purple,
     tagline:"Mamoru Miyano's voice adds psychological complexity beyond the manga.",
     overview:{
       surface:"Madhouse's 37-episode adaptation of Ohba and Obata's manga.",
@@ -876,11 +880,11 @@ const WORKS = [
     comparisons:[
       {title:"Death Note Manga",verdict:"Visual vs drawn",detail:"The manga's artwork is more detailed. The anime's voice acting adds psychological layers the manga cannot possess. For the L arc specifically, the anime is the superior experience. For the complete work, the manga is slightly stronger.",color:D.text},
     ],
-    verdict:{score:8.6,line:"The second half faithfully adapts weaker source — which is both its strength and its limitation.",full:"Death Note Anime at 8.6 is exceptional anime that is slightly less than exceptional manga. Episodes 1-25 are essential viewing. The L arc rendered in animation, performance and music constitutes a genuinely extraordinary artistic experience.",canReachS:false}
+    finalThoughts:{line:"The second half faithfully adapts weaker source — which is both its strength and its limitation.",full:"Death Note Anime at 8.6 is exceptional anime that is slightly less than exceptional manga. Episodes 1-25 are essential viewing. The L arc rendered in animation, performance and music constitutes a genuinely extraordinary artistic experience."}
   },
   {
     id:"ds-infinity", title:"DS: Infinity Castle P1", type:"Film", year:"2025", status:"Complete ✓",
-    overall:7.8, hook:"The greatest visual spectacle on this list — and one of the most narratively hollow films at its budget.", tier:"C", color:"rgba(52,211,153,0.7)",
+    overall:7.8, hook:"The greatest visual spectacle on this list — and one of the most narratively hollow films at its budget.", hookLines:["The greatest visual spectacle on this list — and one of the most narratively hollow films at its budget."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"$778.9M worldwide. Proof that commercial success and artistic merit are different questions.",
     overview:{
       surface:"The first theatrical film covering the Infinity Castle arc.",
@@ -906,11 +910,11 @@ const WORKS = [
     comparisons:[
       {title:"CSM: Reze Arc",verdict:"Art vs substance",detail:"Infinity Castle scores 9.9 for animation — higher than Reze Arc's 9.8. But Reze Arc scores 9.5 for emotional impact vs Infinity Castle's 8.3. And 9.3 for themes vs 6.5. Reze Arc is a complete film. Infinity Castle Part 1 is a spectacular fragment.",color:D.amber},
     ],
-    verdict:{score:7.8,line:"Ufotable gave Demon Slayer the most technically accomplished animation in theatrical anime history. Gotouge gave Ufotable a story that has never matched it.",full:"Infinity Castle Part 1 at 7.8 is the greatest visual spectacle on this list. It is also one of the most narratively hollow films at its budget. A three-part theatrical release for one arc is a commercial decision masquerading as an artistic one. Parts 2 and 3 cannot change the writing. They can only animate it more beautifully.",canReachS:false}
+    finalThoughts:{line:"Ufotable gave Demon Slayer the most technically accomplished animation in theatrical anime history. Gotouge gave Ufotable a story that has never matched it.",full:"Infinity Castle Part 1 at 7.8 is the greatest visual spectacle on this list. It is also one of the most narratively hollow films at its budget. A three-part theatrical release for one arc is a commercial decision masquerading as an artistic one. Parts 2 and 3 cannot change the writing. They can only animate it more beautifully."}
   },
   {
     id:"st", title:"Stranger Things", type:"TV", year:"2016", status:"Ongoing",
-    overall:7.7, hook:"A show that got bigger when it needed to get deeper.", tier:"C", color:"rgba(52,211,153,0.7)",
+    overall:7.7, hook:"A show that got bigger when it needed to get deeper.", hookLines:["A show that got bigger when it needed to get deeper."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"Season 1 is an 8.8. The series average is 7.7. That gap is the entire story.",
     overview:{
       surface:"Kids in a small Indiana town encounter supernatural forces from another dimension.",
@@ -936,13 +940,13 @@ const WORKS = [
     comparisons:[
       {title:"Game of Thrones",verdict:"Different collapses",detail:"Both start excellently and decline. GOT declines through compression — cutting too much. Stranger Things declines through expansion — adding too much. Stranger Things handles its decline more gracefully and maintains character integrity better.",color:D.amber},
     ],
-    verdict:{score:7.7,line:"Hold the Door is the greatest single moment the show produced — and it was in Season 2.",full:"Stranger Things at 7.7 is good television that was briefly great television. Season 1 belongs in conversations about the best debut seasons in streaming history. The subsequent seasons represent a show that loved its world and characters but lost the narrative discipline that made Season 1 special.",canReachS:false}
+    finalThoughts:{line:"Hold the Door is the greatest single moment the show produced — and it was in Season 2.",full:"Stranger Things at 7.7 is good television that was briefly great television. Season 1 belongs in conversations about the best debut seasons in streaming history. The subsequent seasons represent a show that loved its world and characters but lost the narrative discipline that made Season 1 special."}
   },
 
   // ── C TIER ──
   {
     id:"got", title:"Game of Thrones", type:"TV", year:"2011", status:"Complete",
-    overall:7.0, hook:"Seasons 1-4 are among the greatest TV ever made. Season 8 is among the greatest collapses.", tier:"C", color:D.textDim,
+    overall:7.0, hook:"Seasons 1-4 are among the greatest TV ever made. Season 8 is among the greatest collapses.", hookLines:["Seasons 1-4 are among the greatest TV ever made. Season 8 is among the greatest collapses."], tier:"C", color:D.textDim,
     tagline:"Ned Stark's death changed television forever. Season 8 changed nothing — it just ended.",
     overview:{
       surface:"Noble families vie for the Iron Throne in a fantasy medieval world.",
@@ -968,11 +972,11 @@ const WORKS = [
     comparisons:[
       {title:"Breaking Bad",verdict:"Consistency is everything",detail:"Both start at similar peak quality. Breaking Bad never drops. Game of Thrones drops off a cliff. Season 1-4 GOT rivals Season 4-5 Breaking Bad. The complete series comparison is 7.0 vs 9.2. That gap is entirely about the ending.",color:D.amber},
     ],
-    verdict:{score:7.0,line:"A surgeon who performs three perfect operations and amputates the wrong limb on the fourth is not a 9.0 surgeon.",full:"Game of Thrones at 7.0 holds the tension between what it was and what it became honestly. Seasons 1-4 alone: 9.2. The complete series: 7.0. A story is not only its best chapters. The ending is part of what you are — and GOT's ending is one of the greatest failures of narrative responsibility in television history.",canReachS:false}
+    finalThoughts:{line:"A surgeon who performs three perfect operations and amputates the wrong limb on the fourth is not a 9.0 surgeon.",full:"Game of Thrones at 7.0 holds the tension between what it was and what it became honestly. Seasons 1-4 alone: 9.2. The complete series: 7.0. A story is not only its best chapters. The ending is part of what you are — and GOT's ending is one of the greatest failures of narrative responsibility in television history."}
   },
   {
     id:"ds-anime", title:"Demon Slayer", type:"Anime", year:"2019", status:"Complete ✓",
-    overall:7.0, hook:"Greatest animation craft on this list. Weakest writing.", tier:"C", color:"rgba(52,211,153,0.7)",
+    overall:7.0, hook:"Greatest animation craft on this list. Weakest writing.", hookLines:["Greatest animation craft on this list. Weakest writing."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"Visual spectacle without substance has a hard ceiling — and Demon Slayer found it.",
     overview:{
       surface:"A boy becomes a demon slayer after his family is killed and his sister transformed.",
@@ -997,11 +1001,11 @@ const WORKS = [
     comparisons:[
       {title:"Vagabond",verdict:"Art comparison",detail:"Both have extraordinary artwork — Vagabond at 10.0, Demon Slayer at 9.8. Vagabond is #3 overall. Demon Slayer is #22. The distance between 9.7 in Themes and 6.0 in Themes explains everything.",color:D.amber},
     ],
-    verdict:{score:7.0,line:"The most beautiful C tier work ever made.",full:"Demon Slayer at 7.0 is not an insult — it is an honest assessment of a work that achieves its goals excellently but has modest goals relative to the greatest works in the medium. It is the most visually spectacular C tier entry in the history of this list. It is also the clearest demonstration that visual craft without thematic substance has a ceiling.",canReachS:false}
+    finalThoughts:{line:"The most beautiful C tier work ever made.",full:"Demon Slayer at 7.0 is not an insult — it is an honest assessment of a work that achieves its goals excellently but has modest goals relative to the greatest works in the medium. It is the most visually spectacular C tier entry in the history of this list. It is also the clearest demonstration that visual craft without thematic substance has a ceiling."}
   },
   {
     id:"sl", title:"Solo Leveling", type:"Manhwa", year:"2014", status:"Complete ✓",
-    overall:6.8, hook:"A perfectly executed power fantasy.", tier:"D", color:D.textDim,
+    overall:6.8, hook:"A perfectly executed power fantasy.", hookLines:["A perfectly executed power fantasy."], tier:"D", color:D.textDim,
     tagline:"If you want to feel powerful — Solo Leveling is unmatched. If you want to feel human — read Vinland Saga.",
     overview:{
       surface:"The world's weakest hunter becomes its strongest through a mysterious leveling system.",
@@ -1026,11 +1030,11 @@ const WORKS = [
     comparisons:[
       {title:"Demon Slayer",verdict:"Similar tier, different reasons",detail:"Both sit at the bottom of this list for similar reasons — exceptional visuals, thin writing. Demon Slayer has warmer character relationships. Solo Leveling has better pacing and more coherent narrative structure. Roughly equal in overall quality for different reasons.",color:D.amber},
     ],
-    verdict:{score:6.8,line:"Solo Leveling knows exactly what it is. The problem is what it is has a 6.8 ceiling.",full:"Solo Leveling at 6.8 is a genuinely excellent power fantasy that executes its goals at the highest possible level. If those goals had been more ambitious — if the world building had matched the artwork, if the character psychology had matched the action choreography — Solo Leveling could have been a 9.0 work. It chose not to be. And that choice is honest and final.",canReachS:false}
+    finalThoughts:{line:"Solo Leveling knows exactly what it is. The problem is what it is has a 6.8 ceiling.",full:"Solo Leveling at 6.8 is a genuinely excellent power fantasy that executes its goals at the highest possible level. If those goals had been more ambitious — if the world building had matched the artwork, if the character psychology had matched the action choreography — Solo Leveling could have been a 9.0 work. It chose not to be. And that choice is honest and final."}
   },
   {
     id:"jjk", title:"Jujutsu Kaisen", type:"Manga", year:"2018", status:"Complete ✓",
-    overall:8.0, hook:"The Shibuya arc is one of the greatest things in shonen manga. Everything after it is the story of ambition exceeding its runway.", tier:"B", color:D.amber,
+    overall:8.0, hook:"The Shibuya arc is one of the greatest things in shonen manga. Everything after it is the story of ambition exceeding its runway.", hookLines:["The Shibuya arc is one of the greatest things in shonen manga. Everything after it is the story of ambition exceeding its runway."], tier:"B", color:D.amber,
     tagline:"A manga that had a genuine 9.0 work inside it — and could not quite finish delivering it.",
     overview:{
       surface:"High school students fight cursed spirits using supernatural techniques.",
@@ -1062,7 +1066,7 @@ const WORKS = [
       {title:"AOT",verdict:"Ambitious endings compared",detail:"Both have controversial endings. AOT's chapter 139 partially contradicts its thesis — one chapter out of 139. JJK's final five chapters leave significant threads unresolved. AOT's ending failure is less structurally damaging. Hence 9.2 vs 8.0.",color:D.text},
       {title:"Demon Slayer",verdict:"Action manga quality ceiling",detail:"Both are action-forward shonen. Demon Slayer is consistent — consistently thin. JJK is inconsistent — with peaks Demon Slayer never reaches and a collapse it never experiences. JJK's ceiling is higher. JJK's floor is lower. Overall JJK wins at 8.0 vs 7.0.",color:D.amber},
     ],
-    verdict:{score:8.0,line:"The Shibuya arc alone is essential. The rest of JJK is the story of what happens when that level of ambition runs out of time.",full:"JJK at 8.0 is a genuinely important manga that could not finish what it started. The Hidden Inventory arc, Mahito's introduction, the Shibuya Incident — these constitute a run of shonen manga that rivals anything in the genre's history. The Culling Game and final arc reveal that Akutami was working beyond his planning horizon, at pace, under health pressure, without a fully constructed conclusion. If you read only through Shibuya — you have read one of the greatest action manga ever made. If you read the complete work — you have also read its disappointment.",canReachS:false}
+    finalThoughts:{line:"The Shibuya arc alone is essential. The rest of JJK is the story of what happens when that level of ambition runs out of time.",full:"JJK at 8.0 is a genuinely important manga that could not finish what it started. The Hidden Inventory arc, Mahito's introduction, the Shibuya Incident — these constitute a run of shonen manga that rivals anything in the genre's history. The Culling Game and final arc reveal that Akutami was working beyond his planning horizon, at pace, under health pressure, without a fully constructed conclusion. If you read only through Shibuya — you have read one of the greatest action manga ever made. If you read the complete work — you have also read its disappointment."}
   },
 ];
 
@@ -1075,6 +1079,29 @@ const sc = v => {
   if(v >= 8.0) return "rgba(232,230,224,0.5)";
   if(v >= 7.0) return "rgba(232,230,224,0.35)";
   return "rgba(232,230,224,0.2)";
+};
+const getFinalThoughts = (item) => {
+  if (item?.finalThoughts) return item.finalThoughts;
+  if (item?.verdict && typeof item.verdict === "object") {
+    return {
+      line: item.verdict.line || "",
+      full: item.verdict.full || "",
+    };
+  }
+  if (typeof item?.verdict === "string") {
+    return {
+      line: item.verdict,
+      full: item.verdict,
+    };
+  }
+  return { line: "", full: "" };
+};
+const getPrimaryHookLine = (item) => {
+  if (Array.isArray(item?.hookLines) && item.hookLines.length && item.hookLines[0]) {
+    return item.hookLines[0];
+  }
+  const finalThoughts = getFinalThoughts(item);
+  return item?.hook || finalThoughts.line || "";
 };
 const getVisualContentType = (content) => {
   const type = (content?.type || "").toLowerCase();
@@ -1906,12 +1933,14 @@ const DownloadButton = ({ targetId, filename, label }) => {
 
 const ShareButton = ({ work }) => {
   const [copied, setCopied] = useState(false);
+  const finalThoughts = getFinalThoughts(work);
+  const primaryHookLine = getPrimaryHookLine(work);
 
-  const shareText = `PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${work.verdict?.line || work.hook}"\n\nPeak Score: ${work.overall.toFixed(1)} · Peak Experience: ${work.experience ? work.experience.toFixed(1) : "—"}\n\nAn AI-powered rating system. Rated on the principles of great storytelling, not popularity.\npeak-ratings.com\n\n#Peak #${work.title.replace(/\s+/g,"")} #${work.type.replace(/\s+/g,"")}`;
+  const shareText = `PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${finalThoughts.line || primaryHookLine}"\n\nPeak Score: ${work.overall.toFixed(1)} · Peak Experience: ${work.experience ? work.experience.toFixed(1) : "—"}\n\nAn AI-powered rating system. Rated on the principles of great storytelling, not popularity.\npeak-ratings.com\n\n#Peak #${work.title.replace(/\s+/g,"")} #${work.type.replace(/\s+/g,"")}`;
 
-  const redditTitle = `PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier · "${work.verdict?.line || work.hook}"`;
+  const redditTitle = `PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier · "${finalThoughts.line || primaryHookLine}"`;
 
-  const redditBody = `PEAK is an AI-powered rating system that rates storytelling craft — not popularity.\n\n**${work.title}**\n\n- Peak Score: ${work.overall.toFixed(1)}/10 (craft-based)\n- Peak Experience: ${work.experience ? work.experience.toFixed(1)+"/10" : "—"} (audience feeling)\n- Tier: ${work.tier}\n\n"${work.verdict?.line || work.hook}"\n\npeak-ratings.com`;
+  const redditBody = `PEAK is an AI-powered rating system that rates storytelling craft — not popularity.\n\n**${work.title}**\n\n- Peak Score: ${work.overall.toFixed(1)}/10 (craft-based)\n- Peak Experience: ${work.experience ? work.experience.toFixed(1)+"/10" : "—"} (audience feeling)\n- Tier: ${work.tier}\n\n"${finalThoughts.line || primaryHookLine}"\n\npeak-ratings.com`;
 
   const handleShareX = () => {
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, "_blank");
@@ -2213,7 +2242,7 @@ const DetailView=({work,onBack,onSelect})=>{
             )}
             <button
               onClick={()=>{
-                const txt=`PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${work.verdict?.line||work.hook}"\n\npeak-ratings.com #Peak #${work.title.replace(/\s+/g,"")}`;
+                const txt=`PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${getFinalThoughts(work).line||getPrimaryHookLine(work)}"\n\npeak-ratings.com #Peak #${work.title.replace(/\s+/g,"")}`;
                 window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(txt)}`,"_blank");
               }}
               style={{padding:"8px 14px",background:D.blueFaint,border:`1px solid ${D.blueDim}`,borderRadius:"8px",color:D.amber,fontSize:"11px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",whiteSpace:"nowrap"}}
@@ -2316,7 +2345,7 @@ const DetailView=({work,onBack,onSelect})=>{
         <div style={{marginTop:"28px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",overflow:"hidden"}}>
           <div style={{padding:"22px 24px"}}>
             <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"14px"}}>FULL VERDICT</div>
-            <p style={{margin:0,fontSize:"15px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,maxHeight:vExp?"none":"100px",overflow:"hidden",maskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)",WebkitMaskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)"}}>{work.verdict.full}</p>
+            <p style={{margin:0,fontSize:"15px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,maxHeight:vExp?"none":"100px",overflow:"hidden",maskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)",WebkitMaskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)"}}>{getFinalThoughts(work).full}</p>
           </div>
           <div style={{padding:"0 24px 20px"}}>
             <button onClick={()=>setVExp(v=>!v)} style={{background:"rgba(59,130,246,0.06)",border:"1px solid rgba(59,130,246,0.2)",borderRadius:"6px",padding:"8px 16px",color:"#3B82F6",fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
@@ -2538,8 +2567,8 @@ const UnratedView = ({ item, onBack }) => {
 
             {/* Verdict */}
             <div style={{padding:"20px 22px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px",marginBottom:"16px"}}>
-              <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"12px"}}>VERDICT</div>
-              <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif}}>{rating.verdict}</p>
+              <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"12px"}}>FINAL THOUGHTS</div>
+              <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif}}>{getFinalThoughts(rating).full||getFinalThoughts(rating).line}</p>
             </div>
 
             {/* Compared to */}
@@ -2853,3 +2882,4 @@ export default function App() {
     </>
   );
 }
+
