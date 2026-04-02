@@ -1796,10 +1796,10 @@ const RadarChart = ({ work, onOpenDetail }) => {
   const shortLabel = (k) => {
     if (k === "Art") {
       const label = getDisplay(k).label.toUpperCase();
-      const visualMap = {"ART":"ART","ANIMATION":"ANIM","CINEMATOGRAPHY":"CINEMA"};
+      const visualMap = {"ART":"ART","ANIMATION":"ANIMATION","CINEMATOGRAPHY":"CINEMATOGRAPHY"};
       return visualMap[label] || label.slice(0,7);
     }
-    const map = {"Writing":"WRITING","Themes":"THEMES","Twists":"TWISTS","Characters":"CHARS","Pacing":"PACING","Emotional Impact":"EMOTION","Consistency":"CONSIST"};
+    const map = {"Writing":"WRITING","Themes":"THEMES","Twists":"TWISTS","Characters":"CHARACTERS","Pacing":"PACING","Emotional Impact":"EMOTION","Consistency":"CONSISTENCY"};
     return map[k] || k.toUpperCase().slice(0,7);
   };
 
