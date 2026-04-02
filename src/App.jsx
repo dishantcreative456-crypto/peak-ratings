@@ -1,21 +1,31 @@
+
 import { useState, useEffect, useRef } from "react";
 
 // ─── DESIGN SYSTEM ───────────────────────────────────────────────────────────
 const D = {
-  bg:         "#0a0a12",
-  bgCard:     "#0e0e18",
-  text:       "#e8e6e0",
-  textMid:    "rgba(232,230,224,0.6)",
-  textDim:    "rgba(232,230,224,0.38)",
-  textFaint:  "rgba(232,230,224,0.18)",
-  amber:      "#c9a84c",
-  amberDim:   "rgba(201,168,76,0.55)",
-  amberFaint: "rgba(201,168,76,0.1)",
-  border:     "rgba(255,255,255,0.07)",
-  borderMed:  "rgba(255,255,255,0.12)",
-  serif:      "'Georgia', 'Times New Roman', serif",
-  sans:       "'Helvetica Neue', Helvetica, Arial, sans-serif",
-  mono:       "'Courier New', Courier, monospace",
+  bg:          "#0a0a12",
+  bgCard:      "#0d0d1a",
+  text:        "#e8e6e0",
+  textMid:     "rgba(232,230,224,0.6)",
+  textDim:     "rgba(232,230,224,0.38)",
+  textFaint:   "rgba(232,230,224,0.18)",
+  // Primary — Blue #3B82F6
+  blue:        "#3B82F6",
+  blueDim:     "rgba(59,130,246,0.55)",
+  blueFaint:   "rgba(59,130,246,0.1)",
+  // Secondary — Purple #8B5CF6
+  purple:      "#8B5CF6",
+  purpleDim:   "rgba(139,92,246,0.55)",
+  purpleFaint: "rgba(139,92,246,0.1)",
+  // Tertiary — Gold #C9A84C (scores & ratings only)
+  amber:       "#C9A84C",
+  amberDim:    "rgba(201,168,76,0.55)",
+  amberFaint:  "rgba(201,168,76,0.1)",
+  border:      "rgba(255,255,255,0.06)",
+  borderMed:   "rgba(255,255,255,0.12)",
+  serif:       "'Georgia', 'Times New Roman', serif",
+  sans:        "'Helvetica Neue', Helvetica, Arial, sans-serif",
+  mono:        "'Courier New', Courier, monospace",
 };
 
 
@@ -210,7 +220,11 @@ For full series/film use this exact structure:
     "originality": "",
     "intentFulfillment": ""
   },
-  "verdict": "",
+  "hookLines": ["", "", ""],
+  "finalThoughts": {
+    "line": "",
+    "full": ""
+  },
   "comparisons": ["", "", ""],
   "incompletenessNote": ""
 }
@@ -243,11 +257,11 @@ const WORKS = [
   // ── S TIER ──
   {
     id:"vs", title:"Vinland Saga", type:"Manga", year:"2005", status:"Complete ✓",
-    overall:9.7, hook:"The greatest finished manga ever made.", tier:"S", color:D.amber,
+    overall:9.7, hook:"It starts with revenge.\nIt ends somewhere much deeper.", hookLines:["A brutal story that still chooses mercy."], tier:"S", color:D.blue,
     tagline:"A man who chose to stop — and changed everything by doing so.",
     overview:{
-      surface:"A Viking warrior seeks revenge for his father's murder.",
-      real:"A story about whether goodness is actually possible in a brutal world — and the quiet, patient, costly insistence that it is.",
+      surface:"A young Viking grows up chasing revenge.\nThat is only the beginning.",
+      real:"It starts as a revenge story.\nThen it quietly becomes a story about whether a good life is still possible in a violent world.",
       deep:"Vinland Saga ended July 25 2025 — chapter 220, titled 'Somewhere Not Here.' Thorfinn does not conquer Vinland. He leaves. The warchief raises his sword at the end — war remains. Thorfinn leaves anyway. And plants wheat seeds. That is not a narrative failure. That is the most honest anti-war statement in manga history. The destination was never the destination. It was always the man making the journey. Einar dies in Vinland and stays there — the cost of Thorfinn's dream made permanent in the earth itself."
     },
     scores:{Writing:9.6, Art:8.9, Themes:9.9, Twists:9.0, Characters:9.7, Pacing:9.3, "Emotional Impact":9.7, Consistency:9.7},
@@ -269,17 +283,17 @@ const WORKS = [
     ],
     comparisons:[
       {title:"Berserk",verdict:"Greatest conceived vs greatest delivered",detail:"Berserk is the greater conceived work. Vinland Saga is the greater delivered work. Berserk's Eclipse has no equal as a single event. But Vinland Saga finished — and completion is itself an artistic achievement.",color:D.amber},
-      {title:"AOT",verdict:"Better ending",detail:"Both deal with cycles of violence. AOT's chapter 139 partially contradicts its own thesis. Vinland Saga's ending deepens everything that came before it. That gap is why Vinland Saga is #1.",color:D.text},
+      {title:"AOT",verdict:"Better ending",detail:"Both deal with cycles of violence. AOT's chapter 139 partially contradicts its own thesis. Vinland Saga's ending deepens everything that came before it. That gap is why Vinland Saga is #1.",color:D.purple},
     ],
-    verdict:{score:9.7,line:"The wheat growing at the end of chapter 220 is the most important final image in manga history.",full:"Not the most spectacular. The most true. Yukimura spent 20 years asking whether goodness is possible in a brutal world and answered it with wheat growing from the hands of a native boy taught by a Viking who failed and left. Vinland Saga is number one because it is the only work simultaneously philosophically ambitious, thematically consistent across its full length, complete on its own terms, and concluded with an ending that deepens rather than diminishes everything before it.",canReachS:false}
+    finalThoughts:{line:"That final image stays with you.\nLong after the story ends.",full:"Vinland Saga works because it never rushes its soul. It keeps asking the same hard question, then answers it with patience instead of noise. By the end, it feels calm, clear, and deeply earned. That is why it stays at the top."}
   },
   {
     id:"berserk", title:"Berserk", type:"Manga", year:"1989", status:"Incomplete",
-    overall:9.6, hook:"The greatest conceived work in manga history.", tier:"S", color:D.amber,
+    overall:9.6, hook:"Dark.\nMassive.\nAnd painfully human.", hookLines:["Dark, huge, and painfully human."], tier:"S", color:D.blue,
     tagline:"Can a human being retain their humanity when the universe itself is designed to destroy it?",
     overview:{
-      surface:"A dark warrior fights demons in a medieval world.",
-      real:"Not whether Guts will win — but whether winning is even possible without losing what makes him worth rooting for.",
+      surface:"A scarred swordsman fights through a world of monsters.\nThe real battle is inside him.",
+      real:"It looks like pure darkness at first.\nThen it becomes a story about whether a person can stay human in a world built to break them.",
       deep:"The Eclipse is not a plot twist. It is the revelation of truth that was present from the beginning. Griffith doesn't become evil at the Eclipse. He reveals what he always was — a person for whom other human beings were ultimately instruments of his ambition. The horror is that Miura made you love him anyway. Made you understand him. Made you see his perspective so clearly that his choice is simultaneously monstrous and psychologically coherent. That simultaneous understanding and condemnation is the rarest achievement in antagonist writing."
     },
     scores:{Writing:9.7, Art:9.9, Themes:9.9, Twists:9.2, Characters:9.8, Pacing:9.0, "Emotional Impact":9.8, Consistency:9.2},
@@ -304,15 +318,15 @@ const WORKS = [
       {title:"Vagabond",verdict:"Different mastery",detail:"Vagabond has the greatest artwork at 10.0. Berserk has the greatest technical achievement at 9.9. Inoue paints meditation. Miura draws cosmic horror at maximum detail. Different excellence entirely.",color:D.amber},
       {title:"Monster",verdict:"Violence vs conversation",detail:"Monster uses conversation as its weapon. Berserk uses spectacle. Monster's Johan is more human than any Berserk villain. Griffith is more tragic. Both are the greatest in their category — incomparable.",color:D.text},
     ],
-    verdict:{score:9.6,line:"Not the most fun. Not the most accessible. Not the most complete. The most serious.",full:"Berserk is not the most fun work on this list. Not the most accessible. Not the most complete. It is the most serious. The most ambitious. The most fully realized vision of what manga can achieve when operated by a once-in-a-generation talent across a lifetime of work. The incompleteness due to Miura's death in 2021 is the only thing separating it from being the undisputed greatest manga ever made. What exists is still the greatest. What will exist cannot be fully his vision.",canReachS:false}
+    finalThoughts:{line:"Nothing here is easy.\nVery little reaches this high.",full:"Berserk is brutal, ambitious, and strangely human all at once. It asks a lot from you, and it does not give easy comfort back. But when it hits its peak, almost nothing in manga feels bigger. Even unfinished, it still shows how far the medium can go."}
   },
   {
     id:"vagabond", title:"Vagabond", type:"Manga", year:"1998", status:"Hiatus",
-    overall:9.5, hook:"The greatest artwork ever produced in manga.", tier:"S", color:D.amber,
+    overall:9.5, hook:"Every page feels alive.\nThen the silence starts speaking.", hookLines:["Every page feels alive."], tier:"S", color:D.blue,
     tagline:"The sword is not the point. The sword is what has to be surrendered for the point to emerge.",
     overview:{
-      surface:"The fictionalized journey of Miyamoto Musashi becoming the greatest swordsman.",
-      real:"A man slowly realizing that the thing he devoted his entire existence to is the obstacle preventing him from truly existing.",
+      surface:"A young Musashi chases greatness with a sword.\nThen the chase starts changing him.",
+      real:"It begins with violence and ambition.\nThen it opens into something quieter about ego, peace, and what strength really means.",
       deep:"Vagabond is the only work where the artwork IS the story — not decoration, not supplement, but the primary narrative voice. Inoue communicates philosophical content through visual choices that have no equivalent in text. The way he draws Kojiro's eyes — present, undefended, completely open — communicates his enlightenment more completely than any dialogue could. Removing the art would not just diminish Vagabond. It would destroy it. The story cannot be told in words alone."
     },
     scores:{Writing:9.4, Art:10.0, Themes:9.7, Twists:8.7, Characters:9.8, Pacing:9.2, "Emotional Impact":9.6, Consistency:8.9},
@@ -337,15 +351,15 @@ const WORKS = [
       {title:"Berserk",verdict:"Art vs conception",detail:"Vagabond wins on pure artistic craft — 10.0 vs 9.9. Berserk wins on narrative scope and thematic breadth. Berserk is the greatest conceived work. Vagabond is the greatest artistic achievement. 9.6 vs 9.5.",color:D.amber},
       {title:"Monster",verdict:"Silence vs dialogue",detail:"Monster uses conversation to devastate. Vagabond uses silence and image. Urasawa tells you what Johan means. Inoue shows you what Kojiro is. Both are operating at the ceiling of their chosen method.",color:D.text},
     ],
-    verdict:{score:9.5,line:"Inoue doesn't just draw a story. He paints a meditation.",full:"Vagabond is the second greatest work on this list and the greatest artistic achievement across everything we rated. It is the only work here where the visual medium is not a vehicle for the story — it is the story. The hiatus is the only thing separating it from Berserk at the very top. If Inoue returns and concludes with the same philosophical integrity that defines its best chapters — the ranking may need to be revisited one final time.",canReachS:false}
+    finalThoughts:{line:"The art is not decoration.\nIt is the voice.",full:"Vagabond pulls you in because the drawings do more than illustrate the story. They carry it. Motion, faces, silence, even empty space start feeling like part of the argument. Very few works trust their visuals this much, and even fewer are rewarded for it like this."}
   },
   {
     id:"monster", title:"Monster", type:"Manga", year:"1994", status:"Complete ✓",
-    overall:9.4, hook:"The only complete work in S tier — and completion matters.", tier:"S", color:D.text,
+    overall:9.4, hook:"One choice changes everything.\nThen it never lets go.", hookLines:["One choice changes everything."], tier:"S", color:D.text,
     tagline:"Is human life inherently valuable — or does it require meaning to have worth?",
     overview:{
-      surface:"A surgeon who saves a boy who grows up to become a serial killer.",
-      real:"A humanist argument that must first take the nihilist position completely seriously — and then defeat it through human connection rather than logic.",
+      surface:"A doctor saves a boy who grows up into something terrifying.\nThat choice echoes through everything.",
+      real:"It takes the darkest view of human nature seriously.\nThen, quietly, it pushes back with empathy instead of easy answers.",
       deep:"Johan Liebert is the greatest villain in manga history. What makes him extraordinary is not his power or cruelty but his philosophy — he genuinely believes existence is meaningless and demonstrates it by dismantling people's reasons to live. He never needs to raise his voice. He is scarier fully clothed having a quiet conversation than any monster with supernatural power. Tenma's refusal to kill Johan even when it would save lives is not stupidity — it is a coherent philosophical position held under maximum pressure."
     },
     scores:{Writing:9.6, Art:8.9, Themes:9.8, Twists:9.2, Characters:9.7, Pacing:9.0, "Emotional Impact":9.5, Consistency:9.2},
@@ -370,15 +384,15 @@ const WORKS = [
       {title:"Death Note",verdict:"Philosophy vs psychology",detail:"Both psychological thrillers with extraordinary antagonists. Death Note's L vs Light is the greatest intellectual battle in manga. Monster's Johan vs the world is the greatest philosophical battle. Monster is deeper.",color:D.amber},
       {title:"20th Century Boys",verdict:"Same author, different warmth",detail:"20CB is Urasawa's more humanly warm work. Monster is his more precisely crafted. Monster wins on almost every critical dimension. Read Monster first. Then 20CB.",color:D.amber},
     ],
-    verdict:{score:9.4,line:"Johan Liebert alone makes it essential. There is no close second for greatest antagonist on this list.",full:"Monster has one advantage none of the other top tier works have — it is complete. It told its full story, asked its hardest question, and answered it honestly from beginning to end. Johan Liebert is not a villain. He is a proof — a man who set out to demonstrate that existence is meaningless, and almost succeeded.",canReachS:false}
+    finalThoughts:{line:"Johan pulls you in.\nThe rest of the story keeps you there.",full:"Monster stays gripping because it never loses control. It asks one of the coldest questions on this list, but it never stops feeling human. Johan is unforgettable, but what really makes the work last is how carefully everything around him is built."}
   },
   {
     id:"reze", title:"CSM: Reze Arc", type:"Film", year:"2025", status:"Complete ✓",
-    overall:9.4, hook:"The greatest anime film of 2025.", tier:"S", color:D.amber,
+    overall:9.4, hook:"Tender.\nDangerous.\nAnd hard to shake.", hookLines:["Tender, dangerous, hard to shake."], tier:"S", color:D.blue,
     tagline:"Two weapons pretending to be human — and briefly succeeding.",
     overview:{
-      surface:"Chainsaw Man's theatrical debut covering the Bomb Girl arc.",
-      real:"The most concentrated examination of whether performance can become genuine feeling across everything on this list.",
+      surface:"Chainsaw Man hits the big screen with the Bomb Girl arc.\nIt lands bigger than expected.",
+      real:"At first it feels like a rush.\nThen it turns into a sharp little story about whether something fake can become real.",
       deep:"Reze and Denji connect over coffee and ordinary conversation. Two people who were never allowed to be people, briefly experiencing what being people feels like. Her betrayal — following her mission — is handled with extraordinary restraint. The answer the film gives: it was real from Reze's side too. The performance became genuine. Her hesitation cost her the mission and her life. The Makima movie date scene — added by MAPPA, not in the manga — is the greatest single addition any adaptation has made to its source on this list."
     },
     scores:{Writing:8.9, Art:9.8, Themes:9.3, Twists:9.0, Characters:9.6, Pacing:9.0, "Emotional Impact":9.5, Consistency:9.2},
@@ -400,17 +414,17 @@ const WORKS = [
     comparisons:[
       {title:"DS: Infinity Castle P1",verdict:"Art vs substance",detail:"Infinity Castle scores 9.9 for animation — higher than Reze Arc's 9.8. But Reze Arc scores 9.5 for emotional impact, 9.3 for themes. Infinity Castle scores 8.3 and 6.5 respectively. Reze Arc is a film. Infinity Castle is a spectacular fragment.",color:D.amber},
     ],
-    verdict:{score:9.4,line:"Reze deserved the big screen. MAPPA gave it to her.",full:"The Reze arc was always the greatest argument for Chainsaw Man's place among the greatest works in its medium. MAPPA took that argument and put it on the largest possible screen with the finest animation their studio has produced, framed by Yonezu and Utada, and delivered it with the emotional restraint the story always deserved. One of the greatest anime films ever made.",canReachS:false}
+    finalThoughts:{line:"Reze always needed a screen this big.",full:"This works because it gives the arc room to breathe. The romance lands. The sadness lands. The tension never feels pushed too hard. It feels cinematic, but it also stays personal, and that balance is exactly what the story needed."}
   },
 
   // ── A TIER ──
   {
     id:"bb", title:"Breaking Bad", type:"TV", year:"2008", status:"Complete ✓",
-    overall:9.2, hook:"Zero significant quality drop across five seasons.", tier:"S", color:D.amber,
+    overall:9.2, hook:"Five seasons.\nAnd somehow… it never slips.", hookLines:["A slow fall with no wasted steps."], tier:"S", color:D.blue,
     tagline:"I did it for me. I liked it. I was good at it. And I was really alive.",
     overview:{
-      surface:"A chemistry teacher becomes a drug kingpin.",
-      real:"A meticulous documentation of how a defensible position corrupts into pure megalomaniacal power worship without the person ever noticing the transition.",
+      surface:"A chemistry teacher starts making meth.\nThen everything gets worse in the right way.",
+      real:"It keeps following one change after another.\nUntil pride becomes identity, and identity becomes ruin.",
       deep:"Walter White and Light Yagami are essentially the same character in different settings. Both start with a genuinely defensible moral position. Both documents the gap between self-justification and reality with surgical precision. Breaking Bad wins over Death Note because its supporting cast is significantly deeper and its pacing more consistent throughout. The finale's single greatest moment: 'I did it for me.' One sentence recontextualizing five seasons."
     },
     scores:{Writing:9.2, Art:8.0, Themes:9.5, Twists:9.0, Characters:9.4, Pacing:9.2, "Emotional Impact":9.3, Consistency:9.2},
@@ -433,17 +447,17 @@ const WORKS = [
     ],
     comparisons:[
       {title:"Death Note",verdict:"Same story, different medium",detail:"Both document a man convincing himself his destructive actions are justified and gradually becoming the monster he claimed to fight. Breaking Bad wins on supporting cast depth and pacing consistency.",color:D.amber},
-      {title:"Game of Thrones",verdict:"Consistency is everything",detail:"Both start at similar peak quality. GOT collapses. Breaking Bad never does. That single difference explains the gap between 9.2 and 7.0.",color:D.amber},
+      {title:"Game of Thrones",verdict:"Consistency is everything",detail:"Both start at similar peak quality. GOT collapses. Breaking Bad never does. That single difference explains the gap between 9.2 and 7.0.",color:D.purple},
     ],
-    verdict:{score:9.2,line:"The most consistent long-form work in western television.",full:"Breaking Bad is doing something no other work in western television fully achieves — maintaining complete character consistency across five seasons of escalating darkness while never losing the audience's engagement. Walter White's complete psychological portrait is the most precisely documented moral deterioration in television. The ending earns every moment of its conclusion.",canReachS:false}
+    finalThoughts:{line:"It keeps getting darker.\nIt never loses control.",full:"Breaking Bad works because every turn feels like it belongs to the same man. Walt keeps changing, but the writing never cheats to make that happen. Season after season, it tightens the pressure and keeps its grip. That control is what makes the whole fall so memorable."}
   },
   {
     id:"aot-manga", title:"AOT", type:"Manga", year:"2009", status:"Complete ✓",
-    overall:9.2, hook:"The show that made you root for a genocide without realizing it.", tier:"S", color:D.text,
+    overall:9.2, hook:"It starts one way.\nThen it turns on you.", hookLines:["It keeps changing under your feet."], tier:"S", color:D.text,
     tagline:"Season 1 asked: can humanity survive? Season 4 revealed: humanity was never the victim.",
     overview:{
-      surface:"Humanity fights titans behind massive walls.",
-      real:"A story that used your own genre expectations as the mechanism of its moral lesson — the unrecognizability of Season 4 IS the message.",
+      surface:"People trapped behind walls fight titans.\nThat is only the first layer.",
+      real:"It starts like survival horror.\nThen it keeps widening into something darker about freedom, violence, and the lies people live inside.",
       deep:"In Season 1 the titans were monsters. In Season 4 Eren's titans flatten a city of innocent civilians and you feel the same horror — but this time aimed at the character you spent three seasons wanting to win. Isayama made you feel toward Eren exactly what Marleyans felt toward Eldians. He used your own narrative conditioning against you to demonstrate exactly how dehumanization works. That is not a plot twist. That is the entire point of the story revealed."
     },
     scores:{Writing:8.9, Art:8.5, Themes:9.3, Twists:9.7, Characters:8.8, Pacing:8.8, "Emotional Impact":9.2, Consistency:8.2},
@@ -468,15 +482,15 @@ const WORKS = [
       {title:"Vinland Saga",verdict:"Ending makes the difference",detail:"Both deal with cycles of violence. Vinland Saga's ending deepens its thesis. AOT's chapter 139 partially contradicts its. That single chapter is most of the distance between 9.7 and 9.2.",color:D.amber},
       {title:"Breaking Bad",verdict:"TV vs manga corruption",detail:"Both document how idealists become perpetrators. Breaking Bad's Walt is more precisely documented. AOT's Eren is more structurally ambitious. Both are essential studies of the same human failure.",color:D.amber},
     ],
-    verdict:{score:9.2,line:"The greatest twist architecture on this list — attached to a chapter 139 that partially contradicts its own thesis.",full:"AOT is a manga that deserved a 9.5 ending and received a 6.5 ending — and the distance between those two numbers is the entire story of why it sits at 9.2 instead of competing with Berserk and Monster at the very top. The ambition was there. The architecture was there. The final execution was not.",canReachS:false}
+    finalThoughts:{line:"The build is astonishing.\nThe finish is the bruise.",full:"AOT keeps pulling the floor out from under itself in ways that feel smart, not random. The reveals are planted with real care, and the shifts in perspective change the meaning of everything before them. The ending hurts its final rank, but not the scale of what it achieved on the way there."}
   },
   {
     id:"slam-dunk", title:"Slam Dunk", type:"Manga", year:"1990", status:"Complete ✓",
-    overall:9.1, hook:"A sports manga that transcends its genre so completely the label becomes irrelevant.", tier:"S", color:D.amber,
+    overall:9.1, hook:"You come for basketball.\nYou stay for the heart.", hookLines:["You come for basketball. You stay for the heart."], tier:"S", color:D.blue,
     tagline:"Hanamichi Sakuragi's growth arc is one of the most emotionally satisfying journeys in manga.",
     overview:{
-      surface:"A delinquent discovers basketball and falls for a girl who likes the sport.",
-      real:"A story about the transformative power of genuine passion — discovering not just what you love but that you are capable of loving something completely.",
+      surface:"A loud delinquent joins a basketball team to impress a girl.\nThen the game becomes real.",
+      real:"It starts loose and funny.\nThen it becomes a story about finding real passion and giving yourself fully to it.",
       deep:"Inoue before Vagabond — proving his emotional craft was always there. The Nationals arc is among the greatest sequences in manga history. What makes Slam Dunk extraordinary is what makes all great sports fiction extraordinary — it uses competition as a mirror for human growth. Sakuragi's journey from delinquent who joins a club for a girl to a player who genuinely loves the game is handled with patience and honesty."
     },
     scores:{Writing:8.9, Art:9.0, Themes:8.5, Twists:8.0, Characters:9.2, Pacing:9.2, "Emotional Impact":9.3, Consistency:9.2},
@@ -498,15 +512,15 @@ const WORKS = [
     comparisons:[
       {title:"Vagabond",verdict:"Same artist, different medium",detail:"Slam Dunk shows Inoue's emotional craft before Vagabond showed his philosophical depth. Both are extraordinary. Vagabond is the greater work. Slam Dunk is the more immediately joyful one.",color:D.amber},
     ],
-    verdict:{score:9.1,line:"The Nationals arc alone places it in conversations about the greatest sequences in manga history.",full:"Slam Dunk is the greatest sports manga ever made and one of the most emotionally complete manga in any genre. Inoue's control of character growth, the pacing of the Nationals arc, and the devastating honesty of Sakuragi's final game constitute a creative achievement that most manga never approach.",canReachS:false}
+    finalThoughts:{line:"When it locks in,\nit really lands.",full:"Slam Dunk wins you over slowly. The growth feels earned, the team feels alive, and the emotion never has to beg for your attention. By the time it reaches its peak, you are not just watching games. You are watching people find something worth giving themselves to."}
   },
   {
     id:"dn-manga", title:"Death Note", type:"Manga", year:"2003", status:"Complete ✓",
-    overall:9.0, hook:"The greatest intellectual battle ever written in manga.", tier:"S", color:D.amber,
+    overall:9.0, hook:"It reads fast.\nThen it gets inside your head.", hookLines:["A battle of ego dressed like justice."], tier:"S", color:D.blue,
     tagline:"Light Yagami: a man who started with a defensible position and never noticed himself becoming the monster.",
     overview:{
-      surface:"A genius student finds a supernatural notebook that kills anyone whose name is written in it.",
-      real:"What happens when a human being is given the power of god? The answer is consistent and honest throughout: they become a monster, regardless of initial intentions.",
+      surface:"A gifted student finds a notebook that can kill.\nEverything spirals from there.",
+      real:"It moves like a thriller.\nBut really it is about what power does once someone starts believing they deserve it.",
       deep:"Light Yagami is the most interesting protagonist on this list after Griffith. He starts with a genuinely defensible moral position — the world would be better with fewer violent criminals — and the manga meticulously documents how that position corrupts into pure megalomaniacal power worship without Light ever noticing the transition. That is sophisticated psychological writing. L is equally extraordinary — unconventional, brilliant, morally ambiguous himself."
     },
     scores:{Writing:9.2, Art:9.5, Themes:9.0, Twists:9.3, Characters:8.8, Pacing:8.5, "Emotional Impact":8.8, Consistency:8.2},
@@ -529,15 +543,15 @@ const WORKS = [
       {title:"Monster",verdict:"Psychological vs philosophical",detail:"Both psychological thrillers. Death Note's L arc is the greatest intellectual battle in manga. Monster's Johan is the greater villain philosophically. Monster is deeper. Death Note is more immediately thrilling.",color:D.text},
       {title:"Breaking Bad",verdict:"Same corruption arc",detail:"Walter White and Light Yagami are essentially the same character in different settings. Breaking Bad wins on supporting cast and pacing. Death Note wins on visual craft and the L dynamic.",color:D.amber},
     ],
-    verdict:{score:9.0,line:"Death Note is not quite Monster. And knowing the difference between a 9.0 and a 9.4 requires being honest about what each work achieves.",full:"Death Note at 9.0 is a genuine masterwork that falls just short of the absolute top tier — primarily because of its second half inconsistency and the thematic ceiling being slightly lower. But within its specific goals it executes at near maximum possible quality for the first half. The L vs Light arc specifically is as good as anything on this entire list.",canReachS:false}
+    finalThoughts:{line:"At its peak,\nyou almost stop blinking.",full:"Death Note pulls you through on pure tension. The central rivalry is so clean, and so sharp, that even the quieter chapters feel loaded. It does not fully stay at that level to the end, but when it peaks, it is as addictive as anything here."}
   },
   {
     id:"fmab", title:"FMAB", type:"Anime", year:"2009", status:"Complete ✓",
-    overall:9.0, hook:"The gold standard for narrative completion in anime.", tier:"S", color:D.amber,
+    overall:9.0, hook:"Everything matters.\nEverything pays off.", hookLines:["Everything matters. Everything pays off."], tier:"S", color:D.blue,
     tagline:"The most narratively complete and satisfying anime ever concluded — nothing is wasted.",
     overview:{
-      surface:"Two brothers seek the Philosopher's Stone to restore their bodies after a failed ritual.",
-      real:"An examination of the cost of playing god, the nature of equivalent exchange, and whether good intentions justify destructive means.",
+      surface:"Two brothers try to fix the damage from a forbidden ritual.\nThe cost keeps growing.",
+      real:"It feels big and adventurous.\nUnder that, it keeps asking what it costs to play god and whether good intentions can excuse terrible choices.",
       deep:"FMAB is doing something rare in long-form anime — it planned its ending from the beginning and executed every element of that plan. The transmutation circle reveal — the entire country as a ritual — is genuinely staggering in implication and was seeded from very early chapters. Every Homunculus arc, every political thread, every character relationship pays off with precision that demands genuine respect."
     },
     scores:{Writing:8.8, Art:8.5, Themes:9.0, Twists:9.0, Characters:8.7, Pacing:9.0, "Emotional Impact":8.9, Consistency:9.0},
@@ -559,15 +573,15 @@ const WORKS = [
     comparisons:[
       {title:"AOT Anime",verdict:"Completion vs ambition",detail:"FMAB is the most narratively complete anime on this list. AOT is the most thematically ambitious. FMAB's ending is excellent. AOT's ending is divisive. Completion wins for overall satisfaction.",color:D.text},
     ],
-    verdict:{score:9.0,line:"A story that knew where it was going and got there without losing anything essential.",full:"FMAB represents a standard of narrative craft that most anime never reaches — complete thematic consistency, no wasted arcs, no character betrayals, and an ending that honors everything that preceded it. It is the most complete anime on this list and the best argument that completion is itself a form of artistic excellence.",canReachS:false}
+    finalThoughts:{line:"It knew the road.\nAnd it reached the end cleanly.",full:"FMAB feels so satisfying because it stays balanced all the way through. The themes stay clear. The characters stay true to themselves. And when the ending arrives, it feels earned rather than arranged. Very few anime finish this cleanly."}
   },
   {
     id:"aot-anime", title:"AOT Anime", type:"Anime", year:"2013", status:"Complete ✓",
-    overall:9.0, hook:"Wit Studio's seasons represent animation at its absolute ceiling.", tier:"S", color:D.text,
+    overall:9.0, hook:"At its peak,\nthis feels overwhelming.", hookLines:["At its peak, this is overwhelming."], tier:"S", color:D.text,
     tagline:"Season 3 Part 2 has no equal in animated television.",
     overview:{
-      surface:"The manga adaptation across four seasons and two studios.",
-      real:"One of the greatest manga adaptations ever produced — with Wit Studio's final seasons constituting a genuine masterpiece of direction.",
+      surface:"Attack on Titan adapted across multiple seasons and studios.\nThe best of it hits hard.",
+      real:"At its best, it does more than adapt the manga.\nIt makes the same story feel louder, heavier, and more immediate.",
       deep:"Hiroyuki Sawano's score elevates every scene it accompanies. The charge of the Survey Corps is one of the greatest single sequences in anime history. The transition from Wit to MAPPA in Season 4 is jarring but MAPPA handles the Marley arc with genuine respect for the source material. The anime's emotional peaks — particularly Season 3 Part 2 — exceed even the manga's equivalent moments through the addition of performance, music and motion."
     },
     scores:{Writing:8.9, Art:9.2, Themes:9.3, Twists:9.5, Characters:9.0, Pacing:8.6, "Emotional Impact":9.4, Consistency:8.6},
@@ -631,15 +645,15 @@ const WORKS = [
       {ep:"S2E11",title:"Charge",type:"ACTION/SET PIECE",score:9.5,exp:9.4,verdict:"The Survey Corps counterattack. Mikasa's rage-driven assault on the Armored Titan. Hannes's death — which hits precisely because of how small and ordinary it is after everything that's come before. Eren's screaming grief is the emotional peak of Season 2."},
       {ep:"S2E12",title:"Scream",type:"FINALE",score:9.6,exp:9.5,verdict:"The Coordinate ability awakened. The titans consume Reiss. Season 2's finale answers some questions while opening existential new ones — Eren's power, the nature of titans, the conspiracy running deeper than anyone knew. The perfect close to 12 episodes of escalating revelation."},
     ],
-    verdict:{score:9.0,line:"Wit Studio's seasons are animation as a serious art form operating at its absolute ceiling.",full:"The AOT anime is one of the greatest adaptations ever produced. Its visual achievements — particularly Season 3 Part 2 — constitute animation history. The emotional impact of the anime at its peaks arguably exceeds even the manga's equivalent moments through the addition of Sawano's music.",canReachS:false}
+    finalThoughts:{line:"When it peaks,\nit feels huge.",full:"The anime earns its place through direction, music, and scale. The best seasons do not just repeat the manga. They amplify it. When everything clicks, the whole thing feels bigger, heavier, and harder to forget."}
   },
   {
     id:"monster-anime", title:"Monster Anime", type:"Anime", year:"2004", status:"Complete ✓",
-    overall:9.0, hook:"The most faithful manga adaptation on this list.", tier:"S", color:D.text,
+    overall:9.0, hook:"Slow.\nTense.\nCompletely committed.", hookLines:["Slow, tense, and completely committed."], tier:"S", color:D.text,
     tagline:"Madhouse treated Urasawa's work with complete reverence.",
     overview:{
-      surface:"Madhouse's 74-episode adaptation of Urasawa's manga.",
-      real:"A proof that faithful adaptation done with genuine care can match the quality of extraordinary source material.",
+      surface:"A long-form anime version of Monster.\nIt never hurries the dread.",
+      real:"It proves that patience can be a strength.\nEspecially when the source is this strong and the mood matters this much.",
       deep:"The voice acting — particularly in Japanese — is among the best ever recorded for anime. Johan's voice actor delivers a performance of genuinely unsettling restraint. The European atmosphere is enhanced by the orchestral score which is one of the best in anime history. The pacing — criticized for being slow — is actually correct for the material. Dread requires space to breathe."
     },
     scores:{Writing:8.9, Art:8.2, Themes:9.8, Twists:9.0, Characters:9.5, Pacing:8.8, "Emotional Impact":9.3, Consistency:9.0},
@@ -657,15 +671,15 @@ const WORKS = [
     comparisons:[
       {title:"Monster Manga",verdict:"Source vs adaptation",detail:"The manga's artwork is more detailed and expressively nuanced. The anime's voice performances add psychological complexity the manga cannot convey. Both are essential — read the manga, watch the anime.",color:D.text},
     ],
-    verdict:{score:9.0,line:"A 74-episode commitment that justifies every episode.",full:"Monster Anime is the rare adaptation that treats its source material as sacred without becoming slavish. The voice performances — particularly Johan — constitute genuine artistic achievement. The slow pacing is not a flaw. It is the correct choice for a story about dread.",canReachS:false}
+    finalThoughts:{line:"It asks for patience.\nThen rewards it.",full:"Monster Anime works because it never rushes the things that matter. The pacing stays deliberate, the mood stays heavy, and the performances add something real without changing the core. If you give it time, it gives a lot back."}
   },
   {
     id:"vs-anime", title:"Vinland Saga Anime", type:"Anime", year:"2019", status:"Complete ✓",
-    overall:9.0, hook:"One of the finest manga adaptations ever produced.", tier:"S", color:D.amber,
+    overall:9.0, hook:"Faithful.\nHeavy.\nEmotionally honest.", hookLines:["Faithful, heavy, emotionally honest."], tier:"S", color:D.blue,
     tagline:"The anime is excellent. The manga is significantly greater — but excellent is still excellent.",
     overview:{
-      surface:"Wit Studio and MAPPA's adaptation across four seasons.",
-      real:"A faithful and emotionally honest adaptation of one of the greatest manga ever made.",
+      surface:"The anime version of Vinland Saga across multiple seasons.\nIt keeps the weight intact.",
+      real:"It understands what makes Yukimura’s story work.\nSo it keeps the heart, the patience, and the pain instead of sanding them down.",
       deep:"The slave arc in animated form loses nothing and gains the weight of silence and performance. MAPPA's Season 2 direction choices — the stillness, the use of mundane work as visual language — are correct for the material and sometimes even superior to the manga's equivalent passages. The completed anime now tells Yukimura's complete story."
     },
     scores:{Writing:9.0, Art:8.5, Themes:9.7, Twists:8.5, Characters:9.4, Pacing:9.3, "Emotional Impact":9.4, Consistency:9.3},
@@ -683,17 +697,17 @@ const WORKS = [
     comparisons:[
       {title:"AOT Anime",verdict:"Different peaks",detail:"AOT Anime has higher visual peaks — Season 3 Part 2 is unmatched. Vinland Saga Anime is more consistently excellent across its full run. Both are among the finest anime adaptations ever made.",color:D.text},
     ],
-    verdict:{score:9.0,line:"For those who cannot read the manga — this is the complete Yukimura experience. It honors every word.",full:"The Vinland Saga anime tells Yukimura's complete story with genuine fidelity and emotional intelligence. The completed anime is now an exceptional standalone work that can be recommended without reservation.",canReachS:false}
+    finalThoughts:{line:"If you want the full story in anime form,\nthis delivers.",full:"The Vinland Saga anime respects what made the manga special. It does not flatten the ideas or rush the quieter beats. Now that the story is complete in this form, it stands on its own with real confidence."}
   },
 
   // ── B TIER ──
   {
     id:"op", title:"One Piece", type:"Manga", year:"1997", status:"Ongoing",
-    overall:8.9, hook:"27 years of maintained sincerity — the highest emotional impact score on this list.", tier:"A", color:D.amber,
+    overall:8.9, hook:"Messy at times.\nBut full of heart.", hookLines:["Messy pacing. Massive payoff."], tier:"A", color:D.purple,
     tagline:"The greatest ongoing work on this list — and the work with the highest potential ceiling.",
     overview:{
-      surface:"A boy with rubber powers seeks the legendary treasure to become King of the Pirates.",
-      real:"A philosophical argument that joy is resistance — that responding to a cruel world with laughter and friendship is not naivety but the most radical possible position.",
+      surface:"A rubber-powered pirate chases the world’s greatest treasure.\nThe emotional pull is bigger than the premise.",
+      real:"Under all the adventure, it keeps coming back to joy, loyalty, grief, and the choice not to let the world harden you.",
       deep:"One Piece is doing something no other work on this list has done — maintaining genuine joy across 27 years without losing sincerity. Robin's breakdown. Ace's death. Going Merry's funeral. These moments hit harder than almost anything on this list because Oda spends more time on human connection than any other mangaka. The emotional payoffs are enormous because the emotional investment is enormous."
     },
     scores:{Writing:9.2, Art:9.4, Themes:8.8, Twists:9.3, Characters:9.3, Pacing:7.5, "Emotional Impact":9.5, Consistency:8.0},
@@ -715,15 +729,15 @@ const WORKS = [
     comparisons:[
       {title:"Berserk",verdict:"Joy vs darkness",detail:"Berserk asks its questions through suffering. One Piece asks through laughter. Both are valid philosophical positions. Berserk is the greater work. One Piece has more emotional impact. Both are essential for different reasons.",color:D.amber},
     ],
-    verdict:{score:8.9,line:"The pacing is the weakness. The heart is the strength. And no work on this list has more heart.",full:"One Piece at 8.9 is provisional — it cannot be finalized until Oda lands the ending. But what already exists is one of the greatest emotional achievements in manga history. When Oda answers the One Piece, the Void Century, and the Will of D with the same emotional intelligence that defined Water 7 — we come back and potentially move this into A or S tier.",canReachS:true}
+    finalThoughts:{line:"The pacing drags.\nThe feeling doesn’t.",full:"One Piece is still unfinished, so the final call has to wait. But even now, its emotional reach is huge. At its best, it makes friendship, loss, and hope land with unusual force. If Oda sticks the ending, the whole conversation shifts again."}
   },
   {
     id:"csm", title:"Chainsaw Man", type:"Manga", year:"2018", status:"Ongoing",
-    overall:8.9, hook:"The most formally radical manga ever made.", tier:"A", color:D.amber,
+    overall:8.9, hook:"Chaotic on the surface.\nPrecise underneath.", hookLines:["Chaotic on the surface. Precise underneath."], tier:"A", color:D.purple,
     tagline:"A boy whose dreams never evolved beyond survival.",
     overview:{
-      surface:"A boy fused with a chainsaw devil hunts demons for the government.",
-      real:"A work that uses genre conventions as a delivery mechanism for their own destruction — asking what happens to a human being so thoroughly deprived of ordinary existence that the only dreams they can form are humiliatingly small.",
+      surface:"A broke boy fused with a chainsaw devil starts hunting devils.\nThe mess is part of the hook.",
+      real:"It throws chaos at you fast.\nThen it starts getting at loneliness, desire, and what a normal life even means.",
       deep:"Fujimoto is the most cinematic mangaka in history. His panel composition, his use of negative space, his page layouts, his timing — these are the choices of a filmmaker who happens to be working in sequential art. The Reze arc is the most concentrated examination of whether performance can become genuine feeling on this entire list. Part 1 is a 9.4 work. Part 2 is deliberately alienating — either extraordinary creative courage or self-indulgence. Honest assessment holds both possibilities."
     },
     scores:{Writing:9.1, Art:9.6, Themes:9.0, Twists:9.2, Characters:9.1, Pacing:8.5, "Emotional Impact":9.3, Consistency:8.3},
@@ -748,15 +762,15 @@ const WORKS = [
       {title:"Berserk",verdict:"Cinema vs philosophy",detail:"Berserk is the greater philosophical work. Chainsaw Man is the greater cinematic work. No other mangaka composes pages the way Fujimoto does. Different excellence entirely.",color:D.amber},
       {title:"Oshi No Ko",verdict:"Performance vs warmth",detail:"Both examine whether performance can become genuine feeling. Chainsaw Man executes with more economy and devastation. Oshi No Ko executes with more warmth. Chainsaw Man wins objectively.",color:D.amber},
     ],
-    verdict:{score:8.9,line:"Part 1 proved it. Part 2 is still in flight.",full:"Part 1 is a 9.4 work — complete, disciplined, devastating and formally revolutionary. When Part 2 concludes — if Fujimoto lands it — we come back. Chainsaw Man has the potential to be the greatest manga of its generation. Part 1 already proved it. Part 2 just needs to prove it can finish.",canReachS:true}
+    finalThoughts:{line:"Part 1 proved the ceiling.\nPart 2 is still climbing.",full:"Chainsaw Man feels reckless at first, but the control underneath it is real. Fujimoto uses weirdness, speed, and sharp tonal turns to say surprisingly human things. Part 1 already proved how high the work can go. The final rank depends on where Part 2 lands."}
   },
   {
     id:"lotm", title:"LOTM", type:"Novel", year:"2018", status:"Complete ✓",
-    overall:8.8, hook:"The greatest world-building achievement on this list.", tier:"A", color:D.amber,
+    overall:8.8, hook:"Huge world.\nQuiet emotional center.", hookLines:["Huge world. Quiet emotional center."], tier:"A", color:D.purple,
     tagline:"22 cosmological Beyonder Pathways of staggering depth — and a man pretending to be a god.",
     overview:{
-      surface:"A man transmigrates into a Victorian steampunk world of Lovecraftian horror.",
-      real:"A story about identity when your name, your body, your history and your humanity are all things you can lose, replace or transcend.",
+      surface:"A man wakes up in a strange steampunk world full of hidden horrors.\nThen the world keeps opening up.",
+      real:"It gets bigger and bigger.\nBut underneath that scale, it keeps asking what is left of you when identity can be changed, traded, or lost.",
       deep:"The Acting Method — gaining power by acting according to the potion's name — is the most philosophically interesting power system across everything we rated. It is not just mechanics. It is a statement about identity: you are not who you are but who you consistently choose to be. Klein performing omniscience while improvising everything. The Tarot Club's reverence for a man making it all up. The humor coexisting with cosmic horror is a tonal achievement almost no work manages."
     },
     scores:{Writing:8.8, Art:null, Themes:9.0, Twists:9.4, Characters:8.5, Pacing:7.8, "Emotional Impact":8.7, Consistency:8.6},
@@ -778,15 +792,15 @@ const WORKS = [
     comparisons:[
       {title:"One Piece",verdict:"World-building comparison",detail:"LOTM's world-building score is 10.0 — the highest on this list. One Piece's world-building is vast and emotionally rich. LOTM's is deeper and more philosophically systematic. Different excellence.",color:D.amber},
     ],
-    verdict:{score:8.8,line:"A compressed version of 900-1000 chapters would be a masterwork. What exists at 1430 is very good.",full:"LOTM at 8.8 is extraordinary world-building, sophisticated thematic construction, and an ending that chooses quiet humanity over cosmic spectacle. The pacing issues are a structural consequence of the web novel format. The world-building is unmatched on this list. Klein waving at a child is the correct final image.",canReachS:false}
+    finalThoughts:{line:"It runs long.\nThe scale still lands.",full:"LOTM keeps expanding without fully losing itself, and that is a big part of the appeal. The world-building is massive, the systems are rich, and the ending still reaches for a human feeling instead of empty spectacle. It could be tighter, but the craft is real."}
   },
   {
     id:"20cb", title:"20th Century Boys", type:"Manga", year:"1999", status:"Complete ✓",
-    overall:8.8, hook:"The most politically urgent work on this list.", tier:"A", color:D.amber,
+    overall:8.8, hook:"Old pain.\nWorld-sized consequences.", hookLines:["Childhood wounds on a world-sized stage."], tier:"A", color:D.purple,
     tagline:"Eerily prophetic about the 21st century — written before it began.",
     overview:{
-      surface:"Childhood friends must stop a cult leader from destroying the world.",
-      real:"A sustained argument that unexamined childhood wounds — loneliness, being overlooked — metastasize across decades into forces capable of destroying civilization.",
+      surface:"Old friends reunite to stop a cult leader.\nThe past is doing most of the damage.",
+      real:"It looks wild on the surface.\nBut really it is about loneliness, resentment, and what happens when old pain never gets faced.",
       deep:"Friend is not simply a villain. Friend is what happens when a lonely, overlooked child grows up in a world that never acknowledged him. The apocalypse in 20th Century Boys is not ideological or supernatural — it is the consequence of a childhood wound left unexamined for thirty years. Reading this work in 2026 — looking back on the last decade — Urasawa's warning feels less like fiction and more like prophecy."
     },
     scores:{Writing:9.1, Art:9.0, Themes:9.3, Twists:8.5, Characters:9.2, Pacing:8.3, "Emotional Impact":9.3, Consistency:8.0},
@@ -809,15 +823,15 @@ const WORKS = [
     comparisons:[
       {title:"Monster",verdict:"Same author, warmer work",detail:"Monster is Urasawa's more precisely crafted work. 20CB is his more humanly warm one. Monster wins on almost every technical dimension. But 20CB reaches more people more quickly. Read Monster first. Then this.",color:D.text},
     ],
-    verdict:{score:8.8,line:"The most humanly warm Urasawa work — and the most politically urgent thing on this list.",full:"20th Century Boys argues that childhood loneliness is a civilizational threat — and renders that argument through giant robots, a secret base and a failed rock musician with a guitar. The tonal range required to hold those elements together is itself a creative achievement. A slightly compromised ending prevents it from reaching Monster's level. The first half is as good as anything Urasawa wrote.",canReachS:false}
+    finalThoughts:{line:"Warm.\nWeird.\nAnd sharper than it first looks.",full:"20th Century Boys works because it can feel playful and uneasy at the same time. The paranoia grows, the social anger grows, and somehow the people still matter. It does not fully reach Monster by the end, but at its best it absolutely feels close."}
   },
   {
     id:"oshi", title:"Oshi No Ko", type:"Manga", year:"2020", status:"Complete ✓",
-    overall:8.3, hook:"Chapter 1 is the greatest single opening chapter in manga history.", tier:"B", color:D.amber,
+    overall:8.3, hook:"It grabs you fast.\nThen it slips late.", hookLines:["It grabs you fast, then slips late."], tier:"B", color:D.amber,
     tagline:"A properly concluded Oshi No Ko would be a 9.0 work. What we have is 8.3.",
     overview:{
-      surface:"Reincarnated twins navigate the Japanese entertainment industry seeking their mother's murderer.",
-      real:"An examination of whether performance and authenticity can coexist — whether love expressed through lies is still love.",
+      surface:"Reincarnated twins grow up inside the entertainment industry.\nThe mask never really comes off.",
+      real:"It keeps circling the gap between performance and truth.\nAnd whether love still counts when it is tangled up with lies.",
       deep:"In the world of showbiz, lies are weapons. Every character in Oshi No Ko is performing something. The question the manga asks across 166 chapters is whether the performance eventually becomes real or eventually destroys the person underneath it. Chapter 1 alone — Ai's death after finally learning what love is — is worth the entire read. The gap between chapter 1 and chapter 166 is the entire story of this manga's legacy."
     },
     scores:{Writing:8.3, Art:9.3, Themes:8.8, Twists:8.9, Characters:8.6, Pacing:7.2, "Emotional Impact":8.7, Consistency:7.0},
@@ -840,15 +854,15 @@ const WORKS = [
     comparisons:[
       {title:"Chainsaw Man",verdict:"Same theme, different execution",detail:"Both examine whether performance can become genuine feeling. Chainsaw Man executes with more economy. Oshi No Ko executes with more warmth. The Reze arc is more devastating than anything in Oshi No Ko. But Chapter 1 of Oshi No Ko is better than any single chapter in Chainsaw Man.",color:D.amber},
     ],
-    verdict:{score:8.3,line:"The gap between chapter 1 and chapter 166 is the most heartbreaking distance in any manga on this list.",full:"Oshi No Ko at 8.3 is a genuinely great manga that ended as a good manga. Chapter 1 alone is a 10/10 achievement. Yokoyari's artwork is among the finest currently being produced. The entertainment industry critique is the sharpest on this list. Four chapters destroyed what 162 built. Aqua deserved more. Kana deserved more. Yokoyari's artwork deserved more.",canReachS:false}
+    finalThoughts:{line:"The opening is unforgettable.\nThe ending costs it.",full:"Oshi No Ko has one of the strongest openings on this list and some of the sharpest industry commentary too. That is why the rushed ending feels so frustrating. There is still a lot to admire here, but it leaves real points on the table."}
   },
   {
     id:"dn-anime", title:"Death Note Anime", type:"Anime", year:"2006", status:"Complete ✓",
-    overall:8.6, hook:"Episodes 1-25 are among the finest anime ever made.", tier:"A", color:D.amber,
+    overall:8.6, hook:"Fast.\nStylish.\nVery hard to stop.", hookLines:["Fast, stylish, hard to stop."], tier:"A", color:D.purple,
     tagline:"Mamoru Miyano's voice adds psychological complexity beyond the manga.",
     overview:{
-      surface:"Madhouse's 37-episode adaptation of Ohba and Obata's manga.",
-      real:"An adaptation that improves on its source material in specific ways — particularly the internal monologue sequences rendered visually.",
+      surface:"The anime version of Death Note.\nAnd at its best, it really moves.",
+      real:"It takes what already worked and sharpens it.\nEspecially the tension, the pacing, and the feeling inside each move.",
       deep:"The internal monologue sequences — Light and L's simultaneous strategic thinking rendered visually — are creative and effective solutions to a difficult adaptation problem. The score by Yoshihisa Hirano and Hideki Taniuchi perfectly amplifies the tension. Mamoru Miyano's Light is a performance that adds layers even Obata's artwork cannot fully convey."
     },
     scores:{Writing:8.8, Art:8.8, Themes:9.0, Twists:9.0, Characters:8.6, Pacing:8.2, "Emotional Impact":8.8, Consistency:8.0},
@@ -866,15 +880,15 @@ const WORKS = [
     comparisons:[
       {title:"Death Note Manga",verdict:"Visual vs drawn",detail:"The manga's artwork is more detailed. The anime's voice acting adds psychological layers the manga cannot possess. For the L arc specifically, the anime is the superior experience. For the complete work, the manga is slightly stronger.",color:D.text},
     ],
-    verdict:{score:8.6,line:"The second half faithfully adapts weaker source — which is both its strength and its limitation.",full:"Death Note Anime at 8.6 is exceptional anime that is slightly less than exceptional manga. Episodes 1-25 are essential viewing. The L arc rendered in animation, performance and music constitutes a genuinely extraordinary artistic experience.",canReachS:false}
+    finalThoughts:{line:"The first half is close to elite.",full:"Death Note Anime works because the direction, music, and performances amplify what was already strong on the page. It still carries the same late weakness as the manga, but its best stretch is tense in a way only anime could make it feel."}
   },
   {
     id:"ds-infinity", title:"DS: Infinity Castle P1", type:"Film", year:"2025", status:"Complete ✓",
-    overall:7.8, hook:"The greatest visual spectacle on this list — and one of the most narratively hollow films at its budget.", tier:"C", color:D.amber,
+    overall:7.8, hook:"It looks incredible.\nIt feels lighter underneath.", hookLines:["Incredible to look at. Lighter to feel."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"$778.9M worldwide. Proof that commercial success and artistic merit are different questions.",
     overview:{
-      surface:"The first theatrical film covering the Infinity Castle arc.",
-      real:"A technically extraordinary first act of a three-part conclusion to a series whose greatest strength was always its visuals and whose greatest weakness was always its writing.",
+      surface:"The first movie in the Infinity Castle finale.\nThe scale is immediate.",
+      real:"It shows how far pure spectacle can carry a story.\nAnd where that eventually stops when the writing underneath stays limited.",
       deep:"Ufotable has been the greatest action animation studio working in theatrical anime for a decade. Infinity Castle is their ceiling — every technical resource deployed simultaneously. But the screenplay adapts source material that was always thin on character depth — and rather than compensating through original additions the way Reze Arc did with the Makima date scene, it faithfully reproduces the thinness at theatrical scale."
     },
     scores:{Writing:7.2, Art:9.9, Themes:6.5, Twists:7.0, Characters:6.8, Pacing:7.0, "Emotional Impact":8.3, Consistency:null},
@@ -896,15 +910,15 @@ const WORKS = [
     comparisons:[
       {title:"CSM: Reze Arc",verdict:"Art vs substance",detail:"Infinity Castle scores 9.9 for animation — higher than Reze Arc's 9.8. But Reze Arc scores 9.5 for emotional impact vs Infinity Castle's 8.3. And 9.3 for themes vs 6.5. Reze Arc is a complete film. Infinity Castle Part 1 is a spectacular fragment.",color:D.amber},
     ],
-    verdict:{score:7.8,line:"Ufotable gave Demon Slayer the most technically accomplished animation in theatrical anime history. Gotouge gave Ufotable a story that has never matched it.",full:"Infinity Castle Part 1 at 7.8 is the greatest visual spectacle on this list. It is also one of the most narratively hollow films at its budget. A three-part theatrical release for one arc is a commercial decision masquerading as an artistic one. Parts 2 and 3 cannot change the writing. They can only animate it more beautifully.",canReachS:false}
+    finalThoughts:{line:"The animation is huge.\nThe ceiling still isn’t.",full:"Infinity Castle Part 1 is stunning on a technical level. That part is easy to see. The issue is that the story underneath all that polish still feels limited. It is exciting and impressive, but it never fully escapes the same core weakness."}
   },
   {
     id:"st", title:"Stranger Things", type:"TV", year:"2016", status:"Ongoing",
-    overall:7.7, hook:"A show that got bigger when it needed to get deeper.", tier:"C", color:D.amber,
+    overall:7.7, hook:"Great start.\nLess control later.", hookLines:["Great start. Less control later."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"Season 1 is an 8.8. The series average is 7.7. That gap is the entire story.",
     overview:{
-      surface:"Kids in a small Indiana town encounter supernatural forces from another dimension.",
-      real:"A show that briefly understood how to create genuine stakes through character investment — and then forgot in favor of scale.",
+      surface:"Kids in a small town get pulled into a supernatural mystery.\nThat smaller version works best.",
+      real:"It works best when the danger feels personal.\nOnce the show starts chasing scale for its own sake, some of the magic fades.",
       deep:"The Duffer Brothers understand how to make audiences feel things even when the writing isn't perfectly disciplined. The friendship dynamics between the core kids carry enormous emotional weight across all seasons. The problem: each subsequent season adds characters and subplots faster than it develops them. Season 4's episode lengths reach feature film duration without the narrative density to justify it."
     },
     scores:{Writing:7.3, Art:8.5, Themes:7.0, Twists:7.5, Characters:8.0, Pacing:7.0, "Emotional Impact":8.3, Consistency:7.2},
@@ -926,17 +940,17 @@ const WORKS = [
     comparisons:[
       {title:"Game of Thrones",verdict:"Different collapses",detail:"Both start excellently and decline. GOT declines through compression — cutting too much. Stranger Things declines through expansion — adding too much. Stranger Things handles its decline more gracefully and maintains character integrity better.",color:D.amber},
     ],
-    verdict:{score:7.7,line:"Hold the Door is the greatest single moment the show produced — and it was in Season 2.",full:"Stranger Things at 7.7 is good television that was briefly great television. Season 1 belongs in conversations about the best debut seasons in streaming history. The subsequent seasons represent a show that loved its world and characters but lost the narrative discipline that made Season 1 special.",canReachS:false}
+    finalThoughts:{line:"Season 1 had the control.\nThe rest keep chasing it.",full:"Stranger Things is still good television, but the gap between the debut and everything after it matters. The first season is focused, clean, and emotionally locked in. Later seasons keep getting bigger instead of deeper, and the story slowly loses part of its grip."}
   },
 
   // ── C TIER ──
   {
     id:"got", title:"Game of Thrones", type:"TV", year:"2011", status:"Complete",
-    overall:7.0, hook:"Seasons 1-4 are among the greatest TV ever made. Season 8 is among the greatest collapses.", tier:"C", color:D.textDim,
+    overall:7.0, hook:"The highs are real.\nSo is the collapse.", hookLines:["The highs are real. So is the collapse."], tier:"C", color:D.textDim,
     tagline:"Ned Stark's death changed television forever. Season 8 changed nothing — it just ended.",
     overview:{
-      surface:"Noble families vie for the Iron Throne in a fantasy medieval world.",
-      real:"A story about what happens when you run out of source material and have to finish someone else's story yourself.",
+      surface:"Powerful families fight for control of a fantasy kingdom.\nThen the foundation starts slipping.",
+      real:"It ends up as a case study in what happens when a story this big runs out of the structure that was holding it together.",
       deep:"Seasons 1-4 represent an extraordinary achievement — prestige television operating at a level it had never reached before. The pattern that emerges from Season 5 onward: character decisions begin serving plot requirements rather than emerging from established psychology. The show needed things to happen so they happened — regardless of whether the characters would make those choices. Season 8 is the logical extreme of that pattern applied to everything simultaneously."
     },
     scores:{Writing:6.8, Art:9.0, Themes:7.0, Twists:7.2, Characters:7.5, Pacing:7.0, "Emotional Impact":8.0, Consistency:4.5},
@@ -958,15 +972,15 @@ const WORKS = [
     comparisons:[
       {title:"Breaking Bad",verdict:"Consistency is everything",detail:"Both start at similar peak quality. Breaking Bad never drops. Game of Thrones drops off a cliff. Season 1-4 GOT rivals Season 4-5 Breaking Bad. The complete series comparison is 7.0 vs 9.2. That gap is entirely about the ending.",color:D.amber},
     ],
-    verdict:{score:7.0,line:"A surgeon who performs three perfect operations and amputates the wrong limb on the fourth is not a 9.0 surgeon.",full:"Game of Thrones at 7.0 holds the tension between what it was and what it became honestly. Seasons 1-4 alone: 9.2. The complete series: 7.0. A story is not only its best chapters. The ending is part of what you are — and GOT's ending is one of the greatest failures of narrative responsibility in television history.",canReachS:false}
+    finalThoughts:{line:"The early greatness is real.\nSo is the ending damage.",full:"Game of Thrones has to be judged as the whole thing, not just the years people want to remember. Seasons 1 to 4 are elite television. The final stretch is not just disappointing, it changes the feeling of the entire run. That gap is the score."}
   },
   {
     id:"ds-anime", title:"Demon Slayer", type:"Anime", year:"2019", status:"Complete ✓",
-    overall:7.0, hook:"Greatest animation craft on this list. Weakest writing.", tier:"C", color:D.amber,
+    overall:7.0, hook:"Looks amazing.\nSays less.", hookLines:["Looks amazing. Says less."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"Visual spectacle without substance has a hard ceiling — and Demon Slayer found it.",
     overview:{
-      surface:"A boy becomes a demon slayer after his family is killed and his sister transformed.",
-      real:"A demonstration that extraordinary execution of a modest ambition has a ceiling — and that ceiling is roughly 7.0.",
+      surface:"A boy hunts demons after tragedy hits his family.\nThe craft does a lot of lifting.",
+      real:"It is one of the clearest examples here of how far strong execution can carry a simple story.\nAnd where that eventually stops.",
       deep:"Ufotable's animation is the greatest on this list — 9.8 in Art, competing with the CSM Reze Arc film. But the writing underneath is significantly weaker. The breathing styles, the demon designs, the family relationships — all are competent. None approach the philosophical depth of the top tier. The pattern across Demon Slayer's entire run: when the animation is spectacular, you don't notice the writing is thin. When you think about it afterwards, you do."
     },
     scores:{Writing:6.5, Art:9.8, Themes:6.0, Twists:5.5, Characters:6.5, Pacing:7.5, "Emotional Impact":7.2, Consistency:7.5},
@@ -987,15 +1001,15 @@ const WORKS = [
     comparisons:[
       {title:"Vagabond",verdict:"Art comparison",detail:"Both have extraordinary artwork — Vagabond at 10.0, Demon Slayer at 9.8. Vagabond is #3 overall. Demon Slayer is #22. The distance between 9.7 in Themes and 6.0 in Themes explains everything.",color:D.amber},
     ],
-    verdict:{score:7.0,line:"The most beautiful C tier work ever made.",full:"Demon Slayer at 7.0 is not an insult — it is an honest assessment of a work that achieves its goals excellently but has modest goals relative to the greatest works in the medium. It is the most visually spectacular C tier entry in the history of this list. It is also the clearest demonstration that visual craft without thematic substance has a ceiling.",canReachS:false}
+    finalThoughts:{line:"The visuals lift it high.\nJust not all the way.",full:"Demon Slayer is easy to enjoy because it is clean, emotional, and beautifully made. The problem is that the writing rarely grows beyond its basics. It is a strong showcase for animation craft, but it never fully becomes more than that."}
   },
   {
     id:"sl", title:"Solo Leveling", type:"Manhwa", year:"2014", status:"Complete ✓",
-    overall:6.8, hook:"A perfectly executed power fantasy.", tier:"D", color:D.textDim,
+    overall:6.8, hook:"Pure momentum.\nPure fantasy.", hookLines:["Pure momentum. Pure fantasy."], tier:"D", color:D.textDim,
     tagline:"If you want to feel powerful — Solo Leveling is unmatched. If you want to feel human — read Vinland Saga.",
     overview:{
-      surface:"The world's weakest hunter becomes its strongest through a mysterious leveling system.",
-      real:"A power fantasy delivery mechanism — and there is nothing wrong with that as a goal, but it limits the ceiling of what the story can achieve.",
+      surface:"The weakest hunter starts climbing toward absolute power.\nIt never pretends to be anything else.",
+      real:"It knows exactly what it wants to deliver.\nThat clarity is both its strength and its limit.",
       deep:"Solo Leveling is the most fun read on this list. It is the least thematically substantial. Both things are true simultaneously. The artwork is genuinely world class — competing with the best on this list. The writing underneath serves one purpose: justify the next power upgrade. Character decisions are rarely motivated by genuine psychology. The world building is wide but extremely shallow. Jang Sung-rak's art alone is responsible for much of the manhwa's global popularity — and that credit is deserved."
     },
     scores:{Writing:6.5, Art:9.2, Themes:5.5, Twists:6.5, Characters:5.8, Pacing:8.0, "Emotional Impact":6.5, Consistency:7.0},
@@ -1016,15 +1030,15 @@ const WORKS = [
     comparisons:[
       {title:"Demon Slayer",verdict:"Similar tier, different reasons",detail:"Both sit at the bottom of this list for similar reasons — exceptional visuals, thin writing. Demon Slayer has warmer character relationships. Solo Leveling has better pacing and more coherent narrative structure. Roughly equal in overall quality for different reasons.",color:D.amber},
     ],
-    verdict:{score:6.8,line:"Solo Leveling knows exactly what it is. The problem is what it is has a 6.8 ceiling.",full:"Solo Leveling at 6.8 is a genuinely excellent power fantasy that executes its goals at the highest possible level. If those goals had been more ambitious — if the world building had matched the artwork, if the character psychology had matched the action choreography — Solo Leveling could have been a 9.0 work. It chose not to be. And that choice is honest and final.",canReachS:false}
+    finalThoughts:{line:"It does its job well.\nThe job just has a ceiling.",full:"Solo Leveling is very good at being what it is. It moves fast, looks great, and keeps the power climb satisfying. But it does not reach much deeper than that, and that limits how high it can rise next to the strongest works here."}
   },
   {
     id:"jjk", title:"Jujutsu Kaisen", type:"Manga", year:"2018", status:"Complete ✓",
-    overall:8.0, hook:"The Shibuya arc is one of the greatest things in shonen manga. Everything after it is the story of ambition exceeding its runway.", tier:"B", color:D.amber,
+    overall:8.0, hook:"Shibuya soars.\nThe finish stumbles.", hookLines:["Shibuya soars. The finish stumbles."], tier:"B", color:D.amber,
     tagline:"A manga that had a genuine 9.0 work inside it — and could not quite finish delivering it.",
     overview:{
-      surface:"High school students fight cursed spirits using supernatural techniques.",
-      real:"A technically brilliant action manga with progressively darker ambitions — asking whether the strong have any obligation to the weak — before collapsing under those ambitions in the final stretch.",
+      surface:"Teen sorcerers fight curses with deadly techniques.\nThen the ambition starts stretching outward.",
+      real:"At its best, it asks bigger moral questions than most action manga.\nBy the end, it cannot fully carry all that weight.",
       deep:"JJK is the most technically sophisticated action manga of its generation in terms of power system design and fight choreography. Mahito is one of the greatest villain introductions in shonen — a cursed spirit whose philosophy is genuinely disturbing: humans created cursed spirits through negative emotions, therefore cursed spirits are human nature stripped of self-deception. The Shibuya arc is where all of this potential was fully realized simultaneously. What followed revealed that Akutami was working without a fully constructed destination, improvising at Weekly Shonen Jump's relentless pace under significant health challenges."
     },
     scores:{Writing:8.0, Art:8.8, Themes:8.5, Twists:8.7, Characters:8.2, Pacing:7.0, "Emotional Impact":8.6, Consistency:6.8},
@@ -1052,12 +1066,12 @@ const WORKS = [
       {title:"AOT",verdict:"Ambitious endings compared",detail:"Both have controversial endings. AOT's chapter 139 partially contradicts its thesis — one chapter out of 139. JJK's final five chapters leave significant threads unresolved. AOT's ending failure is less structurally damaging. Hence 9.2 vs 8.0.",color:D.text},
       {title:"Demon Slayer",verdict:"Action manga quality ceiling",detail:"Both are action-forward shonen. Demon Slayer is consistent — consistently thin. JJK is inconsistent — with peaks Demon Slayer never reaches and a collapse it never experiences. JJK's ceiling is higher. JJK's floor is lower. Overall JJK wins at 8.0 vs 7.0.",color:D.amber},
     ],
-    verdict:{score:8.0,line:"The Shibuya arc alone is essential. The rest of JJK is the story of what happens when that level of ambition runs out of time.",full:"JJK at 8.0 is a genuinely important manga that could not finish what it started. The Hidden Inventory arc, Mahito's introduction, the Shibuya Incident — these constitute a run of shonen manga that rivals anything in the genre's history. The Culling Game and final arc reveal that Akutami was working beyond his planning horizon, at pace, under health pressure, without a fully constructed conclusion. If you read only through Shibuya — you have read one of the greatest action manga ever made. If you read the complete work — you have also read its disappointment.",canReachS:false}
+    finalThoughts:{line:"Its peak is real.\nSo is the drop after it.",full:"JJK earns its score because the highs are genuinely huge. The early and middle runs show speed, intelligence, and real darkness. The problem is that the back half starts stretching beyond what the story can cleanly hold, and the ending never fully recovers."}
   },
 ];
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
-const TIER_C = {S:D.amber, A:D.amber, B:"rgba(232,230,224,0.55)", C:"rgba(232,230,224,0.3)", D:"rgba(232,230,224,0.15)"};
+const TIER_C = {S:D.blue, A:D.purple, B:D.amber, C:"rgba(52,211,153,0.7)", D:"rgba(148,163,184,0.6)"};
 const sc = v => {
   if(!v && v!==0) return D.textFaint;
   if(v >= 9.0) return D.amber;
@@ -1066,21 +1080,142 @@ const sc = v => {
   if(v >= 7.0) return "rgba(232,230,224,0.35)";
   return "rgba(232,230,224,0.2)";
 };
+const getFinalThoughts = (item) => {
+  if (item?.finalThoughts) return item.finalThoughts;
+  if (item?.verdict && typeof item.verdict === "object") {
+    return {
+      line: item.verdict.line || "",
+      full: item.verdict.full || "",
+    };
+  }
+  if (typeof item?.verdict === "string") {
+    return {
+      line: item.verdict,
+      full: item.verdict,
+    };
+  }
+  return { line: "", full: "" };
+};
+const getPrimaryHookLine = (item) => {
+  if (Array.isArray(item?.hookLines) && item.hookLines.length && item.hookLines[0]) {
+    return item.hookLines[0];
+  }
+  const finalThoughts = getFinalThoughts(item);
+  return item?.hook || finalThoughts.line || "";
+};
+const getPreviewSnippet = (item) => {
+  const safeText = getPrimaryHookLine(item) || item?.hook || getFinalThoughts(item).line || "";
+  return safeText.split("\n").map(part => part.trim()).filter(Boolean)[0] || "";
+};
+const chunkWords = (text, minWords = 4, maxWords = 8) => {
+  const words = (text || "").trim().split(/\s+/).filter(Boolean);
+  if (!words.length) return [];
+  const lines = [];
+  let i = 0;
+  while (i < words.length) {
+    const remaining = words.length - i;
+    let take = remaining <= maxWords ? remaining : maxWords;
+    if (remaining > maxWords && remaining - take < minWords) {
+      take = Math.max(minWords, remaining - minWords);
+    }
+    lines.push(words.slice(i, i + take).join(" "));
+    i += take;
+  }
+  return lines;
+};
+const formatFinalThoughtsFull = (text) => {
+  if (!text) return "";
+  const normalized = text.replace(/\s+/g, " ").trim();
+  const sentences = normalized.split(/(?<=[.!?])\s+/).filter(Boolean);
+  return sentences.map(sentence => chunkWords(sentence.replace(/\s+/g, " ").trim(), 4, 7).join("\n")).join("\n\n");
+};
+const formatArcAnalysisIntro = (text) => {
+  if (!text) return "";
+  const normalized = text.replace(/\s+/g, " ").trim();
+  const words = normalized.split(" ");
+  if (words.length <= 14) return normalized;
+  const intro = chunkWords(words.slice(0, 10).join(" "), 4, 6).join("\n");
+  const rest = words.slice(10).join(" ");
+  return `${intro}\n\n${rest}`;
+};
+const getVisualContentType = (content) => {
+  const type = (content?.type || "").toLowerCase();
+  const text = [
+    content?.type,
+    content?.title,
+    content?.hook,
+    content?.tagline,
+    content?.overview?.surface
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  if (type === "manga" || type === "manhwa") return "manga";
+  if (type === "anime") return "animated";
+  if (type === "tv") return "live-action";
+  if (type === "film") {
+    if (text.includes("anime") || text.includes("animated")) return "animated";
+    return "live-action";
+  }
+  return "live-action";
+};
+const getVisualCategory = (content, key) => {
+  const defaults = {
+    "Writing": {
+      label: "Writing",
+      description: "How well the story is constructed — plot architecture, dialogue, foreshadowing, narrative discipline and whether the ending earns everything that came before it."
+    },
+    "Themes": {
+      label: "Themes",
+      description: "The depth and discipline of the ideas the work is exploring — whether it asks serious questions, pursues them consistently, and answers them honestly rather than conveniently."
+    },
+    "Twists": {
+      label: "Twists",
+      description: "How well major revelations are planted and paid off — whether they recontextualize what came before, are consistent with established character logic, and deepen the story rather than merely shocking."
+    },
+    "Characters": {
+      label: "Characters",
+      description: "The psychological complexity, consistency and depth of the cast — whether characters grow believably, make decisions rooted in their established psychology, and leave a genuine impression."
+    },
+    "Pacing": {
+      label: "Pacing",
+      description: "How well the story controls time — whether it earns its slow moments, maintains tension across long stretches, and arrives at its destination without overstaying its welcome."
+    },
+    "Emotional Impact": {
+      label: "Emotional Impact",
+      description: "How effectively the work makes you feel — whether emotional peaks are earned through patient investment, and whether the feelings it generates are genuine rather than manufactured."
+    },
+    "Consistency": {
+      label: "Consistency",
+      description: "How evenly the quality is distributed across the full work — whether the ending matches the beginning, whether later arcs honor earlier ones, and whether the work maintains its identity throughout."
+    }
+  };
+
+  if (key !== "Art") return defaults[key] || { label: key, description: "How this category is evaluated in Peak's framework." };
+
+  const visualType = getVisualContentType(content);
+  if (visualType === "manga") {
+    return {
+      label: "Art",
+      description: "The quality and expressiveness of the visual craft — panel composition, character design, visual clarity, and how effectively the artwork carries the story."
+    };
+  }
+  if (visualType === "animated") {
+    return {
+      label: "Animation",
+      description: "The quality of animation — movement, fluidity, choreography, visual direction, and how effectively the animation enhances storytelling rather than just spectacle."
+    };
+  }
+  return {
+    label: "Cinematography",
+    description: "The quality of visual direction — camera work, lighting, shot composition, framing, and how effectively the visuals support the story’s tone and emotion."
+  };
+};
 
 
 // ─── SCORE DETAIL PAGE ───────────────────────────────────────────────────────
-const ScoreDetailPage = ({ label, val, explanation, color, work, onBack }) => {
+const ScoreDetailPage = ({ categoryKey, val, explanation, color, work, onBack }) => {
   const col = sc(val);
-  const catDescriptions = {
-    "Writing": "How well the story is constructed — plot architecture, dialogue, foreshadowing, narrative discipline and whether the ending earns everything that came before it.",
-    "Art": "The quality and expressiveness of the visual craft — panel composition, character design, action choreography, use of negative space and whether the artwork serves the story or merely decorates it.",
-    "Themes": "The depth and discipline of the ideas the work is exploring — whether it asks serious questions, pursues them consistently, and answers them honestly rather than conveniently.",
-    "Twists": "How well major revelations are planted and paid off — whether they recontextualize what came before, are consistent with established character logic, and deepen the story rather than merely shocking.",
-    "Characters": "The psychological complexity, consistency and depth of the cast — whether characters grow believably, make decisions rooted in their established psychology, and leave a genuine impression.",
-    "Pacing": "How well the story controls time — whether it earns its slow moments, maintains tension across long stretches, and arrives at its destination without overstaying its welcome.",
-    "Emotional Impact": "How effectively the work makes you feel — whether emotional peaks are earned through patient investment, and whether the feelings it generates are genuine rather than manufactured.",
-    "Consistency": "How evenly the quality is distributed across the full work — whether the ending matches the beginning, whether later arcs honor earlier ones, and whether the work maintains its identity throughout."
-  };
+  const category = getVisualCategory(work, categoryKey);
+  const label = category.label;
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -1089,7 +1224,7 @@ const ScoreDetailPage = ({ label, val, explanation, color, work, onBack }) => {
       {/* Header */}
       <div style={{ position:"sticky", top:0, zIndex:50, background:"rgba(10,10,18,0.98)", backdropFilter:"blur(20px)", borderBottom:"1px solid rgba(255,255,255,0.05)", padding:"0 20px" }}>
         <div style={{ maxWidth:"700px", margin:"0 auto", height:"50px", display:"flex", alignItems:"center", gap:"14px" }}>
-          <button onClick={onBack} style={{ background:"transparent", border:"1px solid rgba(255,255,255,0.1)", borderRadius:"8px", padding:"6px 14px", color:D.textDim, fontSize:"11px", cursor:"pointer", fontFamily:D.mono, letterSpacing:"1px" }}>← BACK</button>
+          <button onClick={onBack} style={{ background:"rgba(59,130,246,0.06)", border:"1px solid rgba(59,130,246,0.25)", borderRadius:"8px", padding:"6px 14px", color:"#3B82F6", fontSize:"11px", cursor:"pointer", fontFamily:D.mono, letterSpacing:"1px" }}>← BACK</button>
           <span style={{ fontSize:"11px", color:D.textDim, fontFamily:D.mono }}>{work.title} · Score Breakdown</span>
         </div>
       </div>
@@ -1099,7 +1234,7 @@ const ScoreDetailPage = ({ label, val, explanation, color, work, onBack }) => {
         <div style={{ marginBottom:"32px" }}>
           <div style={{ fontSize:"10px", color:`${color}80`, fontFamily:D.mono, letterSpacing:"4px", marginBottom:"10px" }}>CRAFT CATEGORY</div>
           <h1 style={{ margin:"0 0 6px", fontSize:"clamp(28px,6vw,44px)", fontWeight:"900", color:D.text, letterSpacing:"-0.5px" }}>{label}</h1>
-          <p style={{ margin:0, fontSize:"14px", color:D.textDim, lineHeight:1.6, fontFamily:D.serif }}>{catDescriptions[label] || "How this category is evaluated in Peak's framework."}</p>
+          <p style={{ margin:0, fontSize:"14px", color:D.textDim, lineHeight:1.6, fontFamily:D.serif }}>{category.description}</p>
         </div>
 
         {/* Score display */}
@@ -1143,10 +1278,12 @@ const ScoreDetailPage = ({ label, val, explanation, color, work, onBack }) => {
 
 // ─── SCORE BAR — tappable, opens full detail page ─────────────────────────────
 const ScoreBar = ({ label, val, animate, explanation, color, work, onOpenDetail }) => {
+  const display = getVisualCategory(work, label);
+  const displayLabel = display.label;
   if (!val && val !== 0) return (
     <div style={{ marginBottom:"10px" }}>
       <div style={{ display:"flex", justifyContent:"space-between", marginBottom:"5px" }}>
-        <span style={{ fontSize:"11px", color:D.textDim, fontFamily:D.mono, textTransform:"uppercase", letterSpacing:"0.8px" }}>{label}</span>
+        <span style={{ fontSize:"11px", color:D.textDim, fontFamily:D.mono, textTransform:"uppercase", letterSpacing:"0.8px" }}>{displayLabel}</span>
         <span style={{ fontSize:"11px", color:D.textFaint, fontFamily:D.mono }}>N/A</span>
       </div>
       <div style={{ height:"4px", background:"rgba(255,255,255,0.04)", borderRadius:"2px" }}/>
@@ -1161,7 +1298,7 @@ const ScoreBar = ({ label, val, animate, explanation, color, work, onOpenDetail 
     >
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:"5px" }}>
         <div style={{ display:"flex", alignItems:"center", gap:"6px" }}>
-          <span style={{ fontSize:"11px", color:D.textMid, fontFamily:D.mono, textTransform:"uppercase", letterSpacing:"0.8px" }}>{label}</span>
+          <span style={{ fontSize:"11px", color:D.textMid, fontFamily:D.mono, textTransform:"uppercase", letterSpacing:"0.8px" }}>{displayLabel}</span>
           {hasDetail && <span style={{ fontSize:"9px", color:`${col}80`, fontFamily:D.mono, border:`1px solid ${col}30`, borderRadius:"3px", padding:"0px 4px" }}>TAP ↗</span>}
         </div>
         <span style={{ fontSize:"14px", color:col, fontFamily:D.mono, fontWeight:"900" }}>{val.toFixed(1)}</span>
@@ -1192,7 +1329,7 @@ const ArcCard = ({ arc, color, index }) => {
             <div style={{ display:"flex", gap:"5px", flexWrap:"wrap", marginBottom:"8px" }}>
               {arc.tags.map(t => <span key={t} style={{ fontSize:"9px", color:D.textDim, fontFamily:D.mono, border:"1px solid rgba(255,255,255,0.08)", borderRadius:"4px", padding:"1px 6px" }}>{t}</span>)}
             </div>
-            <p style={{ margin:0, fontSize:"12px", color:D.textDim, fontFamily:D.serif, fontStyle:"italic" }}>"{arc.hook}"</p>
+            <p style={{ margin:0, fontSize:"12px", color:D.textDim, fontFamily:D.serif, fontStyle:"italic", whiteSpace:"pre-line" }}>"{arc.hook}"</p>
           </div>
           <div style={{ flexShrink:0, textAlign:"right" }}>
             <div style={{ fontSize:"22px", fontWeight:"900", color:col, fontFamily:D.mono, lineHeight:1 }}>{arc.rating.toFixed(1)}</div>
@@ -1226,7 +1363,7 @@ const ArcCard = ({ arc, color, index }) => {
             </div>
             {open && (
               <div style={{ padding:"0 16px 16px", animation:"expandIn 0.3s ease" }}>
-                <p style={{ margin:0, fontSize:"13px", color:D.textMid, lineHeight:1.85, fontFamily:D.serif }}>{arc.analysis}</p>
+                <p style={{ margin:0, fontSize:"13px", color:D.textMid, lineHeight:1.85, fontFamily:D.serif, whiteSpace:"pre-line" }}>{formatArcAnalysisIntro(arc.analysis)}</p>
               </div>
             )}
           </div>
@@ -1608,7 +1745,7 @@ const GuidedNext = ({ work, onSelect }) => {
 // ─── TIER REVEAL ──────────────────────────────────────────────────────────────
 const TierReveal = ({ work }) => {
   const tiers = ["S","A","B","C","D"];
-  const tierColors = {S:"#ff6b6b",A:"#ffa94d",B:"#ffe066",C:"#c0eb75",D:"#74c0fc"};
+  const tierColors = {S:"#3B82F6",A:"#8B5CF6",B:"#C9A84C",C:"#34d399",D:"#94a3b8"};
   const tierLabels = {S:"Exceptional",A:"Excellent",B:"Good",C:"Average",D:"Below Average"};
   const scoreTier = work.tier;
   const expTier = work.experience >= 9.0 ? "S" : work.experience >= 8.5 ? "A" : work.experience >= 8.0 ? "B" : work.experience >= 7.0 ? "C" : "D";
@@ -1627,7 +1764,7 @@ const TierReveal = ({ work }) => {
                 {work.title.slice(0,4).toUpperCase()}
               </div>
               <div>
-                <div style={{fontSize:"10px",color:D.amber,fontFamily:D.mono,letterSpacing:"1px"}}>PEAK SCORE</div>
+                <div style={{fontSize:"10px",color:D.blue,fontFamily:D.mono,letterSpacing:"1px"}}>PEAK SCORE</div>
                 <div style={{fontSize:"11px",color:D.textDim,fontFamily:D.serif}}>{work.overall.toFixed(1)} · {tierLabels[tier]}</div>
               </div>
             </div>
@@ -1670,7 +1807,7 @@ const TierReveal = ({ work }) => {
       </div>
       {work.experience && scoreTier !== expTier && (
         <div style={{padding:"14px 16px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"10px",marginBottom:"16px"}}>
-          <div style={{fontSize:"10px",color:D.amberDim,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"6px"}}>THE GAP</div>
+          <div style={{fontSize:"10px",color:D.purpleDim,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"6px"}}>THE GAP</div>
           <p style={{margin:0,fontSize:"13px",color:D.textMid,fontFamily:D.serif,lineHeight:1.7}}>
             {work.title} is a {tierLabels[scoreTier].toLowerCase()} work that feels like a {tierLabels[expTier].toLowerCase()} experience. That gap is the most honest thing Peak can say about it.
           </p>
@@ -1687,6 +1824,7 @@ const RadarChart = ({ work, onOpenDetail }) => {
   const keys = Object.keys(scores).filter(k => scores[k] != null);
   const n = keys.length;
   if(!n) return null;
+  const getDisplay = (k) => getVisualCategory(work, k);
 
   // Per-category colors like DAWG
   const CAT_COLORS = {
@@ -1718,7 +1856,12 @@ const RadarChart = ({ work, onOpenDetail }) => {
   const polyPoints = dataPoints.map(p => p.join(",")).join(" ");
 
   const shortLabel = (k) => {
-    const map = {"Writing":"WRITING","Art":"ART","Themes":"THEMES","Twists":"TWISTS","Characters":"CHARS","Pacing":"PACING","Emotional Impact":"EMOTION","Consistency":"CONSIST"};
+    if (k === "Art") {
+      const label = getDisplay(k).label.toUpperCase();
+      const visualMap = {"ART":"ART","ANIMATION":"ANIMATION","CINEMATOGRAPHY":"CINEMATOGRAPHY"};
+      return visualMap[label] || label.slice(0,7);
+    }
+    const map = {"Writing":"WRITING","Themes":"THEMES","Twists":"TWISTS","Characters":"CHARACTERS","Pacing":"PACING","Emotional Impact":"EMOTION","Consistency":"CONSISTENCY"};
     return map[k] || k.toUpperCase().slice(0,7);
   };
 
@@ -1747,8 +1890,8 @@ const RadarChart = ({ work, onOpenDetail }) => {
             <circle key={i} cx={x} cy={y} r="3.5" fill={getColor(keys[i])} opacity="1"/>
           ))}
           {/* Center score */}
-          <text x={cx} y={cy-10} textAnchor="middle" fill={fillColor} fontSize="26" fontFamily="Georgia,serif" fontWeight="300" opacity="0.95">{work.overall.toFixed(1)}</text>
-          <text x={cx} y={cy+10} textAnchor="middle" fill={fillColor} fontSize="7" fontFamily="monospace" letterSpacing="2" opacity="0.45">PEAK SCORE</text>
+          <text x={cx} y={cy-10} textAnchor="middle" fill="#3B82F6" fontSize="26" fontFamily="Georgia,serif" fontWeight="300" opacity="0.95">{work.overall.toFixed(1)}</text>
+          <text x={cx} y={cy+10} textAnchor="middle" fill="#3B82F6" fontSize="7" fontFamily="monospace" letterSpacing="2" opacity="0.7">PEAK SCORE</text>
         </svg>
       </div>
 
@@ -1758,6 +1901,7 @@ const RadarChart = ({ work, onOpenDetail }) => {
           const val = scores[k];
           const col = getColor(k);
           const explanation = work.scoreReasons && work.scoreReasons[k];
+          const display = getDisplay(k);
           return (
             <div key={k}
               onClick={() => explanation && onOpenDetail(k, val, explanation)}
@@ -1767,6 +1911,7 @@ const RadarChart = ({ work, onOpenDetail }) => {
             >
               <div style={{fontSize:"8px",color:col,fontFamily:D.mono,letterSpacing:"1px",marginBottom:"6px",fontWeight:"700"}}>{shortLabel(k)}</div>
               <div style={{fontSize:"24px",fontWeight:"300",color:col,fontFamily:D.serif,lineHeight:1,marginBottom:"2px"}}>{val?.toFixed(1)}</div>
+              <div style={{fontSize:"9px",color:D.textDim,fontFamily:D.sans,lineHeight:1.2,marginBottom:explanation?"4px":"0"}}>{display.label}</div>
               {explanation && <div style={{fontSize:"8px",color:`${col}70`,fontFamily:D.mono,letterSpacing:"0.5px"}}>TAP ↗</div>}
             </div>
           );
@@ -1779,54 +1924,58 @@ const RadarChart = ({ work, onOpenDetail }) => {
 // ─── DOWNLOAD IMAGE BUTTON ────────────────────────────────────────────────────
 const DownloadButton = ({ targetId, filename, label }) => {
   const [saving, setSaving] = useState(false);
+  const [err, setErr] = useState("");
 
-  const handleDownload = () => {
-    setSaving(true);
+  const handleDownload = async () => {
+    setSaving(true); setErr("");
     const el = document.getElementById(targetId);
-    if(!el) { setSaving(false); return; }
+    if (!el) { setSaving(false); return; }
     try {
-      const svgEl = el.querySelector("svg");
-      if(svgEl) {
-        const clone = svgEl.cloneNode(true);
-        clone.setAttribute("xmlns","http://www.w3.org/2000/svg");
-        const bg = document.createElementNS("http://www.w3.org/2000/svg","rect");
-        bg.setAttribute("width","100%");
-        bg.setAttribute("height","100%");
-        bg.setAttribute("fill","#080810");
-        clone.insertBefore(bg, clone.firstChild);
-        const svgData = new XMLSerializer().serializeToString(clone);
-        const blob = new Blob([svgData], {type:"image/svg+xml"});
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.download = `${filename}.svg`;
-        link.href = url;
-        link.click();
-        URL.revokeObjectURL(url);
+      if (!window.html2canvas) {
+        await new Promise((res, rej) => {
+          const s = document.createElement("script");
+          s.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+          s.onload = res; s.onerror = rej;
+          document.head.appendChild(s);
+        });
       }
-    } catch(e) {}
-    setSaving(false);
+      const canvas = await window.html2canvas(el, {
+        backgroundColor:"#0a0a12", scale:2, useCORS:true, allowTaint:true, logging:false
+      });
+      canvas.toBlob(blob => {
+        if (!blob) { setSaving(false); return; }
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.download = `${filename}.png`; a.href = url; a.click();
+        URL.revokeObjectURL(url); setSaving(false);
+      }, "image/png");
+    } catch(e) { setErr("Save failed — try screenshot"); setSaving(false); }
   };
 
   return (
-    <button
-      onClick={handleDownload}
-      style={{padding:"10px 16px",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"8px",color:D.textDim,fontSize:"11px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",transition:"all 0.15s"}}
-      onMouseEnter={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,0.25)";e.currentTarget.style.color=D.text;}}
-      onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,0.1)";e.currentTarget.style.color=D.textDim;}}
-    >
-      {saving ? "Saving..." : `↓ ${label}`}
-    </button>
+    <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"5px"}}>
+      <button onClick={handleDownload} disabled={saving}
+        style={{padding:"10px 18px",background:saving?"rgba(59,130,246,0.15)":"rgba(59,130,246,0.08)",border:"1px solid rgba(59,130,246,0.3)",borderRadius:"8px",color:"#3B82F6",fontSize:"11px",cursor:saving?"default":"pointer",fontFamily:D.mono,letterSpacing:"1px",transition:"all 0.15s"}}
+        onMouseEnter={e=>{if(!saving)e.currentTarget.style.background="rgba(59,130,246,0.16)";}}
+        onMouseLeave={e=>{if(!saving)e.currentTarget.style.background="rgba(59,130,246,0.08)";}}
+      >
+        {saving ? "Saving…" : `↓ ${label}`}
+      </button>
+      {err && <span style={{fontSize:"10px",color:"#ff6b6b",fontFamily:D.mono}}>{err}</span>}
+    </div>
   );
 };
 
 const ShareButton = ({ work }) => {
   const [copied, setCopied] = useState(false);
+  const finalThoughts = getFinalThoughts(work);
+  const primaryHookLine = getPrimaryHookLine(work);
 
-  const shareText = `PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${work.verdict?.line || work.hook}"\n\nPeak Score: ${work.overall.toFixed(1)} · Peak Experience: ${work.experience ? work.experience.toFixed(1) : "—"}\n\nAn AI-powered rating system. Rated on the principles of great storytelling, not popularity.\npeak-ratings.com\n\n#Peak #${work.title.replace(/\s+/g,"")} #${work.type.replace(/\s+/g,"")}`;
+  const shareText = `PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${finalThoughts.line || primaryHookLine}"\n\nPeak Score: ${work.overall.toFixed(1)} · Peak Experience: ${work.experience ? work.experience.toFixed(1) : "—"}\n\nAn AI-powered rating system. Rated on the principles of great storytelling, not popularity.\npeak-ratings.com\n\n#Peak #${work.title.replace(/\s+/g,"")} #${work.type.replace(/\s+/g,"")}`;
 
-  const redditTitle = `PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier · "${work.verdict?.line || work.hook}"`;
+  const redditTitle = `PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier · "${finalThoughts.line || primaryHookLine}"`;
 
-  const redditBody = `PEAK is an AI-powered rating system that rates storytelling craft — not popularity.\n\n**${work.title}**\n\n- Peak Score: ${work.overall.toFixed(1)}/10 (craft-based)\n- Peak Experience: ${work.experience ? work.experience.toFixed(1)+"/10" : "—"} (audience feeling)\n- Tier: ${work.tier}\n\n"${work.verdict?.line || work.hook}"\n\npeak-ratings.com`;
+  const redditBody = `PEAK is an AI-powered rating system that rates storytelling craft — not popularity.\n\n**${work.title}**\n\n- Peak Score: ${work.overall.toFixed(1)}/10 (craft-based)\n- Peak Experience: ${work.experience ? work.experience.toFixed(1)+"/10" : "—"} (audience feeling)\n- Tier: ${work.tier}\n\n"${finalThoughts.line || primaryHookLine}"\n\npeak-ratings.com`;
 
   const handleShareX = () => {
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, "_blank");
@@ -1853,9 +2002,9 @@ const ShareButton = ({ work }) => {
       <div style={{display:"flex",gap:"10px",flexWrap:"wrap"}}>
         <button
           onClick={handleShareX}
-          style={{flex:1,minWidth:"100px",padding:"11px 0",background:D.amberFaint,border:`1px solid ${D.amberDim}`,borderRadius:"8px",color:D.amber,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",transition:"all 0.15s"}}
-          onMouseEnter={e=>e.currentTarget.style.background="rgba(201,168,76,0.18)"}
-          onMouseLeave={e=>e.currentTarget.style.background=D.amberFaint}
+          style={{flex:1,minWidth:"100px",padding:"11px 0",background:D.blueFaint,border:`1px solid ${D.blueDim}`,borderRadius:"8px",color:D.blue,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",transition:"all 0.15s"}}
+          onMouseEnter={e=>e.currentTarget.style.background="rgba(59,130,246,0.18)"}
+          onMouseLeave={e=>e.currentTarget.style.background=D.blueFaint}
         >
           Share on X ↗
         </button>
@@ -1879,7 +2028,7 @@ const ShareButton = ({ work }) => {
 };
 
 // ─── PEAK SAYS DATA ───────────────────────────────────────────────────────────
-const PEAK_SAYS = {
+const PEAK_SAYS_OLD = {
   "vs":           { verdict:"Watch / Read it", line:"If you want a story that actually earns its ending after 20 years — this is it. Not for action. For something that stays with you.", forWho:"Best for: people who want meaning, not just excitement." },
   "berserk":      { verdict:"Read it", line:"The darkest, most ambitious manga ever made. If you can handle heavy content and don't mind it being unfinished — essential.", forWho:"Best for: people who want the deepest story, not the prettiest one." },
   "vagabond":     { verdict:"Read it", line:"The most beautiful manga ever drawn. Slow, philosophical, about a swordsman discovering what strength actually means. Not for everyone — but unforgettable.", forWho:"Best for: people who appreciate art and patience over plot." },
@@ -1906,6 +2055,33 @@ const PEAK_SAYS = {
   "sl":           { verdict:"Watch it as a power fantasy", line:"A weak guy becomes the strongest in the world. That's the whole thing — and it's genuinely satisfying if that's what you want.", forWho:"Best for: people who enjoy power fantasy and don't need deeper meaning." },
   "jjk":          { verdict:"Watch the first arc", line:"Some of the best action animation in shonen history. The Shibuya arc is essential. The ending didn't stick the landing — but what came before was incredible.", forWho:"Best for: people who want top-tier animation and don't mind an imperfect ending." },
 };
+const PEAK_SAYS = {
+  "vs":           { verdict:"Watch / Read it", line:"This moves slowly.\nThat is the point.\nIf you need nonstop action, skip it.\nIf you want something that stays with you, start here.", forWho:"Stay if patience means something to you." },
+  "berserk":      { verdict:"Read it", line:"This is heavy from the start.\nIt does not get lighter.\nIf you want easy, skip it.\nIf you want something intense and human, stay.", forWho:"Best for readers who want darkness with weight." },
+  "vagabond":     { verdict:"Read it", line:"This is quiet on purpose.\nIt takes its time.\nIf you want nonstop plot, skip it.\nIf you want stillness that pulls you in, stay.", forWho:"Best for people who like beauty and patience." },
+  "monster":      { verdict:"Read / Watch it", line:"This is not built for speed.\nIt is built to sink in.\nIf you want quick payoff, skip it.\nIf you want tension that lingers, stay.", forWho:"Best for patient thriller fans." },
+  "reze":         { verdict:"Watch it", line:"This feels light at first.\nThen it hits differently.\nIf you want something huge and sprawling, skip it.\nIf you want stylish emotion, stay.", forWho:"Best for romance, tension, and great animation." },
+  "bb":           { verdict:"Watch it", line:"This does not rush.\nIt just keeps tightening.\nIf you want easy fun, skip it.\nIf you want slow-burn pressure, stay.", forWho:"Best for dark drama and character change." },
+  "aot-manga":    { verdict:"Read it", line:"This keeps changing shape.\nThat is part of the thrill.\nIf you want simple and stable, skip it.\nIf you want a story that keeps opening up, stay.", forWho:"Best for intense stories with big turns." },
+  "slam-dunk":    { verdict:"Read it", line:"This is warmer than it looks.\nAnd sharper than expected.\nIf you want mind games, skip it.\nIf you want heart that sneaks up on you, stay.", forWho:"Best for sports stories with real feeling." },
+  "dn-manga":     { verdict:"Read it", line:"This pulls you in fast.\nThen it gets colder.\nIf you want big emotion, skip it.\nIf you want pure tension, stay.", forWho:"Best for cat-and-mouse thrillers." },
+  "fmab":         { verdict:"Watch it", line:"This does a little of everything.\nAnd it does it cleanly.\nIf you want something extra dark, skip it.\nIf you want balance and payoff, stay.", forWho:"Best for people who want a full story." },
+  "aot-anime":    { verdict:"Watch it", line:"This gets bigger fast.\nThen bigger again.\nIf you want calm and easy, skip it.\nIf you want scale with real tension, stay.", forWho:"Best for hype with real story behind it." },
+  "monster-anime":{ verdict:"Watch it", line:"This is serious from the start.\nAnd very patient.\nIf you want fast fights, skip it.\nIf you want dread that keeps building, stay.", forWho:"Best for slow, smart thrillers." },
+  "vs-anime":     { verdict:"Watch it", line:"This is not about Vikings fighting forever.\nIt turns inward.\nIf you want pure spectacle, skip it.\nIf you want real character growth, stay.", forWho:"Best for mature, emotional storytelling." },
+  "op":           { verdict:"Read / Watch it (selectively)", line:"This takes time.\nA lot of it.\nIf you need tight pacing, skip it.\nIf you want a huge story with big emotional highs, stay.", forWho:"Best for long journeys with payoff." },
+  "csm":          { verdict:"Read it", line:"This is messy on purpose.\nThen weirdly precise.\nIf you want a normal shonen ride, skip it.\nIf you want chaos with something underneath, stay.", forWho:"Best for wild energy and stranger ideas." },
+  "lotm":         { verdict:"Read it", line:"This builds slowly.\nThen it keeps expanding.\nIf you need action right away, skip it.\nIf you want to disappear into a world, stay.", forWho:"Best for long reads and deep world-building." },
+  "20cb":         { verdict:"Read it", line:"This is long.\nBut it keeps pulling.\nIf you want quick payoff, skip it.\nIf you want mystery with heart, stay.", forWho:"Best for conspiracy stories that keep unfolding." },
+  "oshi":         { verdict:"Read / Watch it", line:"This looks shiny.\nIt is not that simple.\nIf you want something light and easy, skip it.\nIf you want drama behind the glow, stay.", forWho:"Best for entertainment-world drama." },
+  "dn-anime":     { verdict:"Watch it (first half)", line:"This moves with style.\nAnd a lot of tension.\nIf you need the strongest ending, skip it.\nIf you want pure momentum early on, stay.", forWho:"Best for slick thrillers and mind games." },
+  "ds-infinity":  { verdict:"Watch it for the animation", line:"This is spectacle first.\nThat much is clear.\nIf you need deeper writing, skip it.\nIf you want to be wowed, stay.", forWho:"Best for people chasing visual hype." },
+  "st":           { verdict:"Watch seasons 1–4", line:"This starts easy to love.\nThen it gets looser.\nIf you want top-tier drama all the way, skip it.\nIf you want spooky comfort with heart, stay.", forWho:"Best for bingeable horror adventure." },
+  "got":          { verdict:"Watch seasons 1–4", line:"The highs are real.\nThe ending is too.\nIf you need a strong finish, skip it.\nIf you want politics, tension, and huge drama, stay.", forWho:"Best for serious drama with stakes." },
+  "ds-anime":     { verdict:"Watch it if you want great fights", line:"This looks amazing.\nThat is the main pull.\nIf you want deeper writing, skip it.\nIf you want clean, exciting action, stay.", forWho:"Best for pure action entertainment." },
+  "sl":           { verdict:"Watch it as a power fantasy", line:"This knows exactly what it is.\nAnd it delivers that well.\nIf you want deep characters, skip it.\nIf you want easy hype, stay.", forWho:"Best for power fantasy done cleanly." },
+  "jjk":          { verdict:"Watch the first arc", line:"The highs hit hard.\nThe finish doesn’t.\nIf you need a perfect ending, skip it.\nIf you want stylish action and dark energy, stay.", forWho:"Best for sharp fights and big moments." },
+};
 
 // ─── PEAK SAYS SECTION ────────────────────────────────────────────────────────
 const PeakSaysSection = ({ work }) => {
@@ -1916,191 +2092,23 @@ const PeakSaysSection = ({ work }) => {
 
   return (
     <div style={{marginBottom:"48px",animation:"fadeIn 0.4s ease"}}>
-      <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"4px",marginBottom:"16px"}}>▲ PEAK SAYS</div>
+      <div style={{fontSize:"10px",color:"rgba(59,130,246,0.5)",fontFamily:D.mono,letterSpacing:"4px",marginBottom:"16px"}}>▲ PEAK SAYS</div>
       <div style={{background:`linear-gradient(135deg,${tierCol}0a 0%,rgba(255,255,255,0.02) 100%)`,border:`1px solid ${tierCol}30`,borderRadius:"16px",padding:"24px 26px"}}>
         <div style={{display:"flex",alignItems:"center",gap:"12px",marginBottom:"16px"}}>
           <div style={{padding:"6px 14px",background:`${tierCol}18`,border:`1px solid ${tierCol}50`,borderRadius:"20px"}}>
             <span style={{fontSize:"12px",fontWeight:"900",color:tierCol,fontFamily:D.mono,letterSpacing:"1px"}}>{data.verdict.toUpperCase()}</span>
           </div>
-          <div style={{fontSize:"24px",fontWeight:"300",color:D.amber,fontFamily:D.serif,lineHeight:1}}>{work.overall.toFixed(1)}</div>
+          <div style={{fontSize:"24px",fontWeight:"300",color:D.blue,fontFamily:D.serif,lineHeight:1}}>{work.overall.toFixed(1)}</div>
           <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.mono}}>{work.tier} TIER</div>
         </div>
-        <p style={{margin:"0 0 14px",fontSize:"16px",color:D.text,lineHeight:1.75,fontFamily:D.serif}}>{data.line}</p>
-        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono,letterSpacing:"0.5px"}}>{data.forWho}</p>
+        <p style={{margin:"0 0 14px",fontSize:"16px",color:D.text,lineHeight:1.75,fontFamily:D.serif,whiteSpace:"pre-line"}}>{data.line}</p>
+        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono,letterSpacing:"0.5px",whiteSpace:"pre-line"}}>{data.forWho}</p>
       </div>
     </div>
   );
 };
 
 // ─── SECTION DIVIDER ─────────────────────────────────────────────────────────
-const clampPeakSaysScore = (value, fallback = 0) => (
-  typeof value === "number" && !Number.isNaN(value) ? value : fallback
-);
-
-const inferPeakSaysPacing = (show) => {
-  if (typeof show?.pacing === "string" && show.pacing.trim()) {
-    return show.pacing.toLowerCase();
-  }
-
-  const text = [
-    show?.hook,
-    show?.overview?.surface,
-    show?.overview?.real,
-    show?.scoreReasons?.Pacing,
-    show?.scoreReasons?.["Emotional Impact"],
-  ].filter(Boolean).join(" ").toLowerCase();
-
-  if (/deliberately slow|slow burn|slow thriller|patient|dread requires space|trusts silence|stillness/.test(text)) {
-    return "slow";
-  }
-  if (/fast|propulsive|moves efficiently|action-packed|kinetic|relentless|high momentum/.test(text)) {
-    return "fast";
-  }
-  return "medium";
-};
-
-const inferPeakSaysGenres = (show) => {
-  const genreText = Array.isArray(show?.genre)
-    ? show.genre.join(" ")
-    : (show?.genre || "");
-  const text = [
-    genreText,
-    show?.title,
-    show?.hook,
-    show?.tagline,
-    show?.overview?.surface,
-    show?.overview?.real,
-    show?.overview?.deep,
-  ].filter(Boolean).join(" ").toLowerCase();
-
-  return {
-    psychological: /psychological|mind game|thriller|dread|conspiracy|mystery/.test(text),
-    action: /action|war|fight|battle|shonen|combat|viking|survival|titan|martial|sports/.test(text),
-    emotional: /emotional|tragedy|tragic|romance|love story|grief|bittersweet|heart|human/.test(text),
-    characterDriven: /character|coming of age|growth|trauma|relationship|human/.test(text),
-  };
-};
-
-const buildPeakSaysLines = (show) => {
-  const scores = show?.scores || {};
-  const writing = clampPeakSaysScore(scores.Writing, clampPeakSaysScore(scores.writing));
-  const themes = clampPeakSaysScore(scores.Themes, clampPeakSaysScore(scores.themes));
-  const emotion = clampPeakSaysScore(scores["Emotional Impact"], clampPeakSaysScore(scores.emotionalImpact));
-  const characterization = clampPeakSaysScore(scores.Characters, clampPeakSaysScore(scores.characterization));
-  const pacingScore = clampPeakSaysScore(scores.Pacing, clampPeakSaysScore(scores.pacing));
-  const pacing = inferPeakSaysPacing(show);
-  const genres = inferPeakSaysGenres(show);
-
-  const deepScore = (writing + themes) / 2;
-  const emotionalScore = (emotion + characterization) / 2;
-  const intensityScore =
-    (genres.action ? 1.4 : 0) +
-    (pacing === "fast" ? 1.2 : pacing === "medium" ? 0.5 : 0) +
-    (pacingScore >= 8.8 ? 0.8 : pacingScore >= 8 ? 0.45 : 0);
-  const psychologicalScore =
-    (genres.psychological ? 1.5 : 0) +
-    (themes >= 9 ? 0.8 : themes >= 8.5 ? 0.4 : 0) +
-    (writing >= 9 ? 0.7 : writing >= 8.5 ? 0.35 : 0) +
-    (pacing === "slow" ? 0.5 : 0);
-
-  let positive = "a well-made story";
-  let opposite = "something forgettable";
-  let audience = "strong overall craft";
-
-  if (genres.psychological && deepScore >= 8.8 && pacing === "slow") {
-    positive = "a smart, slow thriller";
-    opposite = "something fast and explosive";
-    audience = "psychological tension and patient storytelling";
-  } else if (psychologicalScore >= intensityScore && psychologicalScore >= emotionalScore && psychologicalScore >= 1.9) {
-    positive = pacing === "slow" ? "a smart, slow thriller" : "a smart, thinking-heavy thriller";
-    opposite = pacing === "slow" ? "something fast and easy" : "pure action";
-    audience = "psychological tension and big ideas";
-  } else if (genres.emotional && emotionalScore >= 9.1 && deepScore >= 8.8) {
-    positive = "a deep, emotional story";
-    opposite = "something shallow or purely flashy";
-    audience = "character growth, emotion, and strong themes";
-  } else if (deepScore >= 9.2) {
-    positive = emotionalScore >= 9 ? "a deep, emotional story" : "a deep, meaningful story";
-    opposite = pacing === "slow" ? "something fast and action-packed" : "surface-level spectacle";
-    audience = emotionalScore >= 9 ? "character growth and strong themes" : "thoughtful storytelling and strong themes";
-  } else if (emotionalScore >= 9.1) {
-    positive = "an emotional, character-driven story";
-    opposite = intensityScore >= 1.8 ? "mindless spectacle" : "something cold or plot-only";
-    audience = "character growth and emotional payoff";
-  } else if (genres.action && intensityScore >= 2.1 && deepScore < 8.7) {
-    positive = "fast, intense spectacle";
-    opposite = "a deep, thoughtful drama";
-    audience = "action, momentum, and clean payoff";
-  } else if (intensityScore >= 2) {
-    positive = "something fast, intense, and action-packed";
-    opposite = deepScore >= 8.8 ? "a slow, thoughtful drama" : "something quiet and reflective";
-    audience = deepScore >= 8.8 ? "big set pieces with enough story underneath" : "momentum and high-stakes action";
-  } else if (deepScore >= 8.6) {
-    positive = "a thoughtful, character-first story";
-    opposite = "constant spectacle";
-    audience = "slow growth and meaningful themes";
-  }
-
-  return [
-    `If you want ${positive} - watch this.`,
-    `If you want ${opposite}, this isn't it.`,
-    `Best for you if you like ${audience}.`,
-  ];
-};
-
-const PeakSays = ({ show }) => {
-  if (!show) return null;
-
-  const tierCol = TIER_C[show.tier] || show.color || D.amber;
-  const lines = buildPeakSaysLines(show);
-
-  return (
-    <section style={{marginBottom:"48px",animation:"fadeIn 0.4s ease"}}>
-      <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"4px",marginBottom:"14px"}}>PEAK SAYS</div>
-      <div style={{
-        background:"linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%)",
-        border:`1px solid ${tierCol}26`,
-        borderRadius:"18px",
-        padding:"22px 22px 20px",
-        boxShadow:"0 18px 50px rgba(0,0,0,0.22)",
-        backdropFilter:"blur(10px)",
-      }}>
-        <div style={{
-          display:"inline-flex",
-          alignItems:"center",
-          gap:"10px",
-          marginBottom:"18px",
-          padding:"6px 12px",
-          borderRadius:"999px",
-          border:`1px solid ${tierCol}35`,
-          background:`${tierCol}10`,
-        }}>
-          <span style={{width:"6px",height:"6px",borderRadius:"999px",background:tierCol}} />
-          <span style={{fontSize:"10px",color:tierCol,fontFamily:D.mono,letterSpacing:"2px"}}>{show.tier} TIER VERDICT</span>
-        </div>
-        <div style={{display:"grid",gap:"12px"}}>
-          {lines.map((line, index) => (
-            <p
-              key={index}
-              style={{
-                margin:0,
-                paddingBottom:index < lines.length - 1 ? "12px" : 0,
-                borderBottom:index < lines.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
-                fontSize:"clamp(14px,2.2vw,17px)",
-                lineHeight:1.7,
-                color:index === 0 ? D.text : D.textMid,
-                fontFamily:D.serif,
-              }}
-            >
-              {line}
-            </p>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const SectionDivider = ({ label, color }) => (
   <div style={{display:"flex",alignItems:"center",gap:"14px",margin:"52px 0 28px",opacity:0.7}}>
     <div style={{flex:1,height:"1px",background:"rgba(255,255,255,0.06)"}}/>
@@ -2215,7 +2223,7 @@ const DetailView=({work,onBack,onSelect})=>{
   if (scoreDetail) {
     return (
       <ScoreDetailPage
-        label={scoreDetail.label}
+        categoryKey={scoreDetail.categoryKey}
         val={scoreDetail.val}
         explanation={scoreDetail.explanation}
         color={work.color}
@@ -2231,7 +2239,7 @@ const DetailView=({work,onBack,onSelect})=>{
       <div style={{position:"relative",height:"340px",overflow:"hidden"}}>
         <div style={{position:"absolute",inset:0,background:D.bg}}/>
         <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 25%,#080810 100%)"}}/>
-        <button onClick={onBack} style={{position:"absolute",top:"20px",left:"20px",zIndex:10,background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"10px",padding:"8px 16px",color:D.textMid,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",backdropFilter:"blur(8px)"}}>← BACK</button>
+        <button onClick={onBack} style={{position:"absolute",top:"20px",left:"20px",zIndex:10,background:"rgba(59,130,246,0.08)",border:"1px solid rgba(59,130,246,0.3)",borderRadius:"10px",padding:"8px 16px",color:D.blue,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",backdropFilter:"blur(8px)"}}>← BACK</button>
         <div style={{position:"absolute",bottom:"36px",left:"0",right:"0",padding:"0 24px",animation:"heroIn 0.6s ease"}}>
           <div style={{display:"flex",gap:"8px",marginBottom:"12px",alignItems:"center",flexWrap:"wrap"}}>
             <span style={{fontSize:"10px",color:tierCol,fontFamily:D.mono,fontWeight:"900",border:`1px solid ${tierCol}`,borderRadius:"5px",padding:"2px 8px",letterSpacing:"2px"}}>TIER {work.tier}</span>
@@ -2239,10 +2247,10 @@ const DetailView=({work,onBack,onSelect})=>{
             <span style={{fontSize:"10px",fontFamily:D.mono,color:D.textFaint}}>· {work.status}</span>
           </div>
           <h1 style={{margin:"0 0 8px",fontSize:"clamp(28px,6vw,54px)",fontWeight:"900",letterSpacing:"-1px",lineHeight:1.0,color:D.text}}>{work.title}</h1>
-          <p style={{margin:"0 0 18px",fontSize:"14px",color:D.textDim,fontStyle:"italic"}}>"{work.hook}"</p>
+          <p style={{margin:"0 0 18px",fontSize:"14px",color:D.textDim,fontStyle:"italic",whiteSpace:"pre-line"}}>"{work.hook}"</p>
           <div style={{display:"flex",alignItems:"center",gap:"20px",flexWrap:"wrap"}}>
             <div style={{display:"flex",flexDirection:"column",gap:"2px"}}>
-              <span style={{fontSize:"9px",color:`${D.amber}80`,fontFamily:D.mono,letterSpacing:"3px"}}>PEAK SCORE</span>
+              <span style={{fontSize:"9px",color:"rgba(59,130,246,0.7)",fontFamily:D.mono,letterSpacing:"3px"}}>PEAK SCORE</span>
               <div style={{display:"flex",alignItems:"baseline",gap:"6px"}}>
                 <span style={{fontSize:"50px",fontWeight:"300",color:D.amber,fontFamily:D.serif,lineHeight:1}}>{work.overall.toFixed(1)}</span>
                 <span style={{fontSize:"13px",color:D.textFaint,fontFamily:D.sans}}>/10</span>
@@ -2252,9 +2260,9 @@ const DetailView=({work,onBack,onSelect})=>{
               <>
                 <div style={{width:"1px",height:"44px",background:"rgba(255,255,255,0.1)"}}/>
                 <div style={{display:"flex",flexDirection:"column",gap:"2px"}}>
-                  <span style={{fontSize:"9px",color:"rgba(255,255,255,0.35)",fontFamily:D.mono,letterSpacing:"3px"}}>PEAK EXPERIENCE</span>
+                  <span style={{fontSize:"9px",color:"rgba(139,92,246,0.7)",fontFamily:D.mono,letterSpacing:"3px"}}>PEAK EXPERIENCE</span>
                   <div style={{display:"flex",alignItems:"baseline",gap:"6px"}}>
-                    <span style={{fontSize:"50px",fontWeight:"300",color:D.text,fontFamily:D.serif,lineHeight:1}}>{work.experience.toFixed(1)}</span>
+                    <span style={{fontSize:"50px",fontWeight:"300",color:D.purple,fontFamily:D.serif,lineHeight:1}}>{work.experience.toFixed(1)}</span>
                     <span style={{fontSize:"13px",color:D.textFaint,fontFamily:D.sans}}>/10</span>
                   </div>
                 </div>
@@ -2269,10 +2277,10 @@ const DetailView=({work,onBack,onSelect})=>{
             )}
             <button
               onClick={()=>{
-                const txt=`PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${work.verdict?.line||work.hook}"\n\npeak-ratings.com #Peak #${work.title.replace(/\s+/g,"")}`;
+                const txt=`PEAK rates ${work.title} — ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${getFinalThoughts(work).line||getPrimaryHookLine(work)}"\n\npeak-ratings.com #Peak #${work.title.replace(/\s+/g,"")}`;
                 window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(txt)}`,"_blank");
               }}
-              style={{padding:"8px 14px",background:D.amberFaint,border:`1px solid ${D.amberDim}`,borderRadius:"8px",color:D.amber,fontSize:"11px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",whiteSpace:"nowrap"}}
+              style={{padding:"8px 14px",background:D.blueFaint,border:`1px solid ${D.blueDim}`,borderRadius:"8px",color:D.amber,fontSize:"11px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",whiteSpace:"nowrap"}}
             >Share ↗</button>
           </div>
         </div>
@@ -2282,31 +2290,31 @@ const DetailView=({work,onBack,onSelect})=>{
       <div style={{maxWidth:"900px",margin:"0 auto",padding:"40px 20px 120px"}}>
 
         {/* 1. PEAK SAYS */}
-        <PeakSays show={work}/>
+        <PeakSaysSection work={work}/>
 
         {/* 2. OVERVIEW */}
         <SectionDivider label="OVERVIEW" color={work.color}/>
         <div style={{marginBottom:"28px"}}>
           <div style={{fontSize:"10px",color:`${work.color}80`,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"8px"}}>SURFACE READING</div>
-          <p style={{margin:0,fontSize:"15px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif}}>{work.overview.surface}</p>
+          <p style={{margin:0,fontSize:"15px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"pre-line"}}>{work.overview.surface}</p>
         </div>
         <NarrativeViz work={work}/>
         <div style={{borderLeft:`3px solid ${work.color}`,paddingLeft:"20px",marginBottom:"28px"}}>
           <div style={{fontSize:"10px",color:work.color,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"10px"}}>ACTUAL READING</div>
-          <p style={{margin:0,fontSize:"18px",color:D.text,lineHeight:1.7,fontFamily:D.serif,fontWeight:"600"}}>{work.overview.real}</p>
+          <p style={{margin:0,fontSize:"18px",color:D.text,lineHeight:1.7,fontFamily:D.serif,fontWeight:"600",whiteSpace:"pre-line"}}>{work.overview.real}</p>
         </div>
         <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",overflow:"hidden",marginBottom:"20px"}}>
           <div style={{padding:"20px 22px"}}>
             <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"12px"}}>
               <span style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans,letterSpacing:"3px"}}>🧠 DEEP ANALYSIS</span>
-              <span style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,border:"1px solid rgba(255,107,107,0.4)",borderRadius:"4px",padding:"1px 6px",letterSpacing:"1px"}}>⚠ SPOILERS</span>
+              <span style={{fontSize:"9px",color:D.blue,fontFamily:D.mono,border:"1px solid rgba(255,107,107,0.4)",borderRadius:"4px",padding:"1px 6px",letterSpacing:"1px"}}>⚠ SPOILERS</span>
             </div>
             {!spoilerOk ? (
               <div style={{padding:"20px",background:"rgba(255,107,107,0.05)",border:"1px solid rgba(255,107,107,0.15)",borderRadius:"12px",textAlign:"center"}}>
                 <div style={{fontSize:"24px",marginBottom:"10px"}}>⚠️</div>
                 <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif,marginBottom:"6px"}}>This section contains major plot spoilers.</div>
                 <div style={{fontSize:"11px",color:D.textDim,fontFamily:D.mono,marginBottom:"16px"}}>Character deaths, twists, ending details revealed.</div>
-                <button onClick={()=>setSpoilerOk(true)} style={{background:"rgba(255,107,107,0.12)",border:"1px solid rgba(255,107,107,0.4)",borderRadius:"8px",padding:"9px 20px",color:D.amber,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
+                <button onClick={()=>setSpoilerOk(true)} style={{background:"rgba(139,92,246,0.12)",border:"1px solid rgba(139,92,246,0.4)",borderRadius:"8px",padding:"9px 20px",color:"#8B5CF6",fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
                   I've seen / read it — show analysis
                 </button>
               </div>
@@ -2314,7 +2322,7 @@ const DetailView=({work,onBack,onSelect})=>{
               <>
                 <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,maxHeight:deep?"none":"90px",overflow:"hidden",maskImage:deep?"none":"linear-gradient(180deg,black 45%,transparent 100%)",WebkitMaskImage:deep?"none":"linear-gradient(180deg,black 45%,transparent 100%)"}}>{work.overview.deep}</p>
                 <div style={{marginTop:"14px"}}>
-                  <button onClick={()=>setDeep(d=>!d)} style={{background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"2px",padding:"8px 16px",color:D.textDim,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
+                  <button onClick={()=>setDeep(d=>!d)} style={{background:"rgba(59,130,246,0.06)",border:"1px solid rgba(59,130,246,0.2)",borderRadius:"6px",padding:"8px 16px",color:"#3B82F6",fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
                     {deep?"Collapse ↑":"Read Full Analysis ↓"}
                   </button>
                 </div>
@@ -2338,19 +2346,19 @@ const DetailView=({work,onBack,onSelect})=>{
         {/* 4. SCORES */}
         <SectionDivider label="CRAFT SCORES" color={work.color}/>
         <p style={{margin:"0 0 22px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap any category to see why it got that score.</p>
-        <RadarChart work={work} onOpenDetail={(label,val,explanation)=>setScoreDetail({label,val,explanation})}/>
+        <RadarChart work={work} onOpenDetail={(categoryKey,val,explanation)=>setScoreDetail({categoryKey,val,explanation})}/>
         <div style={{display:"flex",justifyContent:"flex-end",marginBottom:"16px"}}>
           <DownloadButton targetId="radar-chart-container" filename={`peak-${work.title.replace(/\s+/g,"-").toLowerCase()}-scores`} label="Save Chart"/>
         </div>
         {work.part1Score&&(
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px",marginTop:"8px"}}>
             <div style={{padding:"18px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px",textAlign:"center"}}>
-              <div style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"5px"}}>PART 1</div>
-              <div style={{fontSize:"42px",fontWeight:"900",color:D.amber,fontFamily:D.mono,lineHeight:1}}>{work.part1Score}</div>
+              <div style={{fontSize:"9px",color:D.blue,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"5px"}}>PART 1</div>
+              <div style={{fontSize:"42px",fontWeight:"900",color:D.blue,fontFamily:D.mono,lineHeight:1}}>{work.part1Score}</div>
             </div>
             <div style={{padding:"18px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px",textAlign:"center"}}>
-              <div style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"5px"}}>PART 2</div>
-              <div style={{fontSize:"42px",fontWeight:"900",color:D.amber,fontFamily:D.mono,lineHeight:1}}>{work.part2Score}</div>
+              <div style={{fontSize:"9px",color:D.blue,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"5px"}}>PART 2</div>
+              <div style={{fontSize:"42px",fontWeight:"900",color:D.blue,fontFamily:D.mono,lineHeight:1}}>{work.part2Score}</div>
             </div>
           </div>
         )}
@@ -2372,10 +2380,10 @@ const DetailView=({work,onBack,onSelect})=>{
         <div style={{marginTop:"28px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",overflow:"hidden"}}>
           <div style={{padding:"22px 24px"}}>
             <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"14px"}}>FULL VERDICT</div>
-            <p style={{margin:0,fontSize:"15px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,maxHeight:vExp?"none":"100px",overflow:"hidden",maskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)",WebkitMaskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)"}}>{work.verdict.full}</p>
+            <p style={{margin:0,fontSize:"15px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,whiteSpace:"pre-line",maxHeight:vExp?"none":"100px",overflow:"hidden",maskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)",WebkitMaskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)"}}>{formatFinalThoughtsFull(getFinalThoughts(work).full)}</p>
           </div>
           <div style={{padding:"0 24px 20px"}}>
-            <button onClick={()=>setVExp(v=>!v)} style={{background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"2px",padding:"8px 16px",color:D.textDim,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
+            <button onClick={()=>setVExp(v=>!v)} style={{background:"rgba(59,130,246,0.06)",border:"1px solid rgba(59,130,246,0.2)",borderRadius:"6px",padding:"8px 16px",color:"#3B82F6",fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
               {vExp?"Collapse ↑":"Read Full Verdict ↓"}
             </button>
           </div>
@@ -2449,7 +2457,7 @@ const SearchRow = ({ item, onSelect }) => {
           {mediaType}{year ? ` · ${year}` : ""}{tmdbScore ? ` · ⭐ ${tmdbScore}` : ""}
         </div>
         {peakMatch && (
-          <div style={{fontSize:"11px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{peakMatch.hook}"</div>
+          <div style={{fontSize:"11px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{getPreviewSnippet(peakMatch)}"</div>
         )}
       </div>
 
@@ -2505,7 +2513,7 @@ const UnratedView = ({ item, onBack }) => {
           : <div style={{width:"100%",height:"100%",background:"linear-gradient(135deg,#0d0d20,#080810)"}}/>
         }
         <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 20%,#080810 100%)"}}/>
-        <button onClick={onBack} style={{position:"absolute",top:"20px",left:"20px",zIndex:10,background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"10px",padding:"8px 16px",color:D.textMid,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",backdropFilter:"blur(8px)"}}>← BACK</button>
+        <button onClick={onBack} style={{position:"absolute",top:"20px",left:"20px",zIndex:10,background:"rgba(59,130,246,0.08)",border:"1px solid rgba(59,130,246,0.3)",borderRadius:"10px",padding:"8px 16px",color:D.blue,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",backdropFilter:"blur(8px)"}}>← BACK</button>
         <div style={{position:"absolute",bottom:"28px",left:"0",right:"0",padding:"0 22px",display:"flex",gap:"18px",alignItems:"flex-end"}}>
           {poster && <img src={poster} alt={title} style={{width:"80px",height:"120px",borderRadius:"10px",objectFit:"cover",flexShrink:0}}/>}
           <div style={{flex:1,animation:"heroIn 0.5s ease"}}>
@@ -2535,9 +2543,9 @@ const UnratedView = ({ item, onBack }) => {
       <div style={{maxWidth:"800px",margin:"0 auto",padding:"24px 20px 100px"}}>
         {!rating && !loading && (
           <div style={{padding:"20px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:"14px",marginBottom:"24px",textAlign:"center"}}>
-            <div style={{fontSize:"9px",color:D.amber,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"10px"}}>NOT YET IN PEAK DATABASE</div>
+            <div style={{fontSize:"9px",color:D.blue,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"10px"}}>NOT YET IN PEAK DATABASE</div>
             <p style={{margin:"0 0 16px",fontSize:"14px",color:D.textMid,lineHeight:1.7,fontFamily:D.serif}}>Generate an AI-powered Peak rating for <strong style={{color:D.text}}>{title}</strong> using our craft-based framework.</p>
-            <button onClick={handleGenerate} style={{background:D.amberFaint,border:`1px solid ${D.amberDim}`,borderRadius:"10px",padding:"12px 28px",color:D.amber,fontSize:"13px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
+            <button onClick={handleGenerate} style={{background:D.blueFaint,border:`1px solid ${D.blueDim}`,borderRadius:"10px",padding:"12px 28px",color:D.amber,fontSize:"13px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
               Generate Peak Rating ↗
             </button>
           </div>
@@ -2569,7 +2577,7 @@ const UnratedView = ({ item, onBack }) => {
 
             {/* Tier badge */}
             <div style={{marginBottom:"24px",display:"flex",gap:"12px",alignItems:"center"}}>
-              <span style={{fontSize:"11px",color:D.amber,fontFamily:D.mono,border:`1px solid ${D.amber}`,borderRadius:"5px",padding:"3px 10px",letterSpacing:"2px"}}>TIER {rating.tier}</span>
+              <span style={{fontSize:"11px",color:D.blue,fontFamily:D.mono,border:`1px solid ${D.amber}`,borderRadius:"5px",padding:"3px 10px",letterSpacing:"2px"}}>TIER {rating.tier}</span>
               <span style={{fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>{rating.status} · {rating.year}</span>
             </div>
 
@@ -2583,7 +2591,7 @@ const UnratedView = ({ item, onBack }) => {
                     <span style={{fontSize:"14px",color:sc2(v),fontFamily:D.mono,fontWeight:"900"}}>{v.toFixed(1)}</span>
                   </div>
                   <div style={{height:"4px",background:"rgba(255,255,255,0.06)",borderRadius:"2px",overflow:"hidden"}}>
-                    <div style={{width:`${(v/10)*100}%`,height:"100%",background:D.amber,borderRadius:"2px",transition:"width 1s ease"}}/>
+                    <div style={{width:`${(v/10)*100}%`,height:"100%",background:"linear-gradient(90deg,#3B82F6,#8B5CF6)",borderRadius:"2px",transition:"width 1s ease"}}/>
                   </div>
                   {rating.scoreReasons&&rating.scoreReasons[k]&&(
                     <p style={{margin:"6px 0 0",fontSize:"11px",color:D.textDim,fontFamily:D.serif,lineHeight:1.6}}>{rating.scoreReasons[k]}</p>
@@ -2594,8 +2602,8 @@ const UnratedView = ({ item, onBack }) => {
 
             {/* Verdict */}
             <div style={{padding:"20px 22px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px",marginBottom:"16px"}}>
-              <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"12px"}}>VERDICT</div>
-              <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif}}>{rating.verdict}</p>
+              <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"12px"}}>FINAL THOUGHTS</div>
+              <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,whiteSpace:"pre-line"}}>{formatFinalThoughtsFull(getFinalThoughts(rating).full||getFinalThoughts(rating).line)}</p>
             </div>
 
             {/* Compared to */}
@@ -2679,11 +2687,11 @@ const HomeView = ({ onSelect }) => {
       <div style={{position:"sticky",top:0,zIndex:100,background:"rgba(10,10,18,0.97)",backdropFilter:"blur(24px)",borderBottom:"1px solid rgba(255,255,255,0.05)"}}>
         <div style={{maxWidth:"960px",margin:"0 auto",padding:"0 18px"}}>
           <div style={{display:"flex",alignItems:"center",height:"50px",gap:"16px"}}>
-            <div style={{fontSize:"14px",fontWeight:"900",fontFamily:D.mono,letterSpacing:"3px",color:D.amber,flexShrink:0}}>PEAK<span style={{color:D.textFaint}}>.</span></div>
+            <div style={{fontSize:"14px",fontWeight:"900",fontFamily:D.mono,letterSpacing:"3px",background:"linear-gradient(90deg,#3B82F6,#8B5CF6)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",flexShrink:0}}>PEAK<span style={{color:D.textFaint}}>.</span></div>
             {!searchMode && (
               <div style={{display:"flex",gap:"4px",overflowX:"auto",scrollbarWidth:"none",flex:1}}>
                 {types.map(t=>(
-                  <button key={t} onClick={()=>setTypeF(t)} style={{padding:"3px 12px",borderRadius:"2px",border:typeF===t?`1px solid ${D.amber}`:"1px solid rgba(255,255,255,0.07)",background:typeF===t?D.amberFaint:"transparent",color:typeF===t?D.amber:D.textFaint,fontSize:"10px",fontWeight:"400",cursor:"pointer",whiteSpace:"nowrap",fontFamily:D.sans,transition:"all 0.16s"}}>{t}</button>
+                  <button key={t} onClick={()=>setTypeF(t)} style={{padding:"3px 12px",borderRadius:"2px",border:typeF===t?`1px solid #3B82F6`:"1px solid rgba(255,255,255,0.07)",background:typeF===t?`rgba(59,130,246,0.12)`:"transparent",color:typeF===t?`#3B82F6`:D.textFaint,fontSize:"10px",fontWeight:"400",cursor:"pointer",whiteSpace:"nowrap",fontFamily:D.sans,transition:"all 0.16s"}}>{t}</button>
                 ))}
               </div>
             )}
@@ -2710,8 +2718,8 @@ const HomeView = ({ onSelect }) => {
       {/* Hero */}
       {!searchMode && (
         <div style={{maxWidth:"960px",margin:"0 auto",padding:"48px 18px 28px",animation:"heroIn 0.6s ease"}}>
-          <div style={{fontSize:"9px",letterSpacing:"5px",color:D.amberDim,fontFamily:D.mono,marginBottom:"10px"}}>AN AI-POWERED RATING SYSTEM</div>
-          <h1 style={{margin:"0 0 8px",fontSize:"clamp(24px,4.5vw,40px)",fontWeight:"900",letterSpacing:"-1px",color:D.text}}>Rated on the principles of<br/><span style={{color:D.amber}}>great storytelling.</span> <span style={{color:D.textDim}}>Not popularity.</span></h1>
+          <div style={{fontSize:"9px",letterSpacing:"5px",color:"#3B82F6",fontFamily:D.mono,marginBottom:"10px",opacity:0.7}}>AN AI-POWERED RATING SYSTEM</div>
+          <h1 style={{margin:"0 0 8px",fontSize:"clamp(24px,4.5vw,40px)",fontWeight:"900",letterSpacing:"-1px",color:D.text}}>Rated on the principles of<br/><span style={{background:"linear-gradient(90deg,#3B82F6,#8B5CF6)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>great storytelling.</span> <span style={{color:D.textDim}}>Not popularity.</span></h1>
           <p style={{margin:0,fontSize:"13px",color:D.textDim,fontFamily:D.mono}}>{WORKS.length} works rated · Peak Score · Peak Experience · Arc breakdowns</p>
         </div>
       )}
@@ -2769,7 +2777,7 @@ const HomeView = ({ onSelect }) => {
                           <div style={{fontSize:"15px",fontWeight:"800",color:D.text,fontFamily:D.serif,marginBottom:"2px"}}>{w.title}</div>
                           <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans}}>{w.type} · {w.status}</div>
                         </div>
-                        <div style={{fontSize:"26px",fontWeight:"900",color:sc(w.overall),fontFamily:D.mono}}>{w.overall.toFixed(1)}</div>
+                        <div style={{fontSize:"26px",fontWeight:"900",color:D.blue,fontFamily:D.mono}}>{w.overall.toFixed(1)}</div>
                         <div style={{color:D.textFaint,fontSize:"16px"}}>›</div>
                       </div>
                     ))}
@@ -2826,10 +2834,10 @@ const HomeView = ({ onSelect }) => {
                           <span style={{fontSize:"9px",color:D.textFaint,fontFamily:D.mono,border:"1px solid rgba(255,255,255,0.08)",borderRadius:"4px",padding:"1px 6px"}}>{w.type}</span>
                           <span style={{fontSize:"9px",fontFamily:D.mono,color:D.textDim}}>{w.status}</span>
                         </div>
-                        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{w.hook}"</p>
+                        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{getPreviewSnippet(w)}"</p>
                       </div>
                       <div style={{textAlign:"right",flexShrink:0}}>
-                        <div style={{fontSize:"24px",fontWeight:"300",color:D.amber,fontFamily:D.serif,lineHeight:1}}>{w.overall.toFixed(1)}</div>
+                        <div style={{fontSize:"24px",fontWeight:"300",color:D.blue,fontFamily:D.serif,lineHeight:1}}>{w.overall.toFixed(1)}</div>
                         <div style={{fontSize:"9px",color:D.textFaint,fontFamily:D.mono}}>/10</div>
                       </div>
                       <div style={{color:D.textFaint,fontSize:"16px"}}>›</div>
@@ -2851,12 +2859,12 @@ const HomeView = ({ onSelect }) => {
       {/* Fixed search bar */}
       <div style={{position:"fixed",bottom:0,left:0,right:0,zIndex:200,background:"linear-gradient(to top,rgba(10,10,18,1) 65%,transparent 100%)",padding:"16px 18px 26px"}}>
         <div style={{maxWidth:"640px",margin:"0 auto",position:"relative"}}>
-          <div style={{position:"absolute",left:"16px",top:"50%",transform:"translateY(-50%)",color:query?D.amber:D.textFaint,fontSize:"14px",pointerEvents:"none",transition:"color 0.2s"}}>◎</div>
+          <div style={{position:"absolute",left:"16px",top:"50%",transform:"translateY(-50%)",color:query?D.blue:D.textFaint,fontSize:"14px",pointerEvents:"none",transition:"color 0.2s"}}>◎</div>
           <input
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Search any title..."
-            style={{width:"100%",padding:"13px 44px 13px 42px",background:"rgba(10,10,18,0.98)",border:query?"1px solid rgba(255,107,107,0.32)":"1px solid rgba(255,255,255,0.07)",borderRadius:"3px",color:D.text,fontSize:"14px",fontFamily:D.sans,backdropFilter:"blur(16px)",boxShadow:"none",transition:"all 0.2s"}}
+            style={{width:"100%",padding:"13px 44px 13px 42px",background:"rgba(10,10,18,0.98)",border:query?"1px solid rgba(59,130,246,0.45)":"1px solid rgba(255,255,255,0.07)",borderRadius:"3px",color:D.text,fontSize:"14px",fontFamily:D.sans,backdropFilter:"blur(16px)",boxShadow:"none",transition:"all 0.2s"}}
           />
           {query && <button onClick={()=>setQuery("")} style={{position:"absolute",right:"12px",top:"50%",transform:"translateY(-50%)",background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"50%",width:"22px",height:"22px",color:D.textDim,cursor:"pointer",fontSize:"10px",display:"flex",alignItems:"center",justifyContent:"center"}}>✕</button>}
         </div>
@@ -2872,8 +2880,17 @@ const HomeView = ({ onSelect }) => {
 export default function App() {
   const [selected, setSelected] = useState(null);
 
-  const handleSelect = (work) => setSelected(work);
+  const handleSelect = (work) => {
+    setSelected(work);
+    window.history.pushState({ peak: true }, "");
+  };
   const handleBack = () => setSelected(null);
+
+  useEffect(() => {
+    const onPop = () => setSelected(null);
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
 
   return (
     <>
@@ -2883,11 +2900,13 @@ export default function App() {
         @keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
         @keyframes expandIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
         @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+        @keyframes glowPulse{0%,100%{opacity:0.3}50%{opacity:0.6}}
         *{box-sizing:border-box}
         ::-webkit-scrollbar{width:3px;height:3px}
-        ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.07);border-radius:2px}
+        ::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.25);border-radius:2px}
         input,button{outline:none}
-        body{margin:0}
+        body{margin:0;background:#0a0a12}
+        body::before{content:"";position:fixed;top:-300px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(59,130,246,0.07) 0%,rgba(139,92,246,0.04) 50%,transparent 70%);pointer-events:none;z-index:0;animation:glowPulse 6s ease-in-out infinite;}
       `}</style>
       {selected
         ? selected.__unrated
@@ -2898,3 +2917,4 @@ export default function App() {
     </>
   );
 }
+
