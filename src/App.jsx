@@ -1103,6 +1103,41 @@ const getPrimaryHookLine = (item) => {
   const finalThoughts = getFinalThoughts(item);
   return item?.hook || finalThoughts.line || "";
 };
+const getPreviewSnippet = (item) => {
+  const safeText = getPrimaryHookLine(item) || item?.hook || getFinalThoughts(item).line || "";
+  return safeText.split("\n").map(part => part.trim()).filter(Boolean)[0] || "";
+};
+const chunkWords = (text, minWords = 4, maxWords = 8) => {
+  const words = (text || "").trim().split(/\s+/).filter(Boolean);
+  if (!words.length) return [];
+  const lines = [];
+  let i = 0;
+  while (i < words.length) {
+    const remaining = words.length - i;
+    let take = remaining <= maxWords ? remaining : maxWords;
+    if (remaining > maxWords && remaining - take < minWords) {
+      take = Math.max(minWords, remaining - minWords);
+    }
+    lines.push(words.slice(i, i + take).join(" "));
+    i += take;
+  }
+  return lines;
+};
+const formatFinalThoughtsFull = (text) => {
+  if (!text) return "";
+  const normalized = text.replace(/\s+/g, " ").trim();
+  const sentences = normalized.split(/(?<=[.!?])\s+/).filter(Boolean);
+  return sentences.map(sentence => chunkWords(sentence.replace(/\s+/g, " ").trim(), 4, 7).join("\n")).join("\n\n");
+};
+const formatArcAnalysisIntro = (text) => {
+  if (!text) return "";
+  const normalized = text.replace(/\s+/g, " ").trim();
+  const words = normalized.split(" ");
+  if (words.length <= 14) return normalized;
+  const intro = chunkWords(words.slice(0, 10).join(" "), 4, 6).join("\n");
+  const rest = words.slice(10).join(" ");
+  return `${intro}\n\n${rest}`;
+};
 const getVisualContentType = (content) => {
   const type = (content?.type || "").toLowerCase();
   const text = [
@@ -1294,7 +1329,7 @@ const ArcCard = ({ arc, color, index }) => {
             <div style={{ display:"flex", gap:"5px", flexWrap:"wrap", marginBottom:"8px" }}>
               {arc.tags.map(t => <span key={t} style={{ fontSize:"9px", color:D.textDim, fontFamily:D.mono, border:"1px solid rgba(255,255,255,0.08)", borderRadius:"4px", padding:"1px 6px" }}>{t}</span>)}
             </div>
-            <p style={{ margin:0, fontSize:"12px", color:D.textDim, fontFamily:D.serif, fontStyle:"italic" }}>"{arc.hook}"</p>
+            <p style={{ margin:0, fontSize:"12px", color:D.textDim, fontFamily:D.serif, fontStyle:"italic", whiteSpace:"pre-line" }}>"{arc.hook}"</p>
           </div>
           <div style={{ flexShrink:0, textAlign:"right" }}>
             <div style={{ fontSize:"22px", fontWeight:"900", color:col, fontFamily:D.mono, lineHeight:1 }}>{arc.rating.toFixed(1)}</div>
@@ -1328,7 +1363,7 @@ const ArcCard = ({ arc, color, index }) => {
             </div>
             {open && (
               <div style={{ padding:"0 16px 16px", animation:"expandIn 0.3s ease" }}>
-                <p style={{ margin:0, fontSize:"13px", color:D.textMid, lineHeight:1.85, fontFamily:D.serif }}>{arc.analysis}</p>
+                <p style={{ margin:0, fontSize:"13px", color:D.textMid, lineHeight:1.85, fontFamily:D.serif, whiteSpace:"pre-line" }}>{formatArcAnalysisIntro(arc.analysis)}</p>
               </div>
             )}
           </div>
@@ -2021,31 +2056,31 @@ const PEAK_SAYS_OLD = {
   "jjk":          { verdict:"Watch the first arc", line:"Some of the best action animation in shonen history. The Shibuya arc is essential. The ending didn't stick the landing — but what came before was incredible.", forWho:"Best for: people who want top-tier animation and don't mind an imperfect ending." },
 };
 const PEAK_SAYS = {
-  "vs":           { verdict:"Watch / Read it", line:"If you want something deep and emotional, watch or read this. If you want fast action all the way through, this isn't it.", forWho:"Best for you if you like slow, meaningful stories." },
-  "berserk":      { verdict:"Read it", line:"If you want something dark, deep, and intense, read this. If you want something light or easy, this isn't it.", forWho:"Best for you if you like brutal stories with big ideas." },
-  "vagabond":     { verdict:"Read it", line:"If you want something quiet, deep, and beautiful, read this. If you want a fast plot with nonstop fights, this isn't it.", forWho:"Best for you if you like slow stories and great art." },
-  "monster":      { verdict:"Read / Watch it", line:"If you want a smart, slow thriller, watch or read this. If you want quick action and easy answers, this isn't it.", forWho:"Best for you if you like thinking more than hype." },
-  "reze":         { verdict:"Watch it", line:"If you want something emotional, stylish, and easy to get into, watch this. If you want a huge deep story, this isn't it.", forWho:"Best for you if you like romance with great animation." },
-  "bb":           { verdict:"Watch it", line:"If you want a tense, smart character story, watch this. If you want something fast, fun, and easy, this isn't it.", forWho:"Best for you if you like dark drama and slow change." },
-  "aot-manga":    { verdict:"Read it", line:"If you want big twists and a darker, smarter version of the story, read this. If you want something simple and easy, this isn't it.", forWho:"Best for you if you like intense stories that keep changing." },
-  "slam-dunk":    { verdict:"Read it", line:"If you want something fun, emotional, and easy to love, read this. If you want dark themes or mind games, this isn't it.", forWho:"Best for you if you like sports stories with heart." },
-  "dn-manga":     { verdict:"Read it", line:"If you want a smart, tense battle of minds, read this. If you want big feelings or deep character drama, this isn't it.", forWho:"Best for you if you like cat-and-mouse stories." },
-  "fmab":         { verdict:"Watch it", line:"If you want great action and a full story that pays off, watch this. If you want something super dark or very slow, this isn't it.", forWho:"Best for you if you like balanced shows that do everything well." },
-  "aot-anime":    { verdict:"Watch it", line:"If you want big action and a story that keeps getting bigger, watch this. If you want something calm or easygoing, this isn't it.", forWho:"Best for you if you like hype with real story behind it." },
-  "monster-anime":{ verdict:"Watch it", line:"If you want a smart, slow, serious thriller, watch this. If you want quick fights and fast payoff, this isn't it.", forWho:"Best for you if you like patient stories that make you think." },
-  "vs-anime":     { verdict:"Watch it", line:"If you want something emotional, deep, and mature, watch this. If you want Vikings fighting all the time, this isn't it.", forWho:"Best for you if you like character growth over spectacle." },
-  "op":           { verdict:"Read / Watch it (selectively)", line:"If you want a huge adventure and a cast you grow attached to, watch or read this. If you want tight pacing from start to finish, this isn't it.", forWho:"Best for you if you like long stories with big emotional highs." },
-  "csm":          { verdict:"Read it", line:"If you want something weird, dark, and full of surprises, read this. If you want a normal shonen story, this isn't it.", forWho:"Best for you if you like messy energy and wild ideas." },
-  "lotm":         { verdict:"Read it", line:"If you want a smart, deep world with slow buildup, read this. If you want fast action right away, this isn't it.", forWho:"Best for you if you like long reads with big world-building." },
-  "20cb":         { verdict:"Read it", line:"If you want a long mystery with real heart, read this. If you want nonstop action or quick payoff, this isn't it.", forWho:"Best for you if you like conspiracy stories that slowly unfold." },
-  "oshi":         { verdict:"Read / Watch it", line:"If you want something emotional with a darker side, watch or read this. If you want a simple fun idol story, this isn't it.", forWho:"Best for you if you like drama behind the spotlight." },
-  "dn-anime":     { verdict:"Watch it (first half)", line:"If you want a stylish, smart thriller, watch this. If you want the strongest ending, this isn't it.", forWho:"Best for you if you like mind games and big tension." },
-  "ds-infinity":  { verdict:"Watch it for the animation", line:"If you want stunning fights and big visual hype, watch this. If you want a full deep story, this isn't it.", forWho:"Best for you if you like spectacle first." },
-  "st":           { verdict:"Watch seasons 1–4", line:"If you want fun, spooky adventure with heart, watch this. If you want high-end drama all the way through, this isn't it.", forWho:"Best for you if you like horror that is easy to binge." },
-  "got":          { verdict:"Watch seasons 1–4", line:"If you want big drama, politics, and huge stakes, watch this. If you want a strong finish, this isn't it.", forWho:"Best for you if you like serious shows with lots of tension." },
-  "ds-anime":     { verdict:"Watch it if you want great fights", line:"If you want fast fights and beautiful animation, watch this. If you want deep writing and big themes, this isn't it.", forWho:"Best for you if you like pure action entertainment." },
-  "sl":           { verdict:"Watch it as a power fantasy", line:"If you want easy hype and cool power-ups, watch this. If you want deep characters or a complex story, this isn't it.", forWho:"Best for you if you like power fantasy done well." },
-  "jjk":          { verdict:"Watch the first arc", line:"If you want sharp action and big hype moments, watch this. If you want a perfect ending, this isn't it.", forWho:"Best for you if you like stylish fights and dark energy." },
+  "vs":           { verdict:"Watch / Read it", line:"This moves slowly.\nThat is the point.\nIf you need nonstop action, skip it.\nIf you want something that stays with you, start here.", forWho:"Stay if patience means something to you." },
+  "berserk":      { verdict:"Read it", line:"This is heavy from the start.\nIt does not get lighter.\nIf you want easy, skip it.\nIf you want something intense and human, stay.", forWho:"Best for readers who want darkness with weight." },
+  "vagabond":     { verdict:"Read it", line:"This is quiet on purpose.\nIt takes its time.\nIf you want nonstop plot, skip it.\nIf you want stillness that pulls you in, stay.", forWho:"Best for people who like beauty and patience." },
+  "monster":      { verdict:"Read / Watch it", line:"This is not built for speed.\nIt is built to sink in.\nIf you want quick payoff, skip it.\nIf you want tension that lingers, stay.", forWho:"Best for patient thriller fans." },
+  "reze":         { verdict:"Watch it", line:"This feels light at first.\nThen it hits differently.\nIf you want something huge and sprawling, skip it.\nIf you want stylish emotion, stay.", forWho:"Best for romance, tension, and great animation." },
+  "bb":           { verdict:"Watch it", line:"This does not rush.\nIt just keeps tightening.\nIf you want easy fun, skip it.\nIf you want slow-burn pressure, stay.", forWho:"Best for dark drama and character change." },
+  "aot-manga":    { verdict:"Read it", line:"This keeps changing shape.\nThat is part of the thrill.\nIf you want simple and stable, skip it.\nIf you want a story that keeps opening up, stay.", forWho:"Best for intense stories with big turns." },
+  "slam-dunk":    { verdict:"Read it", line:"This is warmer than it looks.\nAnd sharper than expected.\nIf you want mind games, skip it.\nIf you want heart that sneaks up on you, stay.", forWho:"Best for sports stories with real feeling." },
+  "dn-manga":     { verdict:"Read it", line:"This pulls you in fast.\nThen it gets colder.\nIf you want big emotion, skip it.\nIf you want pure tension, stay.", forWho:"Best for cat-and-mouse thrillers." },
+  "fmab":         { verdict:"Watch it", line:"This does a little of everything.\nAnd it does it cleanly.\nIf you want something extra dark, skip it.\nIf you want balance and payoff, stay.", forWho:"Best for people who want a full story." },
+  "aot-anime":    { verdict:"Watch it", line:"This gets bigger fast.\nThen bigger again.\nIf you want calm and easy, skip it.\nIf you want scale with real tension, stay.", forWho:"Best for hype with real story behind it." },
+  "monster-anime":{ verdict:"Watch it", line:"This is serious from the start.\nAnd very patient.\nIf you want fast fights, skip it.\nIf you want dread that keeps building, stay.", forWho:"Best for slow, smart thrillers." },
+  "vs-anime":     { verdict:"Watch it", line:"This is not about Vikings fighting forever.\nIt turns inward.\nIf you want pure spectacle, skip it.\nIf you want real character growth, stay.", forWho:"Best for mature, emotional storytelling." },
+  "op":           { verdict:"Read / Watch it (selectively)", line:"This takes time.\nA lot of it.\nIf you need tight pacing, skip it.\nIf you want a huge story with big emotional highs, stay.", forWho:"Best for long journeys with payoff." },
+  "csm":          { verdict:"Read it", line:"This is messy on purpose.\nThen weirdly precise.\nIf you want a normal shonen ride, skip it.\nIf you want chaos with something underneath, stay.", forWho:"Best for wild energy and stranger ideas." },
+  "lotm":         { verdict:"Read it", line:"This builds slowly.\nThen it keeps expanding.\nIf you need action right away, skip it.\nIf you want to disappear into a world, stay.", forWho:"Best for long reads and deep world-building." },
+  "20cb":         { verdict:"Read it", line:"This is long.\nBut it keeps pulling.\nIf you want quick payoff, skip it.\nIf you want mystery with heart, stay.", forWho:"Best for conspiracy stories that keep unfolding." },
+  "oshi":         { verdict:"Read / Watch it", line:"This looks shiny.\nIt is not that simple.\nIf you want something light and easy, skip it.\nIf you want drama behind the glow, stay.", forWho:"Best for entertainment-world drama." },
+  "dn-anime":     { verdict:"Watch it (first half)", line:"This moves with style.\nAnd a lot of tension.\nIf you need the strongest ending, skip it.\nIf you want pure momentum early on, stay.", forWho:"Best for slick thrillers and mind games." },
+  "ds-infinity":  { verdict:"Watch it for the animation", line:"This is spectacle first.\nThat much is clear.\nIf you need deeper writing, skip it.\nIf you want to be wowed, stay.", forWho:"Best for people chasing visual hype." },
+  "st":           { verdict:"Watch seasons 1–4", line:"This starts easy to love.\nThen it gets looser.\nIf you want top-tier drama all the way, skip it.\nIf you want spooky comfort with heart, stay.", forWho:"Best for bingeable horror adventure." },
+  "got":          { verdict:"Watch seasons 1–4", line:"The highs are real.\nThe ending is too.\nIf you need a strong finish, skip it.\nIf you want politics, tension, and huge drama, stay.", forWho:"Best for serious drama with stakes." },
+  "ds-anime":     { verdict:"Watch it if you want great fights", line:"This looks amazing.\nThat is the main pull.\nIf you want deeper writing, skip it.\nIf you want clean, exciting action, stay.", forWho:"Best for pure action entertainment." },
+  "sl":           { verdict:"Watch it as a power fantasy", line:"This knows exactly what it is.\nAnd it delivers that well.\nIf you want deep characters, skip it.\nIf you want easy hype, stay.", forWho:"Best for power fantasy done cleanly." },
+  "jjk":          { verdict:"Watch the first arc", line:"The highs hit hard.\nThe finish doesn’t.\nIf you need a perfect ending, skip it.\nIf you want stylish action and dark energy, stay.", forWho:"Best for sharp fights and big moments." },
 };
 
 // ─── PEAK SAYS SECTION ────────────────────────────────────────────────────────
@@ -2066,8 +2101,8 @@ const PeakSaysSection = ({ work }) => {
           <div style={{fontSize:"24px",fontWeight:"300",color:D.blue,fontFamily:D.serif,lineHeight:1}}>{work.overall.toFixed(1)}</div>
           <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.mono}}>{work.tier} TIER</div>
         </div>
-        <p style={{margin:"0 0 14px",fontSize:"16px",color:D.text,lineHeight:1.75,fontFamily:D.serif}}>{data.line}</p>
-        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono,letterSpacing:"0.5px"}}>{data.forWho}</p>
+        <p style={{margin:"0 0 14px",fontSize:"16px",color:D.text,lineHeight:1.75,fontFamily:D.serif,whiteSpace:"pre-line"}}>{data.line}</p>
+        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono,letterSpacing:"0.5px",whiteSpace:"pre-line"}}>{data.forWho}</p>
       </div>
     </div>
   );
@@ -2345,7 +2380,7 @@ const DetailView=({work,onBack,onSelect})=>{
         <div style={{marginTop:"28px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",overflow:"hidden"}}>
           <div style={{padding:"22px 24px"}}>
             <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"14px"}}>FULL VERDICT</div>
-            <p style={{margin:0,fontSize:"15px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,whiteSpace:"pre-line",maxHeight:vExp?"none":"100px",overflow:"hidden",maskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)",WebkitMaskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)"}}>{getFinalThoughts(work).full}</p>
+            <p style={{margin:0,fontSize:"15px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,whiteSpace:"pre-line",maxHeight:vExp?"none":"100px",overflow:"hidden",maskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)",WebkitMaskImage:vExp?"none":"linear-gradient(180deg,black 50%,transparent 100%)"}}>{formatFinalThoughtsFull(getFinalThoughts(work).full)}</p>
           </div>
           <div style={{padding:"0 24px 20px"}}>
             <button onClick={()=>setVExp(v=>!v)} style={{background:"rgba(59,130,246,0.06)",border:"1px solid rgba(59,130,246,0.2)",borderRadius:"6px",padding:"8px 16px",color:"#3B82F6",fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
@@ -2422,7 +2457,7 @@ const SearchRow = ({ item, onSelect }) => {
           {mediaType}{year ? ` · ${year}` : ""}{tmdbScore ? ` · ⭐ ${tmdbScore}` : ""}
         </div>
         {peakMatch && (
-          <div style={{fontSize:"11px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{peakMatch.hook}"</div>
+          <div style={{fontSize:"11px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{getPreviewSnippet(peakMatch)}"</div>
         )}
       </div>
 
@@ -2568,7 +2603,7 @@ const UnratedView = ({ item, onBack }) => {
             {/* Verdict */}
             <div style={{padding:"20px 22px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px",marginBottom:"16px"}}>
               <div style={{fontSize:"10px",color:"rgba(255,255,255,0.22)",fontFamily:D.mono,letterSpacing:"3px",marginBottom:"12px"}}>FINAL THOUGHTS</div>
-              <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,whiteSpace:"pre-line"}}>{getFinalThoughts(rating).full||getFinalThoughts(rating).line}</p>
+              <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,whiteSpace:"pre-line"}}>{formatFinalThoughtsFull(getFinalThoughts(rating).full||getFinalThoughts(rating).line)}</p>
             </div>
 
             {/* Compared to */}
@@ -2799,7 +2834,7 @@ const HomeView = ({ onSelect }) => {
                           <span style={{fontSize:"9px",color:D.textFaint,fontFamily:D.mono,border:"1px solid rgba(255,255,255,0.08)",borderRadius:"4px",padding:"1px 6px"}}>{w.type}</span>
                           <span style={{fontSize:"9px",fontFamily:D.mono,color:D.textDim}}>{w.status}</span>
                         </div>
-                        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{w.hook}"</p>
+                        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{getPreviewSnippet(w)}"</p>
                       </div>
                       <div style={{textAlign:"right",flexShrink:0}}>
                         <div style={{fontSize:"24px",fontWeight:"300",color:D.blue,fontFamily:D.serif,lineHeight:1}}>{w.overall.toFixed(1)}</div>
