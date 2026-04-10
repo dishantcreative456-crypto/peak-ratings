@@ -419,7 +419,7 @@ const WORKS = [
 
   // ── A TIER ──
   {
-    id:"bb", title:"Breaking Bad", type:"TV", year:"2008", status:"Complete ✓",
+    id:"bb", title:"Breaking Bad", type:"TV", year:"2008", status:"Complete ✓", totalEpisodes:62, episodeDuration:47,
     overall:9.2, hook:"Five seasons.\nAnd somehow… it never slips.", hookLines:["A slow fall with no wasted steps."], tier:"S", color:D.blue,
     tagline:"I did it for me. I liked it. I was good at it. And I was really alive.",
     overview:{
@@ -546,7 +546,7 @@ const WORKS = [
     finalThoughts:{line:"At its peak,\nyou almost stop blinking.",full:"Death Note pulls you through on pure tension. The central rivalry is so clean, and so sharp, that even the quieter chapters feel loaded. It does not fully stay at that level to the end, but when it peaks, it is as addictive as anything here."}
   },
   {
-    id:"fmab", title:"FMAB", type:"Anime", year:"2009", status:"Complete ✓",
+    id:"fmab", title:"FMAB", type:"Anime", year:"2009", status:"Complete ✓", totalEpisodes:64, episodeDuration:24,
     overall:9.0, hook:"Everything matters.\nEverything pays off.", hookLines:["Everything matters. Everything pays off."], tier:"S", color:D.blue,
     tagline:"The most narratively complete and satisfying anime ever concluded — nothing is wasted.",
     overview:{
@@ -576,7 +576,7 @@ const WORKS = [
     finalThoughts:{line:"It knew the road.\nAnd it reached the end cleanly.",full:"FMAB feels so satisfying because it stays balanced all the way through. The themes stay clear. The characters stay true to themselves. And when the ending arrives, it feels earned rather than arranged. Very few anime finish this cleanly."}
   },
   {
-    id:"aot-anime", title:"AOT Anime", type:"Anime", year:"2013", status:"Complete ✓",
+    id:"aot-anime", title:"AOT Anime", type:"Anime", year:"2013", status:"Complete ✓", totalEpisodes:94, episodeDuration:24,
     overall:9.0, hook:"At its peak,\nthis feels overwhelming.", hookLines:["At its peak, this is overwhelming."], tier:"S", color:D.text,
     tagline:"Season 3 Part 2 has no equal in animated television.",
     overview:{
@@ -648,7 +648,7 @@ const WORKS = [
     finalThoughts:{line:"When it peaks,\nit feels huge.",full:"The anime earns its place through direction, music, and scale. The best seasons do not just repeat the manga. They amplify it. When everything clicks, the whole thing feels bigger, heavier, and harder to forget."}
   },
   {
-    id:"monster-anime", title:"Monster Anime", type:"Anime", year:"2004", status:"Complete ✓",
+    id:"monster-anime", title:"Monster Anime", type:"Anime", year:"2004", status:"Complete ✓", totalEpisodes:74, episodeDuration:24,
     overall:9.0, hook:"Slow.\nTense.\nCompletely committed.", hookLines:["Slow, tense, and completely committed."], tier:"S", color:D.text,
     tagline:"Madhouse treated Urasawa's work with complete reverence.",
     overview:{
@@ -674,7 +674,7 @@ const WORKS = [
     finalThoughts:{line:"It asks for patience.\nThen rewards it.",full:"Monster Anime works because it never rushes the things that matter. The pacing stays deliberate, the mood stays heavy, and the performances add something real without changing the core. If you give it time, it gives a lot back."}
   },
   {
-    id:"vs-anime", title:"Vinland Saga Anime", type:"Anime", year:"2019", status:"Complete ✓",
+    id:"vs-anime", title:"Vinland Saga Anime", type:"Anime", year:"2019", status:"Complete ✓", totalEpisodes:48, episodeDuration:24,
     overall:9.0, hook:"Faithful.\nHeavy.\nEmotionally honest.", hookLines:["Faithful, heavy, emotionally honest."], tier:"S", color:D.blue,
     tagline:"The anime is excellent. The manga is significantly greater — but excellent is still excellent.",
     overview:{
@@ -857,7 +857,7 @@ const WORKS = [
     finalThoughts:{line:"The opening is unforgettable.\nThe ending costs it.",full:"Oshi No Ko has one of the strongest openings on this list and some of the sharpest industry commentary too. That is why the rushed ending feels so frustrating. There is still a lot to admire here, but it leaves real points on the table."}
   },
   {
-    id:"dn-anime", title:"Death Note Anime", type:"Anime", year:"2006", status:"Complete ✓",
+    id:"dn-anime", title:"Death Note Anime", type:"Anime", year:"2006", status:"Complete ✓", totalEpisodes:37, episodeDuration:23,
     overall:8.6, hook:"Fast.\nStylish.\nVery hard to stop.", hookLines:["Fast, stylish, hard to stop."], tier:"A", color:D.purple,
     tagline:"Mamoru Miyano's voice adds psychological complexity beyond the manga.",
     overview:{
@@ -913,7 +913,7 @@ const WORKS = [
     finalThoughts:{line:"The animation is huge.\nThe ceiling still isn’t.",full:"Infinity Castle Part 1 is stunning on a technical level. That part is easy to see. The issue is that the story underneath all that polish still feels limited. It is exciting and impressive, but it never fully escapes the same core weakness."}
   },
   {
-    id:"st", title:"Stranger Things", type:"TV", year:"2016", status:"Ongoing",
+    id:"st", title:"Stranger Things", type:"TV", year:"2016", status:"Ongoing", totalEpisodes:34, episodeDuration:55,
     overall:7.7, hook:"Great start.\nLess control later.", hookLines:["Great start. Less control later."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"Season 1 is an 8.8. The series average is 7.7. That gap is the entire story.",
     overview:{
@@ -945,7 +945,7 @@ const WORKS = [
 
   // ── C TIER ──
   {
-    id:"got", title:"Game of Thrones", type:"TV", year:"2011", status:"Complete",
+    id:"got", title:"Game of Thrones", type:"TV", year:"2011", status:"Complete", totalEpisodes:73, episodeDuration:55,
     overall:7.0, hook:"The highs are real.\nSo is the collapse.", hookLines:["The highs are real. So is the collapse."], tier:"C", color:D.textDim,
     tagline:"Ned Stark's death changed television forever. Season 8 changed nothing — it just ended.",
     overview:{
@@ -975,7 +975,7 @@ const WORKS = [
     finalThoughts:{line:"The early greatness is real.\nSo is the ending damage.",full:"Game of Thrones has to be judged as the whole thing, not just the years people want to remember. Seasons 1 to 4 are elite television. The final stretch is not just disappointing, it changes the feeling of the entire run. That gap is the score."}
   },
   {
-    id:"ds-anime", title:"Demon Slayer", type:"Anime", year:"2019", status:"Complete ✓",
+    id:"ds-anime", title:"Demon Slayer", type:"Anime", year:"2019", status:"Complete ✓", totalEpisodes:63, episodeDuration:24,
     overall:7.0, hook:"Looks amazing.\nSays less.", hookLines:["Looks amazing. Says less."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"Visual spectacle without substance has a hard ceiling — and Demon Slayer found it.",
     overview:{
@@ -1106,6 +1106,19 @@ const getPrimaryHookLine = (item) => {
 const getPreviewSnippet = (item) => {
   const safeText = getPrimaryHookLine(item) || item?.hook || getFinalThoughts(item).line || "";
   return safeText.split("\n").map(part => part.trim()).filter(Boolean)[0] || "";
+};
+const getWatchDuration = (totalEpisodes, episodesPerDay) => {
+  if (!totalEpisodes || !episodesPerDay) return "";
+  const days = totalEpisodes / episodesPerDay;
+  if (days < 7) {
+    return `${Math.max(1, Math.round(days))} days`;
+  }
+  return `${Math.max(1, Math.round(days / 7))} weeks`;
+};
+const getTotalWatchHours = (totalEpisodes, episodeDuration) => {
+  if (!totalEpisodes || !episodeDuration) return "";
+  const hours = (totalEpisodes * episodeDuration) / 60;
+  return `${hours % 1 === 0 ? hours.toFixed(0) : hours.toFixed(1)} hours`;
 };
 const chunkWords = (text, minWords = 4, maxWords = 8) => {
   const words = (text || "").trim().split(/\s+/).filter(Boolean);
@@ -2055,6 +2068,30 @@ const PEAK_SAYS_OLD = {
   "sl":           { verdict:"Watch it as a power fantasy", line:"A weak guy becomes the strongest in the world. That's the whole thing — and it's genuinely satisfying if that's what you want.", forWho:"Best for: people who enjoy power fantasy and don't need deeper meaning." },
   "jjk":          { verdict:"Watch the first arc", line:"Some of the best action animation in shonen history. The Shibuya arc is essential. The ending didn't stick the landing — but what came before was incredible.", forWho:"Best for: people who want top-tier animation and don't mind an imperfect ending." },
 };
+const WatchTimeEstimator = ({ totalEpisodes, episodeDuration }) => {
+  if (!totalEpisodes) return null;
+  const casual = getWatchDuration(totalEpisodes, 2);
+  const binge = getWatchDuration(totalEpisodes, 6);
+  const totalWatchHours = getTotalWatchHours(totalEpisodes, episodeDuration);
+
+  return (
+    <div style={{marginTop:"18px",padding:"16px 18px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"12px",minWidth:"220px"}}>
+      <div style={{fontSize:"10px",color:"rgba(255,255,255,0.3)",fontFamily:D.mono,letterSpacing:"2px",marginBottom:"10px"}}>⏱ TIME TO FINISH</div>
+      {totalWatchHours && (
+        <div style={{fontSize:"16px",fontWeight:"700",color:D.text,fontFamily:D.serif,marginBottom:"10px"}}>~{totalWatchHours}</div>
+      )}
+      <div style={{display:"flex",flexDirection:"column",gap:"6px"}}>
+        <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>🧘 2 eps/day → ~{casual}</div>
+        <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>⚡ 6 eps/day → ~{binge}</div>
+      </div>
+      {episodeDuration && (
+        <div style={{marginTop:"10px",fontSize:"11px",color:D.textFaint,fontFamily:D.mono}}>
+          (~{episodeDuration} min per episode)
+        </div>
+      )}
+    </div>
+  );
+};
 const PEAK_SAYS = {
   "vs":           { verdict:"Watch / Read it", line:"This moves slowly.\nThat is the point.\nIf you need nonstop action, skip it.\nIf you want something that stays with you, start here.", forWho:"Stay if patience means something to you." },
   "berserk":      { verdict:"Read it", line:"This is heavy from the start.\nIt does not get lighter.\nIf you want easy, skip it.\nIf you want something intense and human, stay.", forWho:"Best for readers who want darkness with weight." },
@@ -2268,6 +2305,7 @@ const DetailView=({work,onBack,onSelect})=>{
                 </div>
               </>
             )}
+            <WatchTimeEstimator totalEpisodes={work.totalEpisodes} episodeDuration={work.episodeDuration} />
             {work.part1Score&&(
               <>
                 <div style={{width:"1px",height:"44px",background:"rgba(255,255,255,0.1)"}}/>
