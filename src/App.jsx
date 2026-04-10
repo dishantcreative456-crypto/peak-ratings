@@ -2075,20 +2075,43 @@ const WatchTimeEstimator = ({ totalEpisodes, episodeDuration }) => {
   const totalWatchHours = getTotalWatchHours(totalEpisodes, episodeDuration);
 
   return (
-    <div style={{marginTop:"18px",padding:"16px 18px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"12px",minWidth:"220px"}}>
-      <div style={{fontSize:"10px",color:"rgba(255,255,255,0.3)",fontFamily:D.mono,letterSpacing:"2px",marginBottom:"10px"}}>⏱ TIME TO FINISH</div>
-      {totalWatchHours && (
-        <div style={{fontSize:"16px",fontWeight:"700",color:D.text,fontFamily:D.serif,marginBottom:"10px"}}>~{totalWatchHours}</div>
-      )}
-      <div style={{display:"flex",flexDirection:"column",gap:"6px"}}>
-        <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>🧘 2 eps/day → ~{casual}</div>
-        <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>⚡ 6 eps/day → ~{binge}</div>
-      </div>
-      {episodeDuration && (
-        <div style={{marginTop:"10px",fontSize:"11px",color:D.textFaint,fontFamily:D.mono}}>
-          (~{episodeDuration} min per episode)
+    <div
+      style={{
+        marginTop:"18px",
+        minWidth:"220px",
+        padding:"14px",
+        background:"rgba(255,255,255,0.05)",
+        border:"1px solid rgba(255,255,255,0.08)",
+        borderRadius:"12px",
+        backdropFilter:"blur(6px)"
+      }}
+    >
+      <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
+        <div style={{fontSize:"10px",color:"rgba(255,255,255,0.42)",fontFamily:D.mono,letterSpacing:"2px"}}>
+          Time Investment
         </div>
-      )}
+
+        {totalWatchHours && (
+          <div style={{fontSize:"24px",fontWeight:"800",color:D.text,fontFamily:D.serif,lineHeight:1.1}}>
+            ~{totalWatchHours}
+          </div>
+        )}
+
+        <div style={{display:"flex",flexDirection:"column",gap:"6px"}}>
+          <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>
+            🧘 Casual (2 eps/day) → ~{casual}
+          </div>
+          <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>
+            ⚡ Binge (6 eps/day) → ~{binge}
+          </div>
+        </div>
+
+        {episodeDuration && (
+          <div style={{fontSize:"11px",color:D.textFaint,fontFamily:D.mono}}>
+            (~{episodeDuration} min per episode)
+          </div>
+        )}
+      </div>
     </div>
   );
 };
