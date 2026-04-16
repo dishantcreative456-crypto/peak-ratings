@@ -32,7 +32,7 @@ export default function Hero({ query, onQueryChange, activeType, onTypeChange })
         preload="metadata"
         poster="/hero.jpg"
       >
-        <source src="/videos/hero.mp4" type="video/mp4" />
+        <source src="/videos/Hero.mp4" type="video/mp4" />
       </video>
 
       <div className="hero-overlay" />
