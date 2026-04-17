@@ -31,9 +31,8 @@ export default function Hero({ query, onQueryChange, activeType, onTypeChange })
         playsInline
         preload="metadata"
         poster="/hero.jpg"
-      >
-        <source src="/videos/Hero.mp4" type="video/mp4" />
-      </video>
+        src="/Videos/Hero.mp4"
+      />
 
       <div className="hero-overlay" />
 
