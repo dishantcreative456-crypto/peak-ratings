@@ -29,6 +29,60 @@ const D = {
   mono:        "'Courier New', Courier, monospace",
 };
 
+function normalizeUtf8Text(value) {
+  if (typeof value !== "string") return value;
+  return value
+    .replace(/\u00e2\u20ac\u2122|Ã¢â‚¬â„¢/g, "\u2019")
+    .replace(/\u00e2\u20ac\u0153|Ã¢â‚¬Å“/g, "\u201c")
+    .replace(/\u00e2\u20ac\u009d|Ã¢â‚¬Â/g, "\u201d")
+    .replace(/\u00e2\u20ac\u02dc|Ã¢â‚¬Ëœ/g, "\u2018")
+    .replace(/\u00e2\u20ac\u201d|Ã¢â‚¬â€/g, "\u2014")
+    .replace(/\u00e2\u20ac\u201c|Ã¢â‚¬â€œ/g, "\u2013")
+    .replace(/\u00c3\u2014|Ãƒâ€”/g, "\u00d7")
+    .replace(/\u00e2\u2020\u2019|Ã¢â€ â€™/g, "\u2192")
+    .replace(/\u00e2\u2020\u2014|Ã¢â€ â€”/g, "\u2197")
+    .replace(/\u00e2\u2020\u2018|Ã¢â€ â€˜/g, "\u2191")
+    .replace(/\u00e2\u2020\u201c|Ã¢â€ â€œ/g, "\u2193")
+    .replace(/\u00e2\u2020\u0090|Ã¢â€ Â/g, "\u2190")
+    .replace(/\u00e2\u0153\u201c|Ã¢Å“â€œ/g, "\u2713")
+    .replace(/\u00e2\u0153\u2022|Ã¢Å“â€¢/g, "\u2715")
+    .replace(/\u00e2\u20ac\u00ba|Ã¢â‚¬Âº/g, "\u203a")
+    .replace(/\u00e2\u2014\u00bd|Ã¢â€”Å½/g, "\u25ce")
+    .replace(/\u00e2\u2013\u00b2|Ã¢â€“Â²/g, "\u25b2")
+    .replace(/\u00e2\u0161\u00a0\u00ef\u00b8\u008f|Ã¢Å¡Â Ã¯Â¸Â/g, "\u26a0\ufe0f")
+    .replace(/\u00e2\u0161\u00a0|Ã¢Å¡Â /g, "\u26a0")
+    .replace(/\u00e2\u0161\u00a1|Ã¢Å¡Â¡/g, "\u26a1")
+    .replace(/\u00f0\u0178\u201d\u008d|Ã°Å¸â€Â/g, "\ud83d\udd0d")
+    .replace(/\u00f0\u0178\u017d\u00ac|Ã°Å¸Å½Â¬/g, "\ud83c\udfac")
+    .replace(/\u00f0\u0178\u00a7\u00a0|Ã°Å¸Â§Â /g, "\ud83e\udde0")
+    .replace(/\u00f0\u0178\u00a7\u02dc|Ã°Å¸Â§Ëœ/g, "\ud83e\uddd8")
+    .replace(/\u00e2\u00ad\u0090|Ã¢Â­Â/g, "\u2b50")
+    .replace(/\u00e2\u20ac\u00a6|Ã¢â‚¬Â¦/g, "\u2026")
+    .replace(/\u00c2\u00b7|Ã‚Â·/g, "\u00b7")
+    .replace(/\u00e2\u2022\u0090|Ã¢â€¢Â/g, "\u2550")
+    .replace(/\u00e2\u201d\u20ac|Ã¢â€â‚¬/g, "\u2500")
+    .replace(/\u00e2\u2018\u00a0|Ã¢â€˜Â /g, "\u2460")
+    .replace(/\u00e2\u2018\u00a1|Ã¢â€˜Â¡/g, "\u2461")
+    .replace(/\u00e2\u2018\u00a2|Ã¢â€˜Â¢/g, "\u2462")
+    .replace(/\u00e2\u2018\u00a3|Ã¢â€˜Â£/g, "\u2463")
+    .replace(/\u00e2\u2018\u00a4|Ã¢â€˜Â¤/g, "\u2464")
+    .replace(/\u00e2\u2018\u00a5|Ã¢â€˜Â¥/g, "\u2465")
+    .replace(/\u00e2\u2018\u00a6|Ã¢â€˜Â¦/g, "\u2466")
+    .replace(/\u00e2\u2018\u00a7|Ã¢â€˜Â§/g, "\u2467")
+    .replace(/\u00e2\u2018\u00a8|Ã¢â€˜Â¨/g, "\u2468")
+    .replace(/\u00c5\u008d|Ã…Â/g, "\u014d")
+    .replace(/â–¡/g, "");
+}
+
+function normalizeUtf8Data(value) {
+  if (typeof value === "string") return normalizeUtf8Text(value);
+  if (Array.isArray(value)) return value.map(normalizeUtf8Data);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, entryValue]) => [key, normalizeUtf8Data(entryValue)]));
+  }
+  return value;
+}
+
 
 // PEAK SYSTEM PROMPT
 const PEAK_SYSTEM_PROMPT = `
@@ -237,7 +291,7 @@ TIER GUIDE: S=9.0+ / A=8.5-8.9 / B=8.0-8.4 / C=7.0-7.9 / D=below 7.0
 const generatePeakRating = async (title, type) => {
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json; charset=UTF-8", "Accept-Charset": "UTF-8" },
     body: JSON.stringify({
       model: "claude-sonnet-4-20250514",
       max_tokens: 1500,
@@ -250,11 +304,11 @@ const generatePeakRating = async (title, type) => {
   const raw = data.content.filter(i => i.type === "text").map(i => i.text).join("");
   const match = raw.match(/\{[\s\S]*\}/);
   if (!match) throw new Error("No JSON in response");
-  return JSON.parse(match[0]);
+  return normalizeUtf8Data(JSON.parse(match[0]));
 };
 
 // â”€â”€â”€ ALL 24 WORKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-const WORKS = [
+const WORKS = normalizeUtf8Data([
   // â”€â”€ S TIER â”€â”€
   {
     id:"vs", title:"Vinland Saga", type:"Manga", year:"2005", status:"Complete",
@@ -1069,7 +1123,7 @@ const WORKS = [
     ],
     finalThoughts:{line:"Its peak is real.\nSo is the drop after it.",full:"JJK earns its score because the highs are genuinely huge. The early and middle runs show speed, intelligence, and real darkness. The problem is that the back half starts stretching beyond what the story can cleanly hold, and the ending never fully recovers."}
   },
-];
+]);
 
 // â”€â”€â”€ HELPERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const TIER_C = {S:D.blue, A:D.purple, B:D.amber, C:"rgba(52,211,153,0.7)", D:"rgba(148,163,184,0.6)"};
@@ -1081,28 +1135,79 @@ const sc = v => {
   if(v >= 7.0) return "rgba(232,230,224,0.35)";
   return "rgba(232,230,224,0.2)";
 };
+const cleanCorruptedText = (value) => {
+  if (typeof value !== "string") return value;
+  return value
+    .replace(/\u00e2\u20ac\u2122/g, "â€™")
+    .replace(/\u00e2\u20ac\u0153/g, "â€œ")
+    .replace(/\u00e2\u20ac\u009d/g, "â€")
+    .replace(/\u00e2\u20ac\u02dc/g, "â€˜")
+    .replace(/\u00e2\u20ac\u201d/g, "â€”")
+    .replace(/\u00e2\u20ac\u201c/g, "â€“")
+    .replace(/\u00c3\u2014/g, "Ã—")
+    .replace(/\u00e2\u2020\u2019/g, "â†’")
+    .replace(/\u00e2\u2020\u2014/g, "â†—")
+    .replace(/\u00e2\u2020\u2018/g, "â†‘")
+    .replace(/\u00e2\u2020\u201c/g, "â†“")
+    .replace(/\u00e2\u2020\u0090/g, "â†")
+    .replace(/\u00e2\u0153\u201c/g, "âœ“")
+    .replace(/\u00e2\u0153\u2022/g, "âœ•")
+    .replace(/\u00e2\u20ac\u00ba/g, "â€º")
+    .replace(/\u00e2\u2014\u00bd/g, "â—Ž")
+    .replace(/\u00e2\u2013\u00b2/g, "â–²")
+    .replace(/\u00e2\u0161\u00a0\u00ef\u00b8\u008f/g, "âš ï¸")
+    .replace(/\u00e2\u0161\u00a0/g, "âš ")
+    .replace(/\u00f0\u0178\u00a7\u00a0/g, "ðŸ§ ")
+    .replace(/\u00f0\u0178\u00a7\u02dc/g, "ðŸ§˜")
+    .replace(/\u00e2\u0161\u00a1/g, "âš¡")
+    .replace(/\u00f0\u0178\u201d\u008d/g, "ðŸ”")
+    .replace(/\u00f0\u0178\u017d\u00ac/g, "ðŸŽ¬")
+    .replace(/\u00e2\u00ad\u0090/g, "â­")
+    .replace(/\u00e2\u20ac\u00a6/g, "â€¦")
+    .replace(/\u00c2\u00b7/g, "Â·")
+    .replace(/\u00e2\u2022\u0090/g, "â•")
+    .replace(/\u00e2\u201d\u20ac/g, "â”€")
+    .replace(/\u00e2\u2018\u00a0/g, "â‘ ")
+    .replace(/\u00e2\u2018\u00a1/g, "â‘¡")
+    .replace(/\u00e2\u2018\u00a2/g, "â‘¢")
+    .replace(/\u00e2\u2018\u00a3/g, "â‘£")
+    .replace(/\u00e2\u2018\u00a4/g, "â‘¤")
+    .replace(/\u00e2\u2018\u00a5/g, "â‘¥")
+    .replace(/\u00e2\u2018\u00a6/g, "â‘¦")
+    .replace(/\u00e2\u2018\u00a7/g, "â‘§")
+    .replace(/\u00e2\u2018\u00a8/g, "â‘¨")
+    .replace(/\u00c5\u008d/g, "Å");
+};
+const cleanCorruptedData = (value) => {
+  if (typeof value === "string") return cleanCorruptedText(value);
+  if (Array.isArray(value)) return value.map(cleanCorruptedData);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, entryValue]) => [key, cleanCorruptedData(entryValue)]));
+  }
+  return value;
+};
 const getFinalThoughts = (item) => {
   if (item?.finalThoughts) return item.finalThoughts;
   if (item?.verdict && typeof item.verdict === "object") {
     return {
-      line: item.verdict.line || "",
-      full: item.verdict.full || "",
+      line: normalizeUtf8Text(item.verdict.line || ""),
+      full: normalizeUtf8Text(item.verdict.full || ""),
     };
   }
   if (typeof item?.verdict === "string") {
     return {
-      line: item.verdict,
-      full: item.verdict,
+      line: normalizeUtf8Text(item.verdict),
+      full: normalizeUtf8Text(item.verdict),
     };
   }
   return { line: "", full: "" };
 };
 const getPrimaryHookLine = (item) => {
   if (Array.isArray(item?.hookLines) && item.hookLines.length && item.hookLines[0]) {
-    return item.hookLines[0];
+    return normalizeUtf8Text(item.hookLines[0]);
   }
   const finalThoughts = getFinalThoughts(item);
-  return item?.hook || finalThoughts.line || "";
+  return normalizeUtf8Text(item?.hook || finalThoughts.line || "");
 };
 const getPreviewSnippet = (item) => {
   const safeText = getPrimaryHookLine(item) || item?.hook || getFinalThoughts(item).line || "";
@@ -1238,8 +1343,8 @@ const ScoreDetailPage = ({ categoryKey, val, explanation, color, work, onBack })
       {/* Header */}
       <div style={{ position:"sticky", top:0, zIndex:50, background:"rgba(10,10,18,0.98)", backdropFilter:"blur(20px)", borderBottom:"1px solid rgba(255,255,255,0.05)", padding:"0 20px" }}>
         <div style={{ maxWidth:"700px", margin:"0 auto", height:"50px", display:"flex", alignItems:"center", gap:"14px" }}>
-          <button onClick={onBack} style={{ background:"rgba(59,130,246,0.06)", border:"1px solid rgba(59,130,246,0.25)", borderRadius:"8px", padding:"6px 14px", color:"#3B82F6", fontSize:"11px", cursor:"pointer", fontFamily:D.mono, letterSpacing:"1px" }}>â† BACK</button>
-          <span style={{ fontSize:"11px", color:D.textDim, fontFamily:D.mono }}>{work.title} Â· Score Breakdown</span>
+          <button onClick={onBack} style={{ background:"rgba(59,130,246,0.06)", border:"1px solid rgba(59,130,246,0.25)", borderRadius:"8px", padding:"6px 14px", color:"#3B82F6", fontSize:"11px", cursor:"pointer", fontFamily:D.mono, letterSpacing:"1px" }}>{"<- BACK"}</button>
+          <span style={{ fontSize:"11px", color:D.textDim, fontFamily:D.mono }}>{work.title} {" - "} Score Breakdown</span>
         </div>
       </div>
 
@@ -1248,13 +1353,13 @@ const ScoreDetailPage = ({ categoryKey, val, explanation, color, work, onBack })
         <div style={{ marginBottom:"32px" }}>
           <div style={{ fontSize:"10px", color:`${color}80`, fontFamily:D.mono, letterSpacing:"4px", marginBottom:"10px" }}>CRAFT CATEGORY</div>
           <h1 style={{ margin:"0 0 6px", fontSize:"clamp(28px,6vw,44px)", fontWeight:"900", color:D.text, letterSpacing:"-0.5px" }}>{label}</h1>
-          <p style={{ margin:0, fontSize:"14px", color:D.textDim, lineHeight:1.6, fontFamily:D.serif }}>{category.description}</p>
+          <p style={{ margin:0, fontSize:"14px", color:D.textDim, lineHeight:1.6, fontFamily:D.serif }}>{normalizeUtf8Text(category.description)}</p>
         </div>
 
         {/* Score display */}
         <div style={{ textAlign:"center", padding:"36px 20px", background:`linear-gradient(135deg,${col}12 0%,transparent 100%)`, border:`1px solid ${col}30`, borderRadius:"20px", marginBottom:"28px" }}>
           <div style={{ fontSize:"10px", color:`${col}80`, fontFamily:D.mono, letterSpacing:"3px", marginBottom:"12px" }}>
-            {work.title.toUpperCase()} Â· {label.toUpperCase()} SCORE
+            {work.title.toUpperCase()} {" - "} {label.toUpperCase()} SCORE
           </div>
           <div style={{ fontSize:"88px", fontWeight:"900", color:col, fontFamily:D.mono, lineHeight:1, letterSpacing:"-4px", marginBottom:"6px" }}>{val?.toFixed(1)}</div>
           <div style={{ fontSize:"13px", color:D.textFaint, fontFamily:D.mono }}>/10</div>
@@ -1266,11 +1371,11 @@ const ScoreDetailPage = ({ categoryKey, val, explanation, color, work, onBack })
 
           {/* Score label */}
           <div style={{ marginTop:"12px", fontSize:"12px", color:D.textDim, fontFamily:D.mono }}>
-            {val >= 9.5 ? "Exceptional â€” among the greatest ever" :
-             val >= 9.0 ? "Outstanding â€” top tier" :
-             val >= 8.5 ? "Excellent â€” above average" :
+            {val >= 9.5 ? "Exceptional - among the greatest ever" :
+             val >= 9.0 ? "Outstanding - top tier" :
+             val >= 8.5 ? "Excellent - above average" :
              val >= 8.0 ? "Very good" :
-             val >= 7.0 ? "Good â€” competent" :
+             val >= 7.0 ? "Good - competent" :
              val >= 6.0 ? "Average" :
              "Below average"}
           </div>
@@ -1313,7 +1418,7 @@ const ScoreBar = ({ label, val, animate, explanation, color, work, onOpenDetail 
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:"5px" }}>
         <div style={{ display:"flex", alignItems:"center", gap:"6px" }}>
           <span style={{ fontSize:"11px", color:D.textMid, fontFamily:D.mono, textTransform:"uppercase", letterSpacing:"0.8px" }}>{displayLabel}</span>
-          {hasDetail && <span style={{ fontSize:"9px", color:`${col}80`, fontFamily:D.mono, border:`1px solid ${col}30`, borderRadius:"3px", padding:"0px 4px" }}>TAP â†—</span>}
+          {hasDetail && <span style={{ fontSize:"9px", color:`${col}80`, fontFamily:D.mono, border:`1px solid ${col}30`, borderRadius:"3px", padding:"0px 4px" }}>TAP -&gt;</span>}
         </div>
         <span style={{ fontSize:"14px", color:col, fontFamily:D.mono, fontWeight:"900" }}>{val.toFixed(1)}</span>
       </div>
@@ -1337,7 +1442,7 @@ const ArcCard = ({ arc, color, index }) => {
         <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:"12px" }}>
           <div style={{ flex:1 }}>
             <div style={{ display:"flex", alignItems:"center", gap:"8px", marginBottom:"5px", flexWrap:"wrap" }}>
-              {arc.highlight && <span style={{ fontSize:"9px", color:color, fontFamily:D.mono, fontWeight:"900", letterSpacing:"2px", border:`1px solid ${color}60`, borderRadius:"4px", padding:"1px 6px", flexShrink:0 }}>â˜… KEY ARC</span>}
+              {arc.highlight && <span style={{ fontSize:"9px", color:color, fontFamily:D.mono, fontWeight:"900", letterSpacing:"2px", border:`1px solid ${color}60`, borderRadius:"4px", padding:"1px 6px", flexShrink:0 }}>KEY ARC</span>}
               <span style={{ fontSize:"14px", fontWeight:"800", color:D.text, fontFamily:D.serif }}>{arc.name}</span>
             </div>
             <div style={{ display:"flex", gap:"5px", flexWrap:"wrap", marginBottom:"8px" }}>
@@ -1358,14 +1463,14 @@ const ArcCard = ({ arc, color, index }) => {
           // Spoiler warning
           <div style={{ padding:"14px 16px", display:"flex", alignItems:"center", justifyContent:"space-between", gap:"12px", background:"rgba(255,255,255,0.02)" }}>
             <div>
-              <div style={{ fontSize:"9px", color:D.amber, fontFamily:D.mono, letterSpacing:"2px", marginBottom:"4px" }}>âš  SPOILER WARNING</div>
+              <div style={{ fontSize:"9px", color:D.amber, fontFamily:D.mono, letterSpacing:"2px", marginBottom:"4px" }}>SPOILER WARNING</div>
               <p style={{ margin:0, fontSize:"12px", color:D.textDim, fontFamily:D.serif }}>Full analysis contains plot details and story spoilers.</p>
             </div>
             <button
               onClick={() => { setSpoilerShown(true); setOpen(true); }}
               style={{ flexShrink:0, padding:"8px 14px", background:"rgba(255,212,59,0.1)", border:"1px solid rgba(255,212,59,0.4)", borderRadius:"8px", color:D.amber, fontSize:"11px", cursor:"pointer", fontFamily:D.mono, letterSpacing:"1px", whiteSpace:"nowrap" }}
             >
-              I've read it â†’
+              {"I've read it ->"}
             </button>
           </div>
         ) : (
@@ -1373,7 +1478,7 @@ const ArcCard = ({ arc, color, index }) => {
           <div>
             <div onClick={() => setOpen(o=>!o)} style={{ padding:"10px 16px", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
               <span style={{ fontSize:"11px", color:D.textDim, fontFamily:D.mono }}>{open ? "Hide analysis" : "Show full analysis"}</span>
-              <span style={{ fontSize:"14px", color:D.textFaint, transform:open?"rotate(180deg)":"rotate(0deg)", transition:"transform 0.2s", display:"inline-block" }}>â–¾</span>
+              <span style={{ fontSize:"14px", color:D.textFaint, transform:open?"rotate(180deg)":"rotate(0deg)", transition:"transform 0.2s", display:"inline-block" }}>v</span>
             </div>
             {open && (
               <div style={{ padding:"0 16px 16px", animation:"expandIn 0.3s ease" }}>
@@ -1398,7 +1503,7 @@ const CmpCard=({comp,index,onSelect})=>{
     <div onClick={handleClick} style={{minWidth:"200px",maxWidth:"240px",background:D.bgCard,border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",padding:"16px",cursor:"pointer",flexShrink:0,transition:"all 0.22s",boxShadow:open?`0 0 24px ${comp.color}18`:"none",animation:`slideIn 0.4s ease ${index*0.1}s both`}}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"8px"}}>
         <span style={{fontSize:"14px",fontWeight:"800",color:D.text,fontFamily:D.serif}}>{comp.title}</span>
-        <span style={{fontSize:"12px",color:comp.color}}>âš”</span>
+        <span style={{fontSize:"12px",color:comp.color}}>vs</span>
       </div>
       <div style={{fontSize:"11px",color:comp.color,fontFamily:D.mono,fontWeight:"700",letterSpacing:"0.5px",marginBottom:open?"8px":"0"}}>{comp.verdict}</div>
       {open&&(
@@ -1408,9 +1513,9 @@ const CmpCard=({comp,index,onSelect})=>{
             <div style={{display:"flex",alignItems:"center",gap:"8px",padding:"8px 10px",background:"rgba(255,255,255,0.04)",border:`1px solid ${comp.color}30`,borderRadius:"6px"}}>
               <div style={{flex:1}}>
                 <div style={{fontSize:"10px",color:comp.color,fontFamily:D.mono,letterSpacing:"1px",marginBottom:"2px"}}>VIEW RATING</div>
-                <div style={{fontSize:"12px",color:D.text,fontFamily:D.serif,fontWeight:"700"}}>{target.title} Â· {target.overall.toFixed(1)}</div>
+                <div style={{fontSize:"12px",color:D.text,fontFamily:D.serif,fontWeight:"700"}}>{target.title} {" - "} {target.overall.toFixed(1)}</div>
               </div>
-              <span style={{color:D.textFaint,fontSize:"14px"}}>â€º</span>
+              <span style={{color:D.textFaint,fontSize:"14px"}}>{">"}</span>
             </div>
           )}
         </div>
@@ -1779,7 +1884,7 @@ const TierReveal = ({ work }) => {
               </div>
               <div>
                 <div style={{fontSize:"10px",color:D.blue,fontFamily:D.mono,letterSpacing:"1px"}}>PEAK SCORE</div>
-                <div style={{fontSize:"11px",color:D.textDim,fontFamily:D.serif}}>{work.overall.toFixed(1)} Â· {tierLabels[tier]}</div>
+                <div style={{fontSize:"11px",color:D.textDim,fontFamily:D.serif}}>{work.overall.toFixed(1)} {" / "} {tierLabels[tier]}</div>
               </div>
             </div>
           )}
@@ -1926,7 +2031,7 @@ const RadarChart = ({ work, onOpenDetail }) => {
               <div style={{fontSize:"8px",color:col,fontFamily:D.mono,letterSpacing:"1px",marginBottom:"6px",fontWeight:"700"}}>{shortLabel(k)}</div>
               <div style={{fontSize:"24px",fontWeight:"300",color:col,fontFamily:D.serif,lineHeight:1,marginBottom:"2px"}}>{val?.toFixed(1)}</div>
               <div style={{fontSize:"9px",color:D.textDim,fontFamily:D.sans,lineHeight:1.2,marginBottom:explanation?"4px":"0"}}>{display.label}</div>
-              {explanation && <div style={{fontSize:"8px",color:`${col}70`,fontFamily:D.mono,letterSpacing:"0.5px"}}>TAP â†—</div>}
+              {explanation && <div style={{fontSize:"8px",color:`${col}70`,fontFamily:D.mono,letterSpacing:"0.5px"}}>TAP -&gt;</div>}
             </div>
           );
         })}
@@ -1963,7 +2068,7 @@ const DownloadButton = ({ targetId, filename, label }) => {
         a.download = `${filename}.png`; a.href = url; a.click();
         URL.revokeObjectURL(url); setSaving(false);
       }, "image/png");
-    } catch(e) { setErr("Save failed â€” try screenshot"); setSaving(false); }
+    } catch(e) { setErr("Save failed - try screenshot"); setSaving(false); }
   };
 
   return (
@@ -1973,7 +2078,7 @@ const DownloadButton = ({ targetId, filename, label }) => {
         onMouseEnter={e=>{if(!saving)e.currentTarget.style.background="rgba(59,130,246,0.16)";}}
         onMouseLeave={e=>{if(!saving)e.currentTarget.style.background="rgba(59,130,246,0.08)";}}
       >
-        {saving ? "Savingâ€¦" : `â†“ ${label}`}
+        {saving ? "Saving..." : `Save ${label}`}
       </button>
       {err && <span style={{fontSize:"10px",color:"#ff6b6b",fontFamily:D.mono}}>{err}</span>}
     </div>
@@ -1985,11 +2090,11 @@ const ShareButton = ({ work }) => {
   const finalThoughts = getFinalThoughts(work);
   const primaryHookLine = getPrimaryHookLine(work);
 
-  const shareText = `PEAK rates ${work.title} â€” ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${finalThoughts.line || primaryHookLine}"\n\nPeak Score: ${work.overall.toFixed(1)} Â· Peak Experience: ${work.experience ? work.experience.toFixed(1) : "â€”"}\n\nAn AI-powered rating system. Rated on the principles of great storytelling, not popularity.\npeak-ratings.com\n\n#Peak #${work.title.replace(/\s+/g,"")} #${work.type.replace(/\s+/g,"")}`;
+  const shareText = `PEAK rates ${work.title} - ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${finalThoughts.line || primaryHookLine}"\n\nPeak Score: ${work.overall.toFixed(1)} · Peak Experience: ${work.experience ? work.experience.toFixed(1) : "-"}\n\nAn AI-powered rating system. Rated on the principles of great storytelling, not popularity.\npeak-ratings.com\n\n#Peak #${work.title.replace(/\s+/g,"")} #${work.type.replace(/\s+/g,"")}`;
 
-  const redditTitle = `PEAK rates ${work.title} â€” ${work.overall.toFixed(1)}/10 ${work.tier} Tier Â· "${finalThoughts.line || primaryHookLine}"`;
+  const redditTitle = `PEAK rates ${work.title} - ${work.overall.toFixed(1)}/10 ${work.tier} Tier · "${finalThoughts.line || primaryHookLine}"`;
 
-  const redditBody = `PEAK is an AI-powered rating system that rates storytelling craft â€” not popularity.\n\n**${work.title}**\n\n- Peak Score: ${work.overall.toFixed(1)}/10 (craft-based)\n- Peak Experience: ${work.experience ? work.experience.toFixed(1)+"/10" : "â€”"} (audience feeling)\n- Tier: ${work.tier}\n\n"${finalThoughts.line || primaryHookLine}"\n\npeak-ratings.com`;
+  const redditBody = `PEAK is an AI-powered rating system that rates storytelling craft - not popularity.\n\n**${work.title}**\n\n- Peak Score: ${work.overall.toFixed(1)}/10 (craft-based)\n- Peak Experience: ${work.experience ? work.experience.toFixed(1)+"/10" : "-"} (audience feeling)\n- Tier: ${work.tier}\n\n"${finalThoughts.line || primaryHookLine}"\n\npeak-ratings.com`;
 
   const handleShareX = () => {
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, "_blank");
@@ -2020,7 +2125,7 @@ const ShareButton = ({ work }) => {
           onMouseEnter={e=>e.currentTarget.style.background="rgba(59,130,246,0.18)"}
           onMouseLeave={e=>e.currentTarget.style.background=D.blueFaint}
         >
-          Share on X â†—
+          Share on X -&gt;
         </button>
         <button
           onClick={handleShareReddit}
@@ -2028,13 +2133,13 @@ const ShareButton = ({ work }) => {
           onMouseEnter={e=>e.currentTarget.style.background="rgba(255,69,0,0.14)"}
           onMouseLeave={e=>e.currentTarget.style.background="rgba(255,69,0,0.08)"}
         >
-          Post on Reddit â†—
+          Post on Reddit -&gt;
         </button>
         <button
           onClick={handleCopy}
           style={{padding:"11px 18px",background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"8px",color:copied?D.amber:D.textDim,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",transition:"all 0.15s"}}
         >
-          {copied ? "Copied âœ“" : "Copy"}
+          {copied ? "Copied" : "Copy"}
         </button>
       </div>
     </div>
@@ -2162,8 +2267,8 @@ const PeakSaysSection = ({ work }) => {
           <div style={{fontSize:"24px",fontWeight:"300",color:D.blue,fontFamily:D.serif,lineHeight:1}}>{work.overall.toFixed(1)}</div>
           <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.mono}}>{work.tier} TIER</div>
         </div>
-        <p style={{margin:"0 0 14px",fontSize:"16px",color:D.text,lineHeight:1.75,fontFamily:D.serif,whiteSpace:"pre-line"}}>{data.line}</p>
-        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono,letterSpacing:"0.5px",whiteSpace:"pre-line"}}>{data.forWho}</p>
+        <p style={{margin:"0 0 14px",fontSize:"16px",color:D.text,lineHeight:1.75,fontFamily:D.serif,whiteSpace:"pre-line"}}>{normalizeUtf8Text(data.line)}</p>
+        <p style={{margin:0,fontSize:"12px",color:D.textDim,fontFamily:D.mono,letterSpacing:"0.5px",whiteSpace:"pre-line"}}>{normalizeUtf8Text(data.forWho)}</p>
       </div>
     </div>
   );
@@ -2206,10 +2311,10 @@ const ConversationalGuidedNext = ({ work, onSelect }) => {
     const craft = resolved.find(r => r.type === "craft");
     const contrast = resolved.find(r => r.type === "contrast");
     const lines = [];
-    if (exp) lines.push(`If what hooked you was the *feeling* â€” ${exp.target.title} gives you that same energy.`);
-    if (craft) lines.push(`If you appreciated the craft underneath â€” ${craft.target.title} is built with the same discipline.`);
-    if (contrast) lines.push(`And if you want to see a completely different answer to the same questions â€” ${contrast.target.title}.`);
-    return lines.join(" ");
+    if (exp) lines.push(normalizeUtf8Text(`If what hooked you was the *feeling* - ${exp.target.title} gives you that same energy.`));
+    if (craft) lines.push(normalizeUtf8Text(`If you appreciated the craft underneath - ${craft.target.title} is built with the same discipline.`));
+    if (contrast) lines.push(normalizeUtf8Text(`And if you want to see a completely different answer to the same questions - ${contrast.target.title}.`));
+    return normalizeUtf8Text(lines.join(" "));
   };
 
   const tierCol = TIER_C[work.tier] || D.amber;
@@ -2252,13 +2357,13 @@ const ConversationalGuidedNext = ({ work, onSelect }) => {
               </div>
               <div style={{flex:1,minWidth:0}}>
                 <div style={{fontSize:"13px",fontWeight:"700",color:D.text,fontFamily:D.serif,marginBottom:"3px"}}>{item.target.title}</div>
-                <div style={{fontSize:"12px",color:D.textDim,fontFamily:D.serif,fontStyle:"italic",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{item.line}"</div>
+                <div style={{fontSize:"12px",color:D.textDim,fontFamily:D.serif,fontStyle:"italic",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{normalizeUtf8Text(item.line)}"</div>
               </div>
               <div style={{flexShrink:0,textAlign:"right"}}>
                 <div style={{fontSize:"18px",fontWeight:"300",color:targetTierCol,fontFamily:D.serif,lineHeight:1}}>{item.target.overall.toFixed(1)}</div>
                 <div style={{fontSize:"8px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"1px"}}>{item.target.tier} TIER</div>
               </div>
-              <div style={{color:D.textFaint,fontSize:"14px",flexShrink:0}}>â€º</div>
+              <div style={{color:D.textFaint,fontSize:"14px",flexShrink:0}}>{">"}</div>
             </div>
           );
         })}
@@ -2304,8 +2409,8 @@ const DetailView=({work,onBack,onSelect})=>{
         <div style={{position:"absolute",bottom:"36px",left:"0",right:"0",padding:"0 24px",animation:"heroIn 0.6s ease"}}>
           <div style={{display:"flex",gap:"8px",marginBottom:"12px",alignItems:"center",flexWrap:"wrap"}}>
             <span style={{fontSize:"10px",color:tierCol,fontFamily:D.mono,fontWeight:"900",border:`1px solid ${tierCol}`,borderRadius:"5px",padding:"2px 8px",letterSpacing:"2px"}}>TIER {work.tier}</span>
-            <span style={{fontSize:"10px",color:D.textDim,fontFamily:D.mono}}>{work.type} {" • "} {work.year}</span>
-            <span style={{fontSize:"10px",fontFamily:D.mono,color:D.textFaint}}>{" • "} {work.status}</span>
+            <span style={{fontSize:"10px",color:D.textDim,fontFamily:D.mono}}>{work.type} {" - "} {work.year}</span>
+            <span style={{fontSize:"10px",fontFamily:D.mono,color:D.textFaint}}>{" - "} {work.status}</span>
           </div>
           <h1 style={{margin:"0 0 8px",fontSize:"clamp(28px,6vw,54px)",fontWeight:"900",letterSpacing:"-1px",lineHeight:1.0,color:D.text}}>{work.title}</h1>
           <p style={{margin:"0 0 18px",fontSize:"14px",color:D.textDim,fontStyle:"italic",whiteSpace:"pre-line"}}>"{work.hook}"</p>
@@ -2339,7 +2444,7 @@ const DetailView=({work,onBack,onSelect})=>{
             )}
             <button
               onClick={()=>{
-                const txt=`PEAK rates ${work.title} â€” ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${getFinalThoughts(work).line||getPrimaryHookLine(work)}"\n\npeak-ratings.com #Peak #${work.title.replace(/\s+/g,"")}`;
+                const txt=`PEAK rates ${work.title} - ${work.overall.toFixed(1)}/10 ${work.tier} Tier\n\n"${getFinalThoughts(work).line||getPrimaryHookLine(work)}"\n\npeak-ratings.com #Peak #${work.title.replace(/\s+/g,"")}`;
                 window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(txt)}`,"_blank");
               }}
               style={{padding:"8px 14px",background:D.blueFaint,border:`1px solid ${D.blueDim}`,borderRadius:"8px",color:D.amber,fontSize:"11px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",whiteSpace:"nowrap"}}
@@ -2429,7 +2534,7 @@ const DetailView=({work,onBack,onSelect})=>{
         {work.comparisons&&work.comparisons.length>0&&(
           <>
             <SectionDivider label="COMPARE" color={work.color}/>
-            <p style={{margin:"0 0 16px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap to expand • Tap again to open that rating.</p>
+            <p style={{margin:"0 0 16px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap to expand - Tap again to open that rating.</p>
             <div style={{display:"flex",gap:"12px",overflowX:"auto",paddingBottom:"16px",scrollbarWidth:"none"}}>
               {work.comparisons.map((c,i)=><CmpCard key={c.title} comp={c} index={i} onSelect={(w)=>{onBack();setTimeout(()=>onSelect(w),80);}}/>)}
             </div>
@@ -2516,7 +2621,7 @@ const SearchRow = ({ item, onSelect }) => {
           )}
         </div>
         <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans,marginBottom:"3px"}}>
-          {mediaType}{year ? ` • ${year}` : ""}{tmdbScore ? ` • ${tmdbScore}` : ""}
+          {mediaType}{year ? ` - ${year}` : ""}{tmdbScore ? ` - ${tmdbScore}` : ""}
         </div>
         {peakMatch && (
           <div style={{fontSize:"11px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{getPreviewSnippet(peakMatch)}"</div>
@@ -2579,7 +2684,7 @@ const UnratedView = ({ item, onBack }) => {
         <div style={{position:"absolute",bottom:"28px",left:"0",right:"0",padding:"0 22px",display:"flex",gap:"18px",alignItems:"flex-end"}}>
           {poster && <img src={poster} alt={title} style={{width:"80px",height:"120px",borderRadius:"10px",objectFit:"cover",flexShrink:0}}/>}
           <div style={{flex:1,animation:"heroIn 0.5s ease"}}>
-            <div style={{fontSize:"10px",color:D.textDim,fontFamily:D.mono,marginBottom:"6px"}}>{mediaType} {" • "} {year}</div>
+            <div style={{fontSize:"10px",color:D.textDim,fontFamily:D.mono,marginBottom:"6px"}}>{mediaType} {" - "} {year}</div>
             <h1 style={{margin:"0 0 10px",fontSize:"clamp(22px,5vw,36px)",fontWeight:"900",color:D.text,lineHeight:1.1}}>{title}</h1>
             {rating ? (
               <div style={{display:"flex",gap:"20px",alignItems:"flex-end"}}>
@@ -2640,7 +2745,7 @@ const UnratedView = ({ item, onBack }) => {
             {/* Tier badge */}
             <div style={{marginBottom:"24px",display:"flex",gap:"12px",alignItems:"center"}}>
               <span style={{fontSize:"11px",color:D.blue,fontFamily:D.mono,border:`1px solid ${D.amber}`,borderRadius:"5px",padding:"3px 10px",letterSpacing:"2px"}}>TIER {rating.tier}</span>
-              <span style={{fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>{rating.status} {" • "} {rating.year}</span>
+              <span style={{fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>{rating.status} {" - "} {rating.year}</span>
             </div>
 
             {/* Scores grid */}
@@ -2806,7 +2911,7 @@ const HomeView = ({ onSelect }) => {
           {/* TMDB results */}
           {HAS_TMDB && !searching && searchResults.length > 0 && (
             <div>
-              <div style={{fontSize:"9px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"12px"}}>RESULTS â€” PEAK RATED SHOWN FIRST</div>
+              <div style={{fontSize:"9px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"12px"}}>RESULTS - PEAK RATED SHOWN FIRST</div>
               <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
                 {/* Peak matches first */}
                 {searchResults.filter(r => matchPeak(r.title||r.name)).map((item,i) => (
@@ -2851,7 +2956,7 @@ const HomeView = ({ onSelect }) => {
                         <div style={{width:"1px",height:"30px",borderRadius:"0",background:"rgba(255,255,255,0.15)",flexShrink:0}}/>
                         <div style={{flex:1,minWidth:0}}>
                           <div style={{fontSize:"15px",fontWeight:"800",color:D.text,fontFamily:D.serif,marginBottom:"2px"}}>{w.title}</div>
-                          <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans}}>{w.type} {" • "} {w.status}</div>
+                          <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans}}>{w.type} {" - "} {w.status}</div>
                         </div>
                         <div style={{fontSize:"26px",fontWeight:"900",color:D.blue,fontFamily:D.mono}}>{w.overall.toFixed(1)}</div>
                         <div style={{color:D.textFaint,fontSize:"16px"}}>{">"}</div>
@@ -2946,7 +3051,7 @@ const HomeView = ({ onSelect }) => {
           {query && <button onClick={()=>setQuery("")} style={{position:"absolute",right:"12px",top:"50%",transform:"translateY(-50%)",background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"50%",width:"22px",height:"22px",color:D.textDim,cursor:"pointer",fontSize:"10px",display:"flex",alignItems:"center",justifyContent:"center"}}>x</button>}
         </div>
         <div style={{textAlign:"center",marginTop:"7px",fontSize:"9px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"2px"}}>
-          {HAS_TMDB ? "LIVE SEARCH • 500K+ TITLES • PEAK RATED HIGHLIGHTED" : `${WORKS.length} works rated • Add TMDB key for live search`}
+          {HAS_TMDB ? "LIVE SEARCH - 500K+ TITLES - PEAK RATED HIGHLIGHTED" : `${WORKS.length} works rated - Add TMDB key for live search`}
         </div>
         </div>
       )}
@@ -2983,7 +3088,7 @@ export default function App() {
         ::-webkit-scrollbar{width:3px;height:3px}
         ::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.25);border-radius:2px}
         input,button{outline:none}
-        body{margin:0;background:#0a0a12}
+        body{margin:0;background:#0a0a12;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
         body::before{content:"";position:fixed;top:-300px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(59,130,246,0.07) 0%,rgba(139,92,246,0.04) 50%,transparent 70%);pointer-events:none;z-index:0;animation:glowPulse 6s ease-in-out infinite;}
       `}</style>
       {selected
