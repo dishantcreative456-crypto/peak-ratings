@@ -5,6 +5,7 @@
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
+  isolation: isolate;
   color: #f7f2eb;
   font-family: "Inter", sans-serif;
 }
