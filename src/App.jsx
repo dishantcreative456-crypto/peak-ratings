@@ -257,9 +257,9 @@ const generatePeakRating = async (title, type) => {
 const WORKS = [
   // â”€â”€ S TIER â”€â”€
   {
-    id:"vs", title:"Vinland Saga", type:"Manga", year:"2005", status:"Complete âœ“",
+    id:"vs", title:"Vinland Saga", type:"Manga", year:"2005", status:"Complete",
     overall:9.7, hook:"It starts with revenge.\nIt ends somewhere much deeper.", hookLines:["A brutal story that still chooses mercy."], tier:"S", color:D.blue,
-    tagline:"A man who chose to stop â€” and changed everything by doing so.",
+    tagline:"A man who chose to stop - and changed everything by doing so.",
     overview:{
       surface:"A young Viking grows up chasing revenge.\nThat is only the beginning.",
       real:"It starts as a revenge story.\nThen it quietly becomes a story about whether a good life is still possible in a violent world.",
@@ -355,7 +355,7 @@ const WORKS = [
     finalThoughts:{line:"The art is not decoration.\nIt is the voice.",full:"Vagabond pulls you in because the drawings do more than illustrate the story. They carry it. Motion, faces, silence, even empty space start feeling like part of the argument. Very few works trust their visuals this much, and even fewer are rewarded for it like this."}
   },
   {
-    id:"monster", title:"Monster", type:"Manga", year:"1994", status:"Complete âœ“",
+    id:"monster", title:"Monster", type:"Manga", year:"1994", status:"Complete",
     overall:9.4, hook:"One choice changes everything.\nThen it never lets go.", hookLines:["One choice changes everything."], tier:"S", color:D.text,
     tagline:"Is human life inherently valuable â€” or does it require meaning to have worth?",
     overview:{
@@ -388,7 +388,7 @@ const WORKS = [
     finalThoughts:{line:"Johan pulls you in.\nThe rest of the story keeps you there.",full:"Monster stays gripping because it never loses control. It asks one of the coldest questions on this list, but it never stops feeling human. Johan is unforgettable, but what really makes the work last is how carefully everything around him is built."}
   },
   {
-    id:"reze", title:"CSM: Reze Arc", type:"Film", year:"2025", status:"Complete âœ“",
+    id:"reze", title:"CSM: Reze Arc", type:"Film", year:"2025", status:"Complete",
     overall:9.4, hook:"Tender.\nDangerous.\nAnd hard to shake.", hookLines:["Tender, dangerous, hard to shake."], tier:"S", color:D.blue,
     tagline:"Two weapons pretending to be human â€” and briefly succeeding.",
     overview:{
@@ -420,7 +420,7 @@ const WORKS = [
 
   // â”€â”€ A TIER â”€â”€
   {
-    id:"bb", title:"Breaking Bad", type:"TV", year:"2008", status:"Complete âœ“", totalEpisodes:62, episodeDuration:47,
+    id:"bb", title:"Breaking Bad", type:"TV", year:"2008", status:"Complete", totalEpisodes:62, episodeDuration:47,
     overall:9.2, hook:"Five seasons.\nAnd somehowâ€¦ it never slips.", hookLines:["A slow fall with no wasted steps."], tier:"S", color:D.blue,
     tagline:"I did it for me. I liked it. I was good at it. And I was really alive.",
     overview:{
@@ -453,7 +453,7 @@ const WORKS = [
     finalThoughts:{line:"It keeps getting darker.\nIt never loses control.",full:"Breaking Bad works because every turn feels like it belongs to the same man. Walt keeps changing, but the writing never cheats to make that happen. Season after season, it tightens the pressure and keeps its grip. That control is what makes the whole fall so memorable."}
   },
   {
-    id:"aot-manga", title:"AOT", type:"Manga", year:"2009", status:"Complete âœ“",
+    id:"aot-manga", title:"AOT", type:"Manga", year:"2009", status:"Complete",
     overall:9.2, hook:"It starts one way.\nThen it turns on you.", hookLines:["It keeps changing under your feet."], tier:"S", color:D.text,
     tagline:"Season 1 asked: can humanity survive? Season 4 revealed: humanity was never the victim.",
     overview:{
@@ -486,7 +486,7 @@ const WORKS = [
     finalThoughts:{line:"The build is astonishing.\nThe finish is the bruise.",full:"AOT keeps pulling the floor out from under itself in ways that feel smart, not random. The reveals are planted with real care, and the shifts in perspective change the meaning of everything before them. The ending hurts its final rank, but not the scale of what it achieved on the way there."}
   },
   {
-    id:"slam-dunk", title:"Slam Dunk", type:"Manga", year:"1990", status:"Complete âœ“",
+    id:"slam-dunk", title:"Slam Dunk", type:"Manga", year:"1990", status:"Complete",
     overall:9.1, hook:"You come for basketball.\nYou stay for the heart.", hookLines:["You come for basketball. You stay for the heart."], tier:"S", color:D.blue,
     tagline:"Hanamichi Sakuragi's growth arc is one of the most emotionally satisfying journeys in manga.",
     overview:{
@@ -516,7 +516,7 @@ const WORKS = [
     finalThoughts:{line:"When it locks in,\nit really lands.",full:"Slam Dunk wins you over slowly. The growth feels earned, the team feels alive, and the emotion never has to beg for your attention. By the time it reaches its peak, you are not just watching games. You are watching people find something worth giving themselves to."}
   },
   {
-    id:"dn-manga", title:"Death Note", type:"Manga", year:"2003", status:"Complete âœ“",
+    id:"dn-manga", title:"Death Note", type:"Manga", year:"2003", status:"Complete",
     overall:9.0, hook:"It reads fast.\nThen it gets inside your head.", hookLines:["A battle of ego dressed like justice."], tier:"S", color:D.blue,
     tagline:"Light Yagami: a man who started with a defensible position and never noticed himself becoming the monster.",
     overview:{
@@ -547,7 +547,7 @@ const WORKS = [
     finalThoughts:{line:"At its peak,\nyou almost stop blinking.",full:"Death Note pulls you through on pure tension. The central rivalry is so clean, and so sharp, that even the quieter chapters feel loaded. It does not fully stay at that level to the end, but when it peaks, it is as addictive as anything here."}
   },
   {
-    id:"fmab", title:"FMAB", type:"Anime", year:"2009", status:"Complete âœ“", totalEpisodes:64, episodeDuration:24,
+    id:"fmab", title:"FMAB", type:"Anime", year:"2009", status:"Complete", totalEpisodes:64, episodeDuration:24,
     overall:9.0, hook:"Everything matters.\nEverything pays off.", hookLines:["Everything matters. Everything pays off."], tier:"S", color:D.blue,
     tagline:"The most narratively complete and satisfying anime ever concluded â€” nothing is wasted.",
     overview:{
@@ -577,7 +577,7 @@ const WORKS = [
     finalThoughts:{line:"It knew the road.\nAnd it reached the end cleanly.",full:"FMAB feels so satisfying because it stays balanced all the way through. The themes stay clear. The characters stay true to themselves. And when the ending arrives, it feels earned rather than arranged. Very few anime finish this cleanly."}
   },
   {
-    id:"aot-anime", title:"AOT Anime", type:"Anime", year:"2013", status:"Complete âœ“", totalEpisodes:94, episodeDuration:24,
+    id:"aot-anime", title:"AOT Anime", type:"Anime", year:"2013", status:"Complete", totalEpisodes:94, episodeDuration:24,
     overall:9.0, hook:"At its peak,\nthis feels overwhelming.", hookLines:["At its peak, this is overwhelming."], tier:"S", color:D.text,
     tagline:"Season 3 Part 2 has no equal in animated television.",
     overview:{
@@ -649,7 +649,7 @@ const WORKS = [
     finalThoughts:{line:"When it peaks,\nit feels huge.",full:"The anime earns its place through direction, music, and scale. The best seasons do not just repeat the manga. They amplify it. When everything clicks, the whole thing feels bigger, heavier, and harder to forget."}
   },
   {
-    id:"monster-anime", title:"Monster Anime", type:"Anime", year:"2004", status:"Complete âœ“", totalEpisodes:74, episodeDuration:24,
+    id:"monster-anime", title:"Monster Anime", type:"Anime", year:"2004", status:"Complete", totalEpisodes:74, episodeDuration:24,
     overall:9.0, hook:"Slow.\nTense.\nCompletely committed.", hookLines:["Slow, tense, and completely committed."], tier:"S", color:D.text,
     tagline:"Madhouse treated Urasawa's work with complete reverence.",
     overview:{
@@ -675,7 +675,7 @@ const WORKS = [
     finalThoughts:{line:"It asks for patience.\nThen rewards it.",full:"Monster Anime works because it never rushes the things that matter. The pacing stays deliberate, the mood stays heavy, and the performances add something real without changing the core. If you give it time, it gives a lot back."}
   },
   {
-    id:"vs-anime", title:"Vinland Saga Anime", type:"Anime", year:"2019", status:"Complete âœ“", totalEpisodes:48, episodeDuration:24,
+    id:"vs-anime", title:"Vinland Saga Anime", type:"Anime", year:"2019", status:"Complete", totalEpisodes:48, episodeDuration:24,
     overall:9.0, hook:"Faithful.\nHeavy.\nEmotionally honest.", hookLines:["Faithful, heavy, emotionally honest."], tier:"S", color:D.blue,
     tagline:"The anime is excellent. The manga is significantly greater â€” but excellent is still excellent.",
     overview:{
@@ -766,7 +766,7 @@ const WORKS = [
     finalThoughts:{line:"Part 1 proved the ceiling.\nPart 2 is still climbing.",full:"Chainsaw Man feels reckless at first, but the control underneath it is real. Fujimoto uses weirdness, speed, and sharp tonal turns to say surprisingly human things. Part 1 already proved how high the work can go. The final rank depends on where Part 2 lands."}
   },
   {
-    id:"lotm", title:"LOTM", type:"Novel", year:"2018", status:"Complete âœ“",
+    id:"lotm", title:"LOTM", type:"Novel", year:"2018", status:"Complete",
     overall:8.8, hook:"Huge world.\nQuiet emotional center.", hookLines:["Huge world. Quiet emotional center."], tier:"A", color:D.purple,
     tagline:"22 cosmological Beyonder Pathways of staggering depth â€” and a man pretending to be a god.",
     overview:{
@@ -796,7 +796,7 @@ const WORKS = [
     finalThoughts:{line:"It runs long.\nThe scale still lands.",full:"LOTM keeps expanding without fully losing itself, and that is a big part of the appeal. The world-building is massive, the systems are rich, and the ending still reaches for a human feeling instead of empty spectacle. It could be tighter, but the craft is real."}
   },
   {
-    id:"20cb", title:"20th Century Boys", type:"Manga", year:"1999", status:"Complete âœ“",
+    id:"20cb", title:"20th Century Boys", type:"Manga", year:"1999", status:"Complete",
     overall:8.8, hook:"Old pain.\nWorld-sized consequences.", hookLines:["Childhood wounds on a world-sized stage."], tier:"A", color:D.purple,
     tagline:"Eerily prophetic about the 21st century â€” written before it began.",
     overview:{
@@ -827,7 +827,7 @@ const WORKS = [
     finalThoughts:{line:"Warm.\nWeird.\nAnd sharper than it first looks.",full:"20th Century Boys works because it can feel playful and uneasy at the same time. The paranoia grows, the social anger grows, and somehow the people still matter. It does not fully reach Monster by the end, but at its best it absolutely feels close."}
   },
   {
-    id:"oshi", title:"Oshi No Ko", type:"Manga", year:"2020", status:"Complete âœ“",
+    id:"oshi", title:"Oshi No Ko", type:"Manga", year:"2020", status:"Complete",
     overall:8.3, hook:"It grabs you fast.\nThen it slips late.", hookLines:["It grabs you fast, then slips late."], tier:"B", color:D.amber,
     tagline:"A properly concluded Oshi No Ko would be a 9.0 work. What we have is 8.3.",
     overview:{
@@ -858,7 +858,7 @@ const WORKS = [
     finalThoughts:{line:"The opening is unforgettable.\nThe ending costs it.",full:"Oshi No Ko has one of the strongest openings on this list and some of the sharpest industry commentary too. That is why the rushed ending feels so frustrating. There is still a lot to admire here, but it leaves real points on the table."}
   },
   {
-    id:"dn-anime", title:"Death Note Anime", type:"Anime", year:"2006", status:"Complete âœ“", totalEpisodes:37, episodeDuration:23,
+    id:"dn-anime", title:"Death Note Anime", type:"Anime", year:"2006", status:"Complete", totalEpisodes:37, episodeDuration:23,
     overall:8.6, hook:"Fast.\nStylish.\nVery hard to stop.", hookLines:["Fast, stylish, hard to stop."], tier:"A", color:D.purple,
     tagline:"Mamoru Miyano's voice adds psychological complexity beyond the manga.",
     overview:{
@@ -884,7 +884,7 @@ const WORKS = [
     finalThoughts:{line:"The first half is close to elite.",full:"Death Note Anime works because the direction, music, and performances amplify what was already strong on the page. It still carries the same late weakness as the manga, but its best stretch is tense in a way only anime could make it feel."}
   },
   {
-    id:"ds-infinity", title:"DS: Infinity Castle P1", type:"Film", year:"2025", status:"Complete âœ“",
+    id:"ds-infinity", title:"DS: Infinity Castle P1", type:"Film", year:"2025", status:"Complete",
     overall:7.8, hook:"It looks incredible.\nIt feels lighter underneath.", hookLines:["Incredible to look at. Lighter to feel."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"$778.9M worldwide. Proof that commercial success and artistic merit are different questions.",
     overview:{
@@ -976,7 +976,7 @@ const WORKS = [
     finalThoughts:{line:"The early greatness is real.\nSo is the ending damage.",full:"Game of Thrones has to be judged as the whole thing, not just the years people want to remember. Seasons 1 to 4 are elite television. The final stretch is not just disappointing, it changes the feeling of the entire run. That gap is the score."}
   },
   {
-    id:"ds-anime", title:"Demon Slayer", type:"Anime", year:"2019", status:"Complete âœ“", totalEpisodes:63, episodeDuration:24,
+    id:"ds-anime", title:"Demon Slayer", type:"Anime", year:"2019", status:"Complete", totalEpisodes:63, episodeDuration:24,
     overall:7.0, hook:"Looks amazing.\nSays less.", hookLines:["Looks amazing. Says less."], tier:"C", color:"rgba(52,211,153,0.7)",
     tagline:"Visual spectacle without substance has a hard ceiling â€” and Demon Slayer found it.",
     overview:{
@@ -1005,7 +1005,7 @@ const WORKS = [
     finalThoughts:{line:"The visuals lift it high.\nJust not all the way.",full:"Demon Slayer is easy to enjoy because it is clean, emotional, and beautifully made. The problem is that the writing rarely grows beyond its basics. It is a strong showcase for animation craft, but it never fully becomes more than that."}
   },
   {
-    id:"sl", title:"Solo Leveling", type:"Manhwa", year:"2014", status:"Complete âœ“",
+    id:"sl", title:"Solo Leveling", type:"Manhwa", year:"2014", status:"Complete",
     overall:6.8, hook:"Pure momentum.\nPure fantasy.", hookLines:["Pure momentum. Pure fantasy."], tier:"D", color:D.textDim,
     tagline:"If you want to feel powerful â€” Solo Leveling is unmatched. If you want to feel human â€” read Vinland Saga.",
     overview:{
@@ -1034,7 +1034,7 @@ const WORKS = [
     finalThoughts:{line:"It does its job well.\nThe job just has a ceiling.",full:"Solo Leveling is very good at being what it is. It moves fast, looks great, and keeps the power climb satisfying. But it does not reach much deeper than that, and that limits how high it can rise next to the strongest works here."}
   },
   {
-    id:"jjk", title:"Jujutsu Kaisen", type:"Manga", year:"2018", status:"Complete âœ“",
+    id:"jjk", title:"Jujutsu Kaisen", type:"Manga", year:"2018", status:"Complete",
     overall:8.0, hook:"Shibuya soars.\nThe finish stumbles.", hookLines:["Shibuya soars. The finish stumbles."], tier:"B", color:D.amber,
     tagline:"A manga that had a genuine 9.0 work inside it â€” and could not quite finish delivering it.",
     overview:{
@@ -1747,7 +1747,7 @@ const GuidedNext = ({ work, onSelect }) => {
                 <div style={{fontSize:"8px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"1px"}}>{item.target.tier} TIER</div>
               </div>
 
-              <div style={{color:D.textFaint,fontSize:"14px",flexShrink:0}}>â€º</div>
+              <div style={{color:D.textFaint,fontSize:"14px",flexShrink:0}}>{">"}</div>
             </div>
           );
         })}
@@ -2100,10 +2100,10 @@ const WatchTimeEstimator = ({ totalEpisodes, episodeDuration }) => {
 
         <div style={{display:"flex",flexDirection:"column",gap:"6px"}}>
           <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>
-            ðŸ§˜ Casual (2 eps/day) â†’ ~{casual}
+            Casual (2 eps/day) -> ~{casual}
           </div>
           <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>
-            âš¡ Binge (6 eps/day) â†’ ~{binge}
+            Binge (6 eps/day) -> ~{binge}
           </div>
         </div>
 
@@ -2153,7 +2153,7 @@ const PeakSaysSection = ({ work }) => {
 
   return (
     <div style={{marginBottom:"48px",animation:"fadeIn 0.4s ease"}}>
-      <div style={{fontSize:"10px",color:"rgba(59,130,246,0.5)",fontFamily:D.mono,letterSpacing:"4px",marginBottom:"16px"}}>â–² PEAK SAYS</div>
+      <div style={{fontSize:"10px",color:"rgba(59,130,246,0.5)",fontFamily:D.mono,letterSpacing:"4px",marginBottom:"16px"}}>PEAK SAYS</div>
       <div style={{background:`linear-gradient(135deg,${tierCol}0a 0%,rgba(255,255,255,0.02) 100%)`,border:`1px solid ${tierCol}30`,borderRadius:"16px",padding:"24px 26px"}}>
         <div style={{display:"flex",alignItems:"center",gap:"12px",marginBottom:"16px"}}>
           <div style={{padding:"6px 14px",background:`${tierCol}18`,border:`1px solid ${tierCol}50`,borderRadius:"20px"}}>
@@ -2300,12 +2300,12 @@ const DetailView=({work,onBack,onSelect})=>{
       <div style={{position:"relative",height:"340px",overflow:"hidden"}}>
         <div style={{position:"absolute",inset:0,background:D.bg}}/>
         <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 25%,#080810 100%)"}}/>
-        <button onClick={onBack} style={{position:"absolute",top:"20px",left:"20px",zIndex:10,background:"rgba(59,130,246,0.08)",border:"1px solid rgba(59,130,246,0.3)",borderRadius:"10px",padding:"8px 16px",color:D.blue,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",backdropFilter:"blur(8px)"}}>â† BACK</button>
+        <button onClick={onBack} style={{position:"absolute",top:"20px",left:"20px",zIndex:10,background:"rgba(59,130,246,0.08)",border:"1px solid rgba(59,130,246,0.3)",borderRadius:"10px",padding:"8px 16px",color:D.blue,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",backdropFilter:"blur(8px)"}}>{"<- BACK"}</button>
         <div style={{position:"absolute",bottom:"36px",left:"0",right:"0",padding:"0 24px",animation:"heroIn 0.6s ease"}}>
           <div style={{display:"flex",gap:"8px",marginBottom:"12px",alignItems:"center",flexWrap:"wrap"}}>
             <span style={{fontSize:"10px",color:tierCol,fontFamily:D.mono,fontWeight:"900",border:`1px solid ${tierCol}`,borderRadius:"5px",padding:"2px 8px",letterSpacing:"2px"}}>TIER {work.tier}</span>
-            <span style={{fontSize:"10px",color:D.textDim,fontFamily:D.mono}}>{work.type} Â· {work.year}</span>
-            <span style={{fontSize:"10px",fontFamily:D.mono,color:D.textFaint}}>Â· {work.status}</span>
+            <span style={{fontSize:"10px",color:D.textDim,fontFamily:D.mono}}>{work.type} {" • "} {work.year}</span>
+            <span style={{fontSize:"10px",fontFamily:D.mono,color:D.textFaint}}>{" • "} {work.status}</span>
           </div>
           <h1 style={{margin:"0 0 8px",fontSize:"clamp(28px,6vw,54px)",fontWeight:"900",letterSpacing:"-1px",lineHeight:1.0,color:D.text}}>{work.title}</h1>
           <p style={{margin:"0 0 18px",fontSize:"14px",color:D.textDim,fontStyle:"italic",whiteSpace:"pre-line"}}>"{work.hook}"</p>
@@ -2343,7 +2343,7 @@ const DetailView=({work,onBack,onSelect})=>{
                 window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(txt)}`,"_blank");
               }}
               style={{padding:"8px 14px",background:D.blueFaint,border:`1px solid ${D.blueDim}`,borderRadius:"8px",color:D.amber,fontSize:"11px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",whiteSpace:"nowrap"}}
-            >Share â†—</button>
+            >{"Share ->"}</button>
           </div>
         </div>
       </div>
@@ -2368,16 +2368,16 @@ const DetailView=({work,onBack,onSelect})=>{
         <div style={{background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"4px",overflow:"hidden",marginBottom:"20px"}}>
           <div style={{padding:"20px 22px"}}>
             <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"12px"}}>
-              <span style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans,letterSpacing:"3px"}}>ðŸ§  DEEP ANALYSIS</span>
-              <span style={{fontSize:"9px",color:D.blue,fontFamily:D.mono,border:"1px solid rgba(255,107,107,0.4)",borderRadius:"4px",padding:"1px 6px",letterSpacing:"1px"}}>âš  SPOILERS</span>
+              <span style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans,letterSpacing:"3px"}}>DEEP ANALYSIS</span>
+              <span style={{fontSize:"9px",color:D.blue,fontFamily:D.mono,border:"1px solid rgba(255,107,107,0.4)",borderRadius:"4px",padding:"1px 6px",letterSpacing:"1px"}}>[!] SPOILERS</span>
             </div>
             {!spoilerOk ? (
               <div style={{padding:"20px",background:"rgba(255,107,107,0.05)",border:"1px solid rgba(255,107,107,0.15)",borderRadius:"12px",textAlign:"center"}}>
-                <div style={{fontSize:"24px",marginBottom:"10px"}}>âš ï¸</div>
+                <div style={{fontSize:"24px",marginBottom:"10px"}}>[!]</div>
                 <div style={{fontSize:"13px",color:D.textMid,fontFamily:D.serif,marginBottom:"6px"}}>This section contains major plot spoilers.</div>
                 <div style={{fontSize:"11px",color:D.textDim,fontFamily:D.mono,marginBottom:"16px"}}>Character deaths, twists, ending details revealed.</div>
                 <button onClick={()=>setSpoilerOk(true)} style={{background:"rgba(139,92,246,0.12)",border:"1px solid rgba(139,92,246,0.4)",borderRadius:"8px",padding:"9px 20px",color:"#8B5CF6",fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
-                  I've seen / read it â€” show analysis
+                  {"I've seen / read it - show analysis"}
                 </button>
               </div>
             ) : (
@@ -2385,7 +2385,7 @@ const DetailView=({work,onBack,onSelect})=>{
                 <p style={{margin:0,fontSize:"14px",color:D.textMid,lineHeight:1.85,fontFamily:D.serif,maxHeight:deep?"none":"90px",overflow:"hidden",maskImage:deep?"none":"linear-gradient(180deg,black 45%,transparent 100%)",WebkitMaskImage:deep?"none":"linear-gradient(180deg,black 45%,transparent 100%)"}}>{work.overview.deep}</p>
                 <div style={{marginTop:"14px"}}>
                   <button onClick={()=>setDeep(d=>!d)} style={{background:"rgba(59,130,246,0.06)",border:"1px solid rgba(59,130,246,0.2)",borderRadius:"6px",padding:"8px 16px",color:"#3B82F6",fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
-                    {deep?"Collapse â†‘":"Read Full Analysis â†“"}
+                    {deep ? "Collapse ^" : "Read Full Analysis v"}
                   </button>
                 </div>
               </>
@@ -2429,7 +2429,7 @@ const DetailView=({work,onBack,onSelect})=>{
         {work.comparisons&&work.comparisons.length>0&&(
           <>
             <SectionDivider label="COMPARE" color={work.color}/>
-            <p style={{margin:"0 0 16px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap to expand Â· Tap again to open that rating.</p>
+            <p style={{margin:"0 0 16px",fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>Tap to expand • Tap again to open that rating.</p>
             <div style={{display:"flex",gap:"12px",overflowX:"auto",paddingBottom:"16px",scrollbarWidth:"none"}}>
               {work.comparisons.map((c,i)=><CmpCard key={c.title} comp={c} index={i} onSelect={(w)=>{onBack();setTimeout(()=>onSelect(w),80);}}/>)}
             </div>
@@ -2446,7 +2446,7 @@ const DetailView=({work,onBack,onSelect})=>{
           </div>
           <div style={{padding:"0 24px 20px"}}>
             <button onClick={()=>setVExp(v=>!v)} style={{background:"rgba(59,130,246,0.06)",border:"1px solid rgba(59,130,246,0.2)",borderRadius:"6px",padding:"8px 16px",color:"#3B82F6",fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
-              {vExp?"Collapse â†‘":"Read Full Verdict â†“"}
+              {vExp ? "Collapse ^" : "Read Full Verdict v"}
             </button>
           </div>
         </div>
@@ -2503,7 +2503,7 @@ const SearchRow = ({ item, onSelect }) => {
       <div style={{width:"46px",height:"66px",borderRadius:"8px",overflow:"hidden",flexShrink:0,background:"rgba(255,255,255,0.04)",display:"flex",alignItems:"center",justifyContent:"center"}}>
         {poster
           ? <img src={poster} alt={title} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
-          : <span style={{fontSize:"20px",opacity:0.3}}>ðŸŽ¬</span>
+          : <span style={{fontSize:"20px",opacity:0.3}}>[ ]</span>
         }
       </div>
 
@@ -2516,7 +2516,7 @@ const SearchRow = ({ item, onSelect }) => {
           )}
         </div>
         <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans,marginBottom:"3px"}}>
-          {mediaType}{year ? ` Â· ${year}` : ""}{tmdbScore ? ` Â· â­ ${tmdbScore}` : ""}
+          {mediaType}{year ? ` • ${year}` : ""}{tmdbScore ? ` • ${tmdbScore}` : ""}
         </div>
         {peakMatch && (
           <div style={{fontSize:"11px",color:D.textDim,fontStyle:"italic",fontFamily:D.serif,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>"{getPreviewSnippet(peakMatch)}"</div>
@@ -2534,7 +2534,7 @@ const SearchRow = ({ item, onSelect }) => {
           <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans,textAlign:"center",lineHeight:1.4}}>Not<br/>rated</div>
         )}
       </div>
-      <div style={{color:D.textFaint,fontSize:"16px"}}>â€º</div>
+      <div style={{color:D.textFaint,fontSize:"16px"}}>{">"}</div>
     </div>
   );
 };
@@ -2575,11 +2575,11 @@ const UnratedView = ({ item, onBack }) => {
           : <div style={{width:"100%",height:"100%",background:"linear-gradient(135deg,#0d0d20,#080810)"}}/>
         }
         <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 20%,#080810 100%)"}}/>
-        <button onClick={onBack} style={{position:"absolute",top:"20px",left:"20px",zIndex:10,background:"rgba(59,130,246,0.08)",border:"1px solid rgba(59,130,246,0.3)",borderRadius:"10px",padding:"8px 16px",color:D.blue,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",backdropFilter:"blur(8px)"}}>â† BACK</button>
+        <button onClick={onBack} style={{position:"absolute",top:"20px",left:"20px",zIndex:10,background:"rgba(59,130,246,0.08)",border:"1px solid rgba(59,130,246,0.3)",borderRadius:"10px",padding:"8px 16px",color:D.blue,fontSize:"12px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px",backdropFilter:"blur(8px)"}}>{"<- BACK"}</button>
         <div style={{position:"absolute",bottom:"28px",left:"0",right:"0",padding:"0 22px",display:"flex",gap:"18px",alignItems:"flex-end"}}>
           {poster && <img src={poster} alt={title} style={{width:"80px",height:"120px",borderRadius:"10px",objectFit:"cover",flexShrink:0}}/>}
           <div style={{flex:1,animation:"heroIn 0.5s ease"}}>
-            <div style={{fontSize:"10px",color:D.textDim,fontFamily:D.mono,marginBottom:"6px"}}>{mediaType} Â· {year}</div>
+            <div style={{fontSize:"10px",color:D.textDim,fontFamily:D.mono,marginBottom:"6px"}}>{mediaType} {" • "} {year}</div>
             <h1 style={{margin:"0 0 10px",fontSize:"clamp(22px,5vw,36px)",fontWeight:"900",color:D.text,lineHeight:1.1}}>{title}</h1>
             {rating ? (
               <div style={{display:"flex",gap:"20px",alignItems:"flex-end"}}>
@@ -2608,7 +2608,7 @@ const UnratedView = ({ item, onBack }) => {
             <div style={{fontSize:"9px",color:D.blue,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"10px"}}>NOT YET IN PEAK DATABASE</div>
             <p style={{margin:"0 0 16px",fontSize:"14px",color:D.textMid,lineHeight:1.7,fontFamily:D.serif}}>Generate an AI-powered Peak rating for <strong style={{color:D.text}}>{title}</strong> using our craft-based framework.</p>
             <button onClick={handleGenerate} style={{background:D.blueFaint,border:`1px solid ${D.blueDim}`,borderRadius:"10px",padding:"12px 28px",color:D.amber,fontSize:"13px",cursor:"pointer",fontFamily:D.mono,letterSpacing:"1px"}}>
-              Generate Peak Rating â†—
+              {"Generate Peak Rating ->"}
             </button>
           </div>
         )}
@@ -2640,7 +2640,7 @@ const UnratedView = ({ item, onBack }) => {
             {/* Tier badge */}
             <div style={{marginBottom:"24px",display:"flex",gap:"12px",alignItems:"center"}}>
               <span style={{fontSize:"11px",color:D.blue,fontFamily:D.mono,border:`1px solid ${D.amber}`,borderRadius:"5px",padding:"3px 10px",letterSpacing:"2px"}}>TIER {rating.tier}</span>
-              <span style={{fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>{rating.status} Â· {rating.year}</span>
+              <span style={{fontSize:"12px",color:D.textDim,fontFamily:D.mono}}>{rating.status} {" • "} {rating.year}</span>
             </div>
 
             {/* Scores grid */}
@@ -2673,7 +2673,7 @@ const UnratedView = ({ item, onBack }) => {
               <div>
                 <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"3px",marginBottom:"12px"}}>COMPARED TO SIMILAR WORKS</div>
                 {rating.comparisons.map((c,i)=>(
-                  <div key={i} style={{padding:"10px 14px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.06)",borderRadius:"8px",marginBottom:"8px",fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>Â· {c}</div>
+                  <div key={i} style={{padding:"10px 14px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.06)",borderRadius:"8px",marginBottom:"8px",fontSize:"13px",color:D.textMid,fontFamily:D.serif}}>- {c}</div>
                 ))}
               </div>
             )}
@@ -2851,17 +2851,17 @@ const HomeView = ({ onSelect }) => {
                         <div style={{width:"1px",height:"30px",borderRadius:"0",background:"rgba(255,255,255,0.15)",flexShrink:0}}/>
                         <div style={{flex:1,minWidth:0}}>
                           <div style={{fontSize:"15px",fontWeight:"800",color:D.text,fontFamily:D.serif,marginBottom:"2px"}}>{w.title}</div>
-                          <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans}}>{w.type} Â· {w.status}</div>
+                          <div style={{fontSize:"10px",color:D.textFaint,fontFamily:D.sans}}>{w.type} {" • "} {w.status}</div>
                         </div>
                         <div style={{fontSize:"26px",fontWeight:"900",color:D.blue,fontFamily:D.mono}}>{w.overall.toFixed(1)}</div>
-                        <div style={{color:D.textFaint,fontSize:"16px"}}>â€º</div>
+                        <div style={{color:D.textFaint,fontSize:"16px"}}>{">"}</div>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
               <div style={{padding:"18px 20px",background:"rgba(255,255,255,0.02)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"14px"}}>
-                <div style={{fontSize:"9px",color:D.textDim,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"7px"}}>ðŸ” ENABLE LIVE SEARCH</div>
+                <div style={{fontSize:"9px",color:D.textDim,fontFamily:D.mono,letterSpacing:"2px",marginBottom:"7px"}}>ENABLE LIVE SEARCH</div>
                 <p style={{margin:"0 0 8px",fontSize:"13px",color:"rgba(255,255,255,0.48)",lineHeight:1.6,fontFamily:D.serif}}>Add your free TMDB key to search 500,000+ titles with real posters.</p>
                 <p style={{margin:0,fontSize:"11px",color:D.textFaint,fontFamily:D.mono,lineHeight:1.8}}>
                   1. Visit themoviedb.org/settings/api<br/>
@@ -2875,7 +2875,7 @@ const HomeView = ({ onSelect }) => {
           {/* Empty state */}
           {HAS_TMDB && !searching && searchResults.length === 0 && (
             <div style={{textAlign:"center",padding:"60px 20px",color:D.textFaint}}>
-              <div style={{fontSize:"28px",marginBottom:"12px"}}>â—Ž</div>
+              <div style={{fontSize:"28px",marginBottom:"12px"}}>o</div>
               <div style={{fontFamily:D.mono,fontSize:"12px",letterSpacing:"3px"}}>NO RESULTS FOUND</div>
             </div>
           )}
@@ -2916,7 +2916,7 @@ const HomeView = ({ onSelect }) => {
                         <div style={{fontSize:"24px",fontWeight:"300",color:D.blue,fontFamily:D.serif,lineHeight:1}}>{w.overall.toFixed(1)}</div>
                         <div style={{fontSize:"9px",color:D.textFaint,fontFamily:D.mono}}>/10</div>
                       </div>
-                      <div style={{color:D.textFaint,fontSize:"16px"}}>â€º</div>
+                      <div style={{color:D.textFaint,fontSize:"16px"}}>{">"}</div>
                     </div>
                   ))}
                 </div>
@@ -2925,7 +2925,7 @@ const HomeView = ({ onSelect }) => {
           })}
           {filtered.length === 0 && (
             <div style={{textAlign:"center",padding:"80px 20px",color:D.textFaint}}>
-              <div style={{fontSize:"32px",marginBottom:"12px"}}>â—Ž</div>
+              <div style={{fontSize:"32px",marginBottom:"12px"}}>o</div>
               <div style={{fontFamily:D.mono,fontSize:"12px",letterSpacing:"3px"}}>NO RESULTS FOUND</div>
             </div>
           )}
@@ -2936,17 +2936,17 @@ const HomeView = ({ onSelect }) => {
       {searchMode && (
         <div style={{position:"fixed",bottom:0,left:0,right:0,zIndex:200,background:"linear-gradient(to top,rgba(10,10,18,1) 65%,transparent 100%)",padding:"16px 18px 26px"}}>
         <div style={{maxWidth:"640px",margin:"0 auto",position:"relative"}}>
-          <div style={{position:"absolute",left:"16px",top:"50%",transform:"translateY(-50%)",color:query?D.blue:D.textFaint,fontSize:"14px",pointerEvents:"none",transition:"color 0.2s"}}>â—Ž</div>
+          <div style={{position:"absolute",left:"16px",top:"50%",transform:"translateY(-50%)",color:query?D.blue:D.textFaint,fontSize:"14px",pointerEvents:"none",transition:"color 0.2s"}}>o</div>
           <input
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Search any title..."
             style={{width:"100%",padding:"13px 44px 13px 42px",background:"rgba(10,10,18,0.98)",border:query?"1px solid rgba(59,130,246,0.45)":"1px solid rgba(255,255,255,0.07)",borderRadius:"3px",color:D.text,fontSize:"14px",fontFamily:D.sans,backdropFilter:"blur(16px)",boxShadow:"none",transition:"all 0.2s"}}
           />
-          {query && <button onClick={()=>setQuery("")} style={{position:"absolute",right:"12px",top:"50%",transform:"translateY(-50%)",background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"50%",width:"22px",height:"22px",color:D.textDim,cursor:"pointer",fontSize:"10px",display:"flex",alignItems:"center",justifyContent:"center"}}>âœ•</button>}
+          {query && <button onClick={()=>setQuery("")} style={{position:"absolute",right:"12px",top:"50%",transform:"translateY(-50%)",background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:"50%",width:"22px",height:"22px",color:D.textDim,cursor:"pointer",fontSize:"10px",display:"flex",alignItems:"center",justifyContent:"center"}}>x</button>}
         </div>
         <div style={{textAlign:"center",marginTop:"7px",fontSize:"9px",color:D.textFaint,fontFamily:D.mono,letterSpacing:"2px"}}>
-          {HAS_TMDB ? "LIVE SEARCH Â· 500K+ TITLES Â· PEAK RATED HIGHLIGHTED" : `${WORKS.length} works rated Â· Add TMDB key for live search`}
+          {HAS_TMDB ? "LIVE SEARCH • 500K+ TITLES • PEAK RATED HIGHLIGHTED" : `${WORKS.length} works rated • Add TMDB key for live search`}
         </div>
         </div>
       )}
