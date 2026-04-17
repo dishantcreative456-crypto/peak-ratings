@@ -38,9 +38,9 @@ export default function Hero({ query, onQueryChange, activeType, onTypeChange })
 
       <div className="hero-shell">
         <nav className="hero-nav">
-          <button type="button" className="hero-logo">
-            PEAK
-          </button>
+          <a href="/" className="hero-logo" aria-label="Go to homepage">
+            <img src="/assets/logo.png" alt="PEAK" className="hero-logo-image" />
+          </a>
 
           <div className="hero-nav-center">
             {HERO_NAV_ITEMS.map((item) => (
